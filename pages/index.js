@@ -24,9 +24,9 @@ export default function Home() {
           <meta property="og:title" content="Monkeypox Tracker - Monkeypox Statistics" />
           <meta property="og:url" content="https://monkeypoxtracker.net/" />
           <meta property="og:image" content="public/socialImg.png" />
-          <meta property="og:type" content="website">
+          <meta property="og:type" content="website"/>
 
-          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:card" content="summary_large_image"/>
 
 
         <link rel="icon" href="/favicon.ico" />

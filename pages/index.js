@@ -99,7 +99,7 @@ export default function Home() {
     aria-label="Table"
     id="datawrapper-chart-gvUWM"
     src="https://datawrapper.dwcdn.net/gvUWM/3/"
-    scrolling="no"
+    scrolling="yes"
     />
 
     </Box>

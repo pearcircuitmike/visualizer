@@ -74,7 +74,7 @@ export default function Home() {
     id="datawrapper-chart-req8A"
     src="https://datawrapper.dwcdn.net/req8A/2/"
     scrolling="no"
-    frameborder="0"
+    frameBorder={0}
     style={{border: 0}}
     width={600}
     height={365}
@@ -89,7 +89,7 @@ export default function Home() {
     id="datawrapper-chart-gvUWM"
     src="https://datawrapper.dwcdn.net/gvUWM/3/"
     scrolling="no"
-    frameborder="0"
+    frameBorder={0}
     style={{border: 0}}
     width={600}
     height={620}>
@@ -102,7 +102,7 @@ export default function Home() {
     id="datawrapper-chart-8BTii"
     src="https://datawrapper.dwcdn.net/8BTii/2/"
     scrolling="no"
-    frameborder="0"
+    frameBorder={0}
     style={{border: 0}}
     width={600}
     height={400}></iframe>

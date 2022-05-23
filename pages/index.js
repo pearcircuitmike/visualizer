@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import ResponsiveEmbed from 'react-responsive-embed'
 import {
   Flex,
   Container,
@@ -81,45 +82,35 @@ export default function Home() {
            </Stack>
        </Container>
 
-      <Container >
+      <Container   maxW={'3xl'}>
       <Box mb={12}>
-    <iframe title="Monkeypox cases by country"
+    <ResponsiveEmbed title="Monkeypox cases by country"
     aria-label="Map"
     id="datawrapper-chart-req8A"
     src="https://datawrapper.dwcdn.net/req8A/2/"
     scrolling="no"
-    frameBorder={0}
-    style={{border: 0}}
-    width={600}
-    height={365}
 
-    ></iframe>
+    />
     </Box>
 
     <Box mb={12}>
-    <iframe
+    <ResponsiveEmbed
     title="Monkeypox cases by country"
     aria-label="Table"
     id="datawrapper-chart-gvUWM"
     src="https://datawrapper.dwcdn.net/gvUWM/3/"
     scrolling="no"
-    frameBorder={0}
-    style={{border: 0}}
-    width={600}
-    height={620}>
-    </iframe>
+    />
+
     </Box>
 
     <Box mb={12}>
-    <iframe title="Monkeypox cases over time"
+        <ResponsiveEmbed title="Monkeypox cases over time"
     aria-label="Interactive line chart"
     id="datawrapper-chart-8BTii"
     src="https://datawrapper.dwcdn.net/8BTii/2/"
     scrolling="no"
-    frameBorder={0}
-    style={{border: 0}}
-    width={600}
-    height={400}></iframe>
+      />
     </Box>
 
 

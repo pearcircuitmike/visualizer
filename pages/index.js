@@ -20,6 +20,11 @@ export default function Home() {
       <Head>
         <title>Monkeypox Tracker - Monkeypox Statistics</title>
         <meta name="description" content="Statistics and information on the 2022 Monkeypox outbreak, including maps, charts, and tables from sources around the world." />
+
+          <meta property="og:title" content="Monkeypox Tracker - Monkeypox Statistics" />
+          <meta property="og:url" content="https://monkeypoxtracker.net/" />
+          <meta property="og:image" content="public/socialImg.png" />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

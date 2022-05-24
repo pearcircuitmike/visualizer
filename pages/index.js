@@ -35,7 +35,7 @@ export default function Home() {
           <meta property="twitter:description" content="Statistics and information on the 2022 Monkeypox outbreak, including maps, charts, and tables from sources around the world." />
           <meta property="twitter:image" content="https://monkeypoxtracker.net/socialImg.png" />
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4489327921275613"
-     crossorigin="anonymous"></script>
+     crossOrigin="anonymous"></script>
 
 
         <link rel="icon" href="/favicon.ico" />

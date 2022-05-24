@@ -77,9 +77,9 @@ export default function Home() {
            </Stack>
        </Container>
 
-      <Container   maxW={'3xl'}>
-      <Box mb={12}>
-    <ResponsiveEmbed title="Monkeypox cases by country"
+      <Container   maxW={'5xl'}>
+      <Box mb={12} maxH={500}>
+    <ResponsiveEmbed ratio="1:.9" title="Monkeypox cases by country"
     aria-label="Map"
     id="datawrapper-chart-req8A"
     src="https://datawrapper.dwcdn.net/req8A/2/"
@@ -88,8 +88,17 @@ export default function Home() {
     />
     </Box>
 
-    <Box mb={12}>
-    <ResponsiveEmbed
+    <Box mb={12} >
+        <ResponsiveEmbed title="Monkeypox cases over time" ratio="1:.9"
+    aria-label="Interactive line chart"
+    id="datawrapper-chart-8BTii"
+    src="https://datawrapper.dwcdn.net/8BTii/2/"
+    scrolling="no"
+      />
+    </Box>
+
+    <Box mb={12} maxH={500}>
+    <ResponsiveEmbed ratio="1:1"
     title="Monkeypox cases by country"
     aria-label="Table"
     id="datawrapper-chart-gvUWM"
@@ -99,14 +108,7 @@ export default function Home() {
 
     </Box>
 
-    <Box mb={12}>
-        <ResponsiveEmbed title="Monkeypox cases over time"
-    aria-label="Interactive line chart"
-    id="datawrapper-chart-8BTii"
-    src="https://datawrapper.dwcdn.net/8BTii/2/"
-    scrolling="no"
-      />
-    </Box>
+
 
 
 </Container>

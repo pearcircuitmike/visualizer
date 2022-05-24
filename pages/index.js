@@ -46,12 +46,7 @@ export default function Home() {
           direction={'row'}
           spacing={6}
           mt={-9}>
-        <Button>
-          Facebook
-        </Button>
-        <Button>
-          Twitter
-        </Button>
+
       </Stack>
       </Box>
 
@@ -68,7 +63,7 @@ export default function Home() {
                lineHeight={'110%'}>
                There are {' '}
                <Text as={'span'} color={'orange.400'}>
-                 211
+                 268
                </Text>
                {' '} active cases.
              </Heading>

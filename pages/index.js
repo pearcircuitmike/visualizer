@@ -35,7 +35,16 @@ export default function Home() {
           <meta property="twitter:description" content="Statistics and information on the 2022 Monkeypox outbreak, including maps, charts, and tables from sources around the world." />
           <meta property="twitter:image" content="https://monkeypoxtracker.net/socialImg.png" />
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4489327921275613"
-     crossOrigin="anonymous"></script>
+     crossOrigin="anonymous" />
+
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DFXC4Y1G0E"></script>
+     <script  dangerouslySetInnerHTML={{ __html:`
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+
+       gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');`,}}
+     />
 
 
         <link rel="icon" href="/favicon.ico" />

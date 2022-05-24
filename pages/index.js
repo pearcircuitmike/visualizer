@@ -13,6 +13,8 @@ import {
   IconProps,
   Box, Divider, HStack
 } from '@chakra-ui/react';
+import Script from 'next/script'
+
 
 
 export default function Home() {
@@ -32,7 +34,8 @@ export default function Home() {
           <meta name="twitter:card" content="summary_large_image"/>
           <meta property="twitter:description" content="Statistics and information on the 2022 Monkeypox outbreak, including maps, charts, and tables from sources around the world." />
           <meta property="twitter:image" content="https://monkeypoxtracker.net/socialImg.png" />
-
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4489327921275613"
+     crossorigin="anonymous"></script>
 
 
         <link rel="icon" href="/favicon.ico" />
@@ -79,7 +82,7 @@ export default function Home() {
 
       <Container   maxW={'5xl'}>
       <Box mb={12} maxH={500}>
-    <ResponsiveEmbed ratio="1:.9" title="Monkeypox cases by country"
+    <ResponsiveEmbed ratio="10:9" title="Monkeypox cases by country"
     aria-label="Map"
     id="datawrapper-chart-req8A"
     src="https://datawrapper.dwcdn.net/req8A/2/"
@@ -89,7 +92,7 @@ export default function Home() {
     </Box>
 
     <Box mb={12} >
-        <ResponsiveEmbed title="Monkeypox cases over time" ratio="1:.9"
+        <ResponsiveEmbed title="Monkeypox cases over time" ratio="10:9"
     aria-label="Interactive line chart"
     id="datawrapper-chart-8BTii"
     src="https://datawrapper.dwcdn.net/8BTii/2/"

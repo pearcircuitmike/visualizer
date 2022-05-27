@@ -75,7 +75,7 @@ export default function Home() {
                lineHeight={'110%'}>
                There are {' '}
                <Text as={'span'} color={'orange.400'}>
-                 318
+                 375
                </Text>
                {' '} active cases.
              </Heading>

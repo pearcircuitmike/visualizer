@@ -16,6 +16,7 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import Script from "next/script";
+import MapChart from "./components/WorldMap.js";
 
 export default function Home() {
   return (
@@ -124,6 +125,7 @@ export default function Home() {
         </Container>
 
         <Container maxW={"5xl"}>
+          <MapChart />
           <Box mb={12} maxH={500}>
             <ResponsiveEmbed
               ratio="10:9"

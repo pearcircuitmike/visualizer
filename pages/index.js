@@ -105,7 +105,7 @@ export default function Home() {
             >
               There are{" "}
               <Text as={"span"} color={"orange.400"}>
-                375
+                1
               </Text>{" "}
               active cases.
             </Heading>

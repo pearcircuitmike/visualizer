@@ -14,11 +14,17 @@ import {
   Box,
   Divider,
   HStack,
+  Tooltip,
 } from "@chakra-ui/react";
 import Script from "next/script";
 import MapChart from "./components/WorldMap.js";
 
+import { useState } from "react";
+import ReactTooltip from "react-tooltip";
+
 export default function Home() {
+  const [content, setContent] = useState("");
+
   return (
     <div className={styles.container}>
       <Head>
@@ -125,39 +131,16 @@ export default function Home() {
         </Container>
 
         <Container maxW={"5xl"}>
-          <MapChart />
-          <Box mb={12} maxH={500}>
-            <ResponsiveEmbed
-              ratio="10:9"
-              title="Monkeypox cases by country"
-              aria-label="Map"
-              id="datawrapper-chart-req8A"
-              src="https://datawrapper.dwcdn.net/req8A/2/"
-              scrolling="no"
-            />
-          </Box>
+          <MapChart setTooltipContent={setContent} />
+          {content && (
+            <ReactTooltip>
+              <Tooltip>{content}</Tooltip>
+            </ReactTooltip>
+          )}
 
-          <Box mb={12}>
-            <ResponsiveEmbed
-              title="Monkeypox cases over time"
-              ratio="10:9"
-              aria-label="Interactive line chart"
-              id="datawrapper-chart-8BTii"
-              src="https://datawrapper.dwcdn.net/8BTii/2/"
-              scrolling="no"
-            />
-          </Box>
-
-          <Box mb={12} maxH={500}>
-            <ResponsiveEmbed
-              ratio="1:1"
-              title="Monkeypox cases by country"
-              aria-label="Table"
-              id="datawrapper-chart-gvUWM"
-              src="https://datawrapper.dwcdn.net/gvUWM/3/"
-              scrolling="yes"
-            />
-          </Box>
+          <Box mb={12} maxH={500}></Box>
+          <Box mb={12}></Box>
+          <Box mb={12} maxH={500}></Box>
         </Container>
         <Divider />
         <Container>

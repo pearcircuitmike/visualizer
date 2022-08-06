@@ -1,54 +1,64 @@
-import React, { useEffect, useState } from "react";
-import { csv } from "d3-fetch";
-import { scaleLinear } from "d3-scale";
+import React, { memo } from "react";
 import {
+  ZoomableGroup,
   ComposableMap,
   Geographies,
   Geography,
-  Sphere,
-  Graticule,
 } from "react-simple-maps";
+import { scaleLinear } from "d3-scale";
 
-const geoUrl =
-  "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries-sans-antarctica.json";
+const colorScale = scaleLinear().domain([0, 500]).range(["#ebf7f9", "#189ed3"]);
 
-const colorScale = scaleLinear()
-  .domain([0.29, 0.68])
-  .range(["#ffedea", "#ff5233"]);
-
-const MapChart = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    csv(`/vulnerability.csv`).then((data) => {
-      setData(data);
-    });
-  }, []);
-
+const MapChart = ({ setTooltipContent }) => {
   return (
-    <ComposableMap
-      projection="geoMercator"
-      width="1000"
-      projectionConfig={{ rotate: [-10, 0, 0], scale: 150 }}
-    >
-      {data.length > 0 && (
-        <Geographies geography={geoUrl}>
+    <div data-tip="">
+      <ComposableMap projection="geoMercator">
+        <Geographies geography="/features.json">
           {({ geographies }) =>
-            geographies.map((geo) => {
-              const d = data.find((s) => s.ISO3 === geo.id);
-              return (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  fill={d ? colorScale(d["2017"]) : "#F5F4F6"}
-                />
-              );
-            })
+            geographies.map((geo) => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                stroke="#ffffff"
+                strokeWidth={1}
+                onMouseEnter={() => {
+                  setTooltipContent(
+                    `${geo.properties.name} ${geo.properties.cases}`
+                  );
+                }}
+                onMouseLeave={() => {
+                  setTooltipContent("");
+                }}
+                style={{
+                  default: {
+                    fill:
+                      `${geo.properties.cases}` >= 0
+                        ? colorScale(`${geo.properties.cases}`)
+                        : "#e0f2f7",
+                    outline: "none",
+                  },
+                  hover: {
+                    fill:
+                      `${geo.properties.cases}` >= 0
+                        ? colorScale(`${geo.properties.cases}`)
+                        : "#e0f2f7",
+                    outline: "none",
+                  },
+                  pressed: {
+                    fill:
+                      `${geo.properties.cases}` >= 0
+                        ? colorScale(`${geo.properties.cases}`)
+                        : "#e0f2f7",
+                    outline: "none",
+                  },
+                }}
+              />
+            ))
           }
         </Geographies>
-      )}
-    </ComposableMap>
+      </ComposableMap>
+    </div>
   );
 };
 
-export default MapChart;
+export default memo(MapChart);

@@ -1,25 +1,21 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import ResponsiveEmbed from "react-responsive-embed";
 import {
-  Flex,
   Container,
   Heading,
   Stack,
   Text,
-  Button,
-  Icon,
-  IconProps,
   Box,
   Divider,
-  HStack,
   Tooltip,
 } from "@chakra-ui/react";
+
 import Script from "next/script";
 import MapChart from "./components/WorldMap.js";
+import DataTable from "./components/WorldTable.js";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 
 export default function Home() {
@@ -101,8 +97,8 @@ export default function Home() {
           <Stack
             textAlign={"center"}
             align={"center"}
-            spacing={{ base: 8, md: 10 }}
-            py={{ base: 20, md: 28 }}
+            spacing={{ base: 5, md: 10 }}
+            py={{ base: 20, md: 20 }}
           >
             <Heading
               fontWeight={600}
@@ -115,7 +111,7 @@ export default function Home() {
               </Text>{" "}
               active cases.
             </Heading>
-            <Text color={"gray.500"} maxW={"3xl"}>
+            <Text color={"gray.500"} maxW={"5xl"}>
               The first human case of monkeypox was recorded in 1970 in the
               Democratic Republic of Congo. Since then, monkeypox has been
               reported in humans in other central and western African countries.
@@ -137,6 +133,8 @@ export default function Home() {
               <Tooltip>{content}</Tooltip>
             </ReactTooltip>
           )}
+
+          <DataTable />
 
           <Box mb={12} maxH={500}></Box>
           <Box mb={12}></Box>

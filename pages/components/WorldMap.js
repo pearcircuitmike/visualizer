@@ -1,4 +1,5 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
+
 import {
   ZoomableGroup,
   ComposableMap,
@@ -6,6 +7,22 @@ import {
   Geography,
 } from "react-simple-maps";
 import { scaleLinear } from "d3-scale";
+import { usePapaParse } from "react-papaparse";
+
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
+
+import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
+import { useTable, useSortBy } from "react-table";
 
 const colorScale = scaleLinear().domain([0, 500]).range(["#ebf7f9", "#189ed3"]);
 
@@ -22,9 +39,7 @@ const MapChart = ({ setTooltipContent }) => {
                 stroke="#ffffff"
                 strokeWidth={1}
                 onMouseEnter={() => {
-                  setTooltipContent(
-                    `${geo.properties.name} ${geo.properties.cases}`
-                  );
+                  setTooltipContent(`${geo.properties.name} `);
                 }}
                 onMouseLeave={() => {
                   setTooltipContent("");

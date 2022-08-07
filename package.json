@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.6",
     "@chakra-ui/react": "^2.1.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -19,8 +20,10 @@
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-papaparse": "^4.0.4",
     "react-responsive-embed": "^2.1.0",
     "react-simple-maps": "^3.0.0",
+    "react-table": "^7.8.0",
     "react-tooltip": "^4.2.21"
   },
   "devDependencies": {

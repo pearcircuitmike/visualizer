@@ -42,7 +42,6 @@ const MapChart = ({ setTooltipContent }) => {
                 const colorScale = scaleLinear()
                   .domain([0, 1500])
                   .range(["#ebf7f9", "#189ed3"]);
-
                 return (
                   <Geography
                     key={geo.properties.name}

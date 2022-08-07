@@ -105,7 +105,7 @@ export default function Home() {
               fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
               lineHeight={"110%"}
             >
-              There are <Text as={"span"}>1</Text> active cases.
+              There are <Text as={"span"}>28,220</Text> active cases.
             </Heading>
             <Text color={"gray.500"} maxW={"5xl"}>
               The first human case of monkeypox was recorded in 1970 in the

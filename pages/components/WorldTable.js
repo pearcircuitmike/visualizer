@@ -26,7 +26,6 @@ export default function DataTable() {
         const response = await fetch(url);
         const json = await response.json();
         setData(json.data);
-        console.log(json.data);
       } catch (error) {
         console.log("error", error);
       }
@@ -36,7 +35,7 @@ export default function DataTable() {
   }, []);
 
   return (
-    <TableContainer>
+    <TableContainer maxHeight={400} overflowY="auto">
       <Table size="sm">
         <Thead>
           <Tr>

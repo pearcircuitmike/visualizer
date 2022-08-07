@@ -7,8 +7,6 @@ import {
 } from "react-simple-maps";
 import { scaleLinear } from "d3-scale";
 
-const colorScale = scaleLinear().domain([0, 500]).range(["#ebf7f9", "#189ed3"]);
-
 const MapChart = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
 
@@ -21,7 +19,6 @@ const MapChart = ({ setTooltipContent }) => {
         const response = await fetch(url);
         const json = await response.json();
         setData(json.data);
-        console.log(json.data);
       } catch (error) {
         console.log("error", error);
       }
@@ -35,43 +32,43 @@ const MapChart = ({ setTooltipContent }) => {
       <ComposableMap projection="geoMercator">
         <Geographies geography="/features.json">
           {({ geographies }) =>
-            geographies.map((geo) => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                stroke="#ffffff"
-                strokeWidth={1}
-                onMouseEnter={() => {
-                  setTooltipContent(`${geo.properties.name} ${data[0].Cases}`);
-                }}
-                onMouseLeave={() => {
-                  setTooltipContent("");
-                }}
-                style={{
-                  default: {
-                    fill:
-                      `${geo.properties.cases}` >= 0
-                        ? colorScale(`${geo.properties.cases}`)
-                        : "#e0f2f7",
-                    outline: "none",
-                  },
-                  hover: {
-                    fill:
-                      `${geo.properties.cases}` >= 0
-                        ? colorScale(`${geo.properties.cases}`)
-                        : "#e0f2f7",
-                    outline: "none",
-                  },
-                  pressed: {
-                    fill:
-                      `${geo.properties.cases}` >= 0
-                        ? colorScale(`${geo.properties.cases}`)
-                        : "#e0f2f7",
-                    outline: "none",
-                  },
-                }}
-              />
-            ))
+            geographies.map((geo) => {
+              const d = data.find((s) => s.Country === geo.properties.name);
+              const colorScale = scaleLinear()
+                .domain([0, 1500])
+                .range(["#ebf7f9", "#189ed3"]);
+
+              return (
+                <Geography
+                  key={geo.properties.name}
+                  geography={geo}
+                  stroke="#ffffff"
+                  strokeWidth={1}
+                  onMouseEnter={() => {
+                    d
+                      ? setTooltipContent(`${geo.properties.name} ${d.Cases}`)
+                      : setTooltipContent(`${geo.properties.name} 0`);
+                  }}
+                  onMouseLeave={() => {
+                    setTooltipContent("");
+                  }}
+                  style={{
+                    default: {
+                      fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
+                      outline: "none",
+                    },
+                    hover: {
+                      fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
+                      outline: "none",
+                    },
+                    pressed: {
+                      fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
+                      outline: "none",
+                    },
+                  }}
+                />
+              );
+            })
           }
         </Geographies>
       </ComposableMap>

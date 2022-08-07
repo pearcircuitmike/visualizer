@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Chart, Line } from "react-chartjs-2";
-import { Select, Box, Text } from "@chakra-ui/react";
+import { Select, Box, Text, Center, Heading } from "@chakra-ui/react";
 import { ArrowUpDownIcon } from "@chakra-ui/icons";
 import { colors } from "../../styles/colors.js";
 
@@ -111,7 +111,13 @@ export default function WorldTrends() {
 
   return (
     <>
-      <Box mt={35}>
+      <Box mt={2} mb={20}>
+        <Center>
+          <Heading as="h2" mb={5}>
+            Global confirmed cases over time
+          </Heading>
+        </Center>
+
         <Select
           onChange={(e) => setFilterLocation(e.target.value)}
           icon={<ArrowUpDownIcon w={6} />}

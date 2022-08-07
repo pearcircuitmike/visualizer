@@ -58,7 +58,7 @@ const MapChart = ({ setTooltipContent }) => {
                 geographies.map((geo) => {
                   const d = data.find((s) => s.Country === geo.properties.name);
                   const colorScale = scaleLinear()
-                    .domain([0, 5000])
+                    .domain([0, 10000])
                     .range([colors.aquamarine, colors.spaceCadet]);
 
                   return (
@@ -79,15 +79,18 @@ const MapChart = ({ setTooltipContent }) => {
                       }}
                       style={{
                         default: {
-                          fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
+                          fill: d
+                            ? colorScale(`${d.Cases}`)
+                            : colors.yellowGreenPale,
                           outline: "none",
                         },
                         hover: {
-                          fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
-                          outline: "none",
+                          fill: colors.blueMunsell,
                         },
                         pressed: {
-                          fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
+                          fill: d
+                            ? colorScale(`${d.Cases}`)
+                            : colors.yellowGreen,
                           outline: "none",
                         },
                       }}

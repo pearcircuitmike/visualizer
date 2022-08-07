@@ -124,6 +124,7 @@ export default function Home() {
         </Container>
 
         <Container maxW={"5xl"}>
+          <WorldTrends />
           <MapChart setTooltipContent={setContent} />
           {content && (
             <ReactTooltip>
@@ -132,7 +133,6 @@ export default function Home() {
           )}
 
           <DataTable />
-          <WorldTrends />
         </Container>
         <Divider />
         <Container>

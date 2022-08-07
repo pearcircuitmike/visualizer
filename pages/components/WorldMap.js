@@ -30,47 +30,53 @@ const MapChart = ({ setTooltipContent }) => {
   return (
     <div data-tip="">
       <ComposableMap projection="geoMercator">
-        <Geographies geography="/features.json">
-          {({ geographies }) =>
-            geographies.map((geo) => {
-              const d = data.find((s) => s.Country === geo.properties.name);
-              const colorScale = scaleLinear()
-                .domain([0, 1500])
-                .range(["#ebf7f9", "#189ed3"]);
+        <ZoomableGroup
+          filterZoomEvent={(evt) => {
+            return evt.type === "wheel" ? false : true;
+          }}
+        >
+          <Geographies geography="/features.json">
+            {({ geographies }) =>
+              geographies.map((geo) => {
+                const d = data.find((s) => s.Country === geo.properties.name);
+                const colorScale = scaleLinear()
+                  .domain([0, 1500])
+                  .range(["#ebf7f9", "#189ed3"]);
 
-              return (
-                <Geography
-                  key={geo.properties.name}
-                  geography={geo}
-                  stroke="#ffffff"
-                  strokeWidth={1}
-                  onMouseEnter={() => {
-                    d
-                      ? setTooltipContent(`${geo.properties.name} ${d.Cases}`)
-                      : setTooltipContent(`${geo.properties.name} 0`);
-                  }}
-                  onMouseLeave={() => {
-                    setTooltipContent("");
-                  }}
-                  style={{
-                    default: {
-                      fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
-                      outline: "none",
-                    },
-                    hover: {
-                      fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
-                      outline: "none",
-                    },
-                    pressed: {
-                      fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
-                      outline: "none",
-                    },
-                  }}
-                />
-              );
-            })
-          }
-        </Geographies>
+                return (
+                  <Geography
+                    key={geo.properties.name}
+                    geography={geo}
+                    stroke="#ffffff"
+                    strokeWidth={1}
+                    onMouseEnter={() => {
+                      d
+                        ? setTooltipContent(`${geo.properties.name} ${d.Cases}`)
+                        : setTooltipContent(`${geo.properties.name} 0`);
+                    }}
+                    onMouseLeave={() => {
+                      setTooltipContent("");
+                    }}
+                    style={{
+                      default: {
+                        fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
+                        outline: "none",
+                      },
+                      hover: {
+                        fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
+                        outline: "none",
+                      },
+                      pressed: {
+                        fill: d ? colorScale(`${d.Cases}`) : "#e0f2f7",
+                        outline: "none",
+                      },
+                    }}
+                  />
+                );
+              })
+            }
+          </Geographies>
+        </ZoomableGroup>
       </ComposableMap>
     </div>
   );

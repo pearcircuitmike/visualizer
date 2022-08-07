@@ -14,6 +14,7 @@ import {
 import Script from "next/script";
 import MapChart from "./components/WorldMap.js";
 import DataTable from "./components/WorldTable.js";
+import WorldTrends from "./components/WorldTrends.js";
 
 import { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
@@ -80,7 +81,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Box mt={6}>
+        <Box mt={6} style={{ marginLeft: "1rem" }}>
           <Text fontSize="2xl" as="b" mt={8}>
             MonkeypoxTracker.net
           </Text>
@@ -131,10 +132,7 @@ export default function Home() {
           )}
 
           <DataTable />
-
-          <Box mb={12} maxH={500}></Box>
-          <Box mb={12}></Box>
-          <Box mb={12} maxH={500}></Box>
+          <WorldTrends />
         </Container>
         <Divider />
         <Container>

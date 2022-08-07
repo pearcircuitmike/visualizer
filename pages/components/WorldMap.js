@@ -25,11 +25,7 @@ const MapChart = ({ setTooltipContent }) => {
       try {
         readRemoteFile(url, {
           complete: (results) => {
-            console.log("---------------------------");
-            console.log("Results:", csv2json(CSV.stringify(results.data)));
             setData(csv2json(CSV.stringify(results.data)));
-            console.log("---------------------------");
-            console.log(data.cases);
           },
         });
       } catch (error) {

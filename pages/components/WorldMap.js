@@ -11,6 +11,7 @@ import { Heading, Stack, Center, Box, Text } from "@chakra-ui/react";
 import { usePapaParse } from "react-papaparse";
 import { csv2json } from "csvjson-csv2json";
 import * as CSV from "csv-string";
+import { colors } from "../../styles/colors.js";
 
 const MapChart = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
@@ -57,8 +58,8 @@ const MapChart = ({ setTooltipContent }) => {
                 geographies.map((geo) => {
                   const d = data.find((s) => s.Country === geo.properties.name);
                   const colorScale = scaleLinear()
-                    .domain([0, 1000])
-                    .range(["#ebf7f9", "#189ed3"]);
+                    .domain([0, 5000])
+                    .range([colors.aquamarine, colors.spaceCadet]);
 
                   return (
                     <Geography

@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Chart, Line } from "react-chartjs-2";
 import { Select, Box, Text, Center, Heading } from "@chakra-ui/react";
-import { ArrowUpDownIcon } from "@chakra-ui/icons";
 import { colors } from "../../styles/colors.js";
 
 import { csv } from "csvtojson";
@@ -118,14 +117,13 @@ export default function WorldTrends() {
           </Heading>
         </Center>
 
-        <Select
-          onChange={(e) => setFilterLocation(e.target.value)}
-          icon={<ArrowUpDownIcon w={6} />}
-        >
+        <Select onChange={(e) => setFilterLocation(e.target.value)}>
           <option defaultValue={"World"}>World</option>
           {uniqueLocationOptions &&
             uniqueLocationOptions.map((location) => (
-              <option value={location}>{location}</option>
+              <option value={location} key={location}>
+                {location}
+              </option>
             ))}
         </Select>
         <Line data={chartData} />

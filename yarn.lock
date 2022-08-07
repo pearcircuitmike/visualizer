@@ -1383,6 +1383,16 @@
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.1.0.tgz"
   "version" "3.1.0"
 
+"csv-string@^4.1.0":
+  "integrity" "sha512-67UM45fosQvvh+HUvC8iNgg2B4UHWJ5Qud7TWy1EcbIQ9levAFKWudMk2k8U3LgXZP/Drr6eBwBwbSWq2N8HZA=="
+  "resolved" "https://registry.npmjs.org/csv-string/-/csv-string-4.1.0.tgz"
+  "version" "4.1.0"
+
+"csvjson-csv2json@^5.0.6":
+  "integrity" "sha512-to9QlVI4yQFPzSqi6XZ97lULKs5m3K8hlE/UkbvKSw81FfDwgV9MUtSbHFJ4SRT4IA7UPkuW2EqsH/MWN5YRow=="
+  "resolved" "https://registry.npmjs.org/csvjson-csv2json/-/csvjson-csv2json-5.0.6.tgz"
+  "version" "5.0.6"
+
 "d3-array@^2.5.0", "d3-array@2 - 3", "d3-array@2.10.0 - 3":
   "integrity" "sha512-B0ErZK/66mHtEsR1TkPEEkwdy+WDesimkM5gpZr5Dsg54BiTA5RXtYW5qTLIAcekaS9xfZrzBLF/OAkB3Qn1YQ=="
   "resolved" "https://registry.npmjs.org/d3-array/-/d3-array-2.12.1.tgz"

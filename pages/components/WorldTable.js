@@ -4,28 +4,33 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
 
-import { useTable, useSortBy } from "react-table";
+import { usePapaParse } from "react-papaparse";
+import { csv2json } from "csvjson-csv2json";
+import * as CSV from "csv-string";
 
 export default function DataTable() {
   const [data, setData] = useState([]);
+  const { readRemoteFile } = usePapaParse();
 
   useEffect(() => {
     const url =
-      "https://www.cdc.gov/poxvirus/monkeypox/modules/data-viz/mpx_confirmed_cases_data_bites_prod.json?v=2022-01-01T23%3A00%3A00.000Z ";
+      "https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/MPX-Cases-by-Country.csv ";
 
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
-        const json = await response.json();
-        setData(json.data);
+        //  const response = await fetch(url);
+        //  const csv = await response;
+        readRemoteFile(url, {
+          complete: (results) => {
+            setData(csv2json(CSV.stringify(results.data)));
+          },
+        });
       } catch (error) {
         console.log("error", error);
       }

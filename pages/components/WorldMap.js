@@ -7,18 +7,30 @@ import {
 } from "react-simple-maps";
 import { scaleLinear } from "d3-scale";
 
+import { usePapaParse } from "react-papaparse";
+import { csv2json } from "csvjson-csv2json";
+import * as CSV from "csv-string";
+
 const MapChart = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
 
+  const { readRemoteFile } = usePapaParse();
+
   useEffect(() => {
     const url =
-      "https://www.cdc.gov/poxvirus/monkeypox/modules/data-viz/mpx_confirmed_cases_data_bites_prod.json?v=2022-01-01T23%3A00%3A00.000Z ";
+      "https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/MPX-Cases-by-Country.csv ";
 
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
-        const json = await response.json();
-        setData(json.data);
+        readRemoteFile(url, {
+          complete: (results) => {
+            console.log("---------------------------");
+            console.log("Results:", csv2json(CSV.stringify(results.data)));
+            setData(csv2json(CSV.stringify(results.data)));
+            console.log("---------------------------");
+            console.log(data.cases);
+          },
+        });
       } catch (error) {
         console.log("error", error);
       }
@@ -40,8 +52,9 @@ const MapChart = ({ setTooltipContent }) => {
               geographies.map((geo) => {
                 const d = data.find((s) => s.Country === geo.properties.name);
                 const colorScale = scaleLinear()
-                  .domain([0, 1500])
+                  .domain([0, 3000])
                   .range(["#ebf7f9", "#189ed3"]);
+
                 return (
                   <Geography
                     key={geo.properties.name}

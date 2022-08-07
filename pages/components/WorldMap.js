@@ -8,15 +8,12 @@ import {
 import { scaleLinear } from "d3-scale";
 import { Heading, Stack, Center, Box, Text } from "@chakra-ui/react";
 
-import { usePapaParse } from "react-papaparse";
-import { csv2json } from "csvjson-csv2json";
-import * as CSV from "csv-string";
+import { csv } from "csvtojson";
+
 import { colors } from "../../styles/colors.js";
 
 const MapChart = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
-
-  const { readRemoteFile } = usePapaParse();
 
   useEffect(() => {
     const url =
@@ -24,16 +21,14 @@ const MapChart = ({ setTooltipContent }) => {
 
     const fetchData = async () => {
       try {
-        readRemoteFile(url, {
-          complete: (results) => {
-            setData(csv2json(CSV.stringify(results.data)));
-          },
-        });
+        const res = await fetch(url);
+        const text = await res.text();
+        const jsonArray = await csv().fromString(text);
+        setData(jsonArray);
       } catch (error) {
         console.log("error", error);
       }
     };
-
     fetchData();
   }, []);
 

@@ -10,13 +10,10 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 
-import { usePapaParse } from "react-papaparse";
-import { csv2json } from "csvjson-csv2json";
-import * as CSV from "csv-string";
+import { csv } from "csvtojson";
 
 export default function DataTable() {
   const [data, setData] = useState([]);
-  const { readRemoteFile } = usePapaParse();
 
   useEffect(() => {
     const url =
@@ -24,18 +21,14 @@ export default function DataTable() {
 
     const fetchData = async () => {
       try {
-        //  const response = await fetch(url);
-        //  const csv = await response;
-        readRemoteFile(url, {
-          complete: (results) => {
-            setData(csv2json(CSV.stringify(results.data)));
-          },
-        });
+        const res = await fetch(url);
+        const text = await res.text();
+        const jsonArray = await csv().fromString(text);
+        setData(jsonArray);
       } catch (error) {
         console.log("error", error);
       }
     };
-
     fetchData();
   }, []);
 

@@ -36,7 +36,6 @@ export default function WorldTrends() {
     )
   );
   const uniqueLocationOptions = [...new Set(nonUniqueLocationOptions)];
-  console.log(uniqueLocationOptions);
   const filter = data.filter((x) => x.location === filterLocation);
   const filteredDates = JSON.parse(
     JSON.stringify(

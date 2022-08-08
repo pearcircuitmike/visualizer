@@ -21,15 +21,23 @@ import Link from "next/link";
 export const getStaticPaths = async () => {
   // paths come from this source, because it's deduped already
   const url =
-    "https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/MPX-Cases-by-Country.csv";
+    "https://raw.githubusercontent.com/owid/notebooks/main/EdouardMathieu/monkeypox/owid-monkeypox-data.csv";
 
   const res = await fetch(url);
   const text = await res.text();
   const data = await csv().fromString(text);
+  const nonUniqueLocationOptions = JSON.parse(
+    JSON.stringify(
+      data.map((y) => {
+        return y["location"];
+      })
+    )
+  );
+  const uniqueLocationOptions = [...new Set(nonUniqueLocationOptions)];
 
-  const paths = data.map((countryVal) => {
+  const paths = uniqueLocationOptions.map((countryVal) => {
     return {
-      params: { country: countryVal.Country.toString() },
+      params: { country: countryVal },
     };
   });
 
@@ -49,7 +57,6 @@ export const getStaticProps = async (context) => {
   const jsonArray = await csv().fromString(text);
   const filteredJsonArray = jsonArray.filter((x) => x.location === country);
 
-  console.log(filteredJsonArray);
   return {
     props: { country: filteredJsonArray },
   };
@@ -232,100 +239,93 @@ const CountryDetails = ({ country }) => {
     document.body.removeChild(el);
     setCopied(true);
   }
+  const [countryName, setCountryName] = useState(
+    country.length ? country[0].location : ""
+  );
+  const [countryNewCases, setCountryNewCases] = useState(
+    country.length ? country[country.length - 1].new_cases : ""
+  );
+  const [countryNewDeaths, setCountryNewDeaths] = useState(
+    country.length ? country[country.length - 1].new_deaths : ""
+  );
+
+  const [countryTotalCases, setCountryTotalCases] = useState(
+    country.length ? country[country.length - 1].total_cases : ""
+  );
+  const [countryTotalDeaths, setCountryTotalDeaths] = useState(
+    country.length ? country[country.length - 1].total_deaths : ""
+  );
 
   return (
-    <Container maxW="5xl" mt={35}>
-      <Heading as="h1" size="4xl">
-        {country[0].location}
-      </Heading>
-      <Heading as="h2" size="md">
-        Monkeypox Outbreak: Country Details
-      </Heading>
+    <>
+      <Container maxW="5xl" mt={35}>
+        <Heading as="h1" size="4xl">
+          {countryName}
+        </Heading>
+        <Heading as="h2" size="md">
+          Monkeypox Outbreak: Country Details
+        </Heading>
 
-      <Heading as="h3" size="sm" mt={10}>
-        {country[0].location}: Monkeypox Situation Report
-      </Heading>
-      <Text>
-        This page shows data for the Monkeypox outbreak currently taking place
-        in{" "}
-        {country[0].location === "United States"
-          ? `the ` + country[0].location
-          : country[0].location}
-        .
-        <br />
-        <br />
-        In the last 24 hours, health authorities in{" "}
-        {country[0].location === "United States"
-          ? `the ` + country[0].location
-          : country[0].location}{" "}
-        have reported {country[country.length - 1].new_cases} new case
-        {country[country.length - 1].new_cases == 1 ? `` : `s`} and{" "}
-        {country[country.length - 1].new_deaths
-          ? country[country.length - 1].new_deaths
-          : 0}{" "}
-        new death
-        {country[country.length - 1].new_deaths == 1 ? `` : `s`}. The people of{" "}
-        {country[0].location === "United States"
-          ? `the ` + country[0].location
-          : country[0].location}{" "}
-        have experienced {country[country.length - 1].total_cases} total case
-        {country[country.length - 1].total_cases == 1 ? `` : `s`} and{" "}
-        {country[country.length - 1].total_deaths
-          ? country[country.length - 1].total_deaths
-          : 0}{" "}
-        total deaths since the start of the outbreak.
-        <br />
-        <br />
-        You can use the charts on this page to explore the spread of Monkeypox
-        in{" "}
-        {country[0].location === "United States"
-          ? `the ` + country[0].location
-          : country[0].location}
-        . You can also refer to the{" "}
-        {country[0].location === "United States"
-          ? `the ` + country[0].location
-          : country[0].location}{" "}
-        case history table provided below. Lastly, you can see how the{" "}
-        {country[0].location} Monkeypox situation compares with the situation
-        globally on the{" "}
-        <Link href="/">
-          <a>MonkeypoxTracker homepage</a>
-        </Link>
-        .
-      </Text>
-      <Button onClick={copy} mt={5}>
-        {!copied ? "Copy report URL" : "Copied link!"}
-      </Button>
+        <Heading as="h3" size="sm" mt={10}>
+          {countryName}: Monkeypox Situation Report
+        </Heading>
+        <Text>
+          This page shows data for the Monkeypox outbreak currently taking place
+          in {countryName}.
+          <br />
+          <br />
+          In the last 24 hours, health authorities in {countryName} have
+          reported {countryNewCases} new case
+          {countryNewCases == 1 ? `` : `s`} and{" "}
+          {countryNewDeaths ? countryNewDeaths : 0} new death
+          {countryNewDeaths == 1 ? `` : `s`}. The people of {countryName} have
+          experienced {countryTotalCases} total case
+          {countryTotalCases == 1 ? `` : `s`} and{" "}
+          {countryTotalDeaths ? countryTotalDeaths : 0} total deaths since the
+          start of the outbreak.
+          <br />
+          <br />
+          You can use the charts on this page to explore the spread of Monkeypox
+          in {countryName}. You can also refer to the {countryName} case history
+          table provided below. Lastly, you can see how the {countryName}{" "}
+          Monkeypox situation compares with the situation globally on the{" "}
+          <Link href="/">
+            <a>MonkeypoxTracker homepage</a>
+          </Link>
+          .
+        </Text>
+        <Button onClick={copy} mt={5}>
+          {!copied ? "Copy report URL" : "Copied link!"}
+        </Button>
 
-      <SimpleGrid columns={[1, null, 2]}>
-        <GridItem w="100%" mt={10}>
-          <Heading as="h3" size="sm">
-            <Center mb={1}>{country[0].location}: Total Monkeypox Cases</Center>
-          </Heading>
-          <Line data={chartDataTotalCases} />
-        </GridItem>
-        <GridItem w="100%" mt={10}>
-          <Heading as="h3" size="sm">
-            <Center mb={1}>
-              {country[0].location}: Monkeypox Cases per Million
-            </Center>
-          </Heading>
-          <Line data={chartDataTotalCasesPerMillion} />
-        </GridItem>
-        <GridItem w="100%" mt={10}>
-          <Heading as="h3" size="sm">
-            <Center mb={1}>{country[0].location}: Monkeypox Deaths</Center>
-          </Heading>
-          <Bar data={chartDataTotalDeaths} />
-        </GridItem>
-      </SimpleGrid>
+        <SimpleGrid columns={[1, null, 2]}>
+          <GridItem w="100%" mt={10}>
+            <Heading as="h3" size="sm">
+              <Center mb={1}>{countryName}: Total Monkeypox Cases</Center>
+            </Heading>
+            <Line data={chartDataTotalCases} />
+          </GridItem>
+          <GridItem w="100%" mt={10}>
+            <Heading as="h3" size="sm">
+              <Center mb={1}>{countryName}: Monkeypox Cases per Million</Center>
+            </Heading>
+            <Line data={chartDataTotalCasesPerMillion} />
+          </GridItem>
+          <GridItem w="100%" mt={10}>
+            <Heading as="h3" size="sm">
+              <Center mb={1}>{countryName}: Monkeypox Deaths</Center>
+            </Heading>
+            <Bar data={chartDataTotalDeaths} />
+          </GridItem>
+        </SimpleGrid>
 
-      <Text mb={5} mt={10} color={"gray.500"}>
-        Source:{" "}
-        <a href={"https://ourworldindata.org/monkeypox"}>OurWorldInData</a>.
-        Last update: {Date().toLocaleString().substring(0, 16)}
-      </Text>
-    </Container>
+        <Text mb={5} mt={10} color={"gray.500"}>
+          Source:{" "}
+          <a href={"https://ourworldindata.org/monkeypox"}>OurWorldInData</a>.
+          Last update: {Date().toLocaleString().substring(0, 16)}
+        </Text>
+      </Container>
+    </>
   );
 };
 

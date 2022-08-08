@@ -310,8 +310,8 @@ const CountryDetails = ({ country }) => {
           in {countryName}.
           <br />
           <br />
-          In the last 24 hours, health authorities in {countryName} have
-          reported {countryNewCases} new case
+          Based on the most recent reports available, health authorities in{" "}
+          {countryName} have reported {countryNewCases} new case
           {countryNewCases == 1 ? `` : `s`} and{" "}
           {countryNewDeaths ? countryNewDeaths : 0} new death
           {countryNewDeaths == 1 ? `` : `s`}. The people of {countryName} have

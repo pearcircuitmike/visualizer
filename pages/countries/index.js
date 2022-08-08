@@ -9,6 +9,7 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 export const getStaticProps = async () => {
   const url =
@@ -54,7 +55,9 @@ const Countries = ({ countryVals }) => {
             <Spacer />
             <Center>
               <Button>
-                <a>View data</a>
+                <Link href={"/countries/" + countryVal.Country}>
+                  <a>View data</a>
+                </Link>
               </Button>
             </Center>
           </Flex>

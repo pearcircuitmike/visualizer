@@ -1,8 +1,19 @@
+import Link from "next/link";
+import {
+  Container,
+  Heading,
+  Stack,
+  Text,
+  Box,
+  Divider,
+  Tooltip,
+} from "@chakra-ui/react";
+
 const Footer = () => {
   return (
-    <div>
-      <p>Copyright 2022</p>
-    </div>
+    <Box p={5}>
+      <Text ml={5}>Copyright 2022</Text>
+    </Box>
   );
 };
 

@@ -115,7 +115,7 @@ export default function Home() {
 
           <DataTable />
         </Container>
-        <Divider />
+
         <Container>
           <Text mt={12} mb={12}>
             Want to raise awareness? You can share this site on social media.{" "}

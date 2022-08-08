@@ -8,11 +8,12 @@ import {
   Divider,
   Tooltip,
 } from "@chakra-ui/react";
+
 const Navbar = () => {
   return (
     <nav>
       <Box mt={6} mr={5} ml={5} style={{ marginLeft: "1rem" }}>
-        <Text fontSize="2xl" as="b" mt={8}>
+        <Text fontSize="2xl" as="b" mt={8} ml={5}>
           MonkeypoxTracker.net
         </Text>
         <Stack
@@ -21,6 +22,7 @@ const Navbar = () => {
           direction={"row"}
           spacing={6}
           mt={-9}
+          mr={5}
         >
           <Link href="/">
             <a>Home</a>

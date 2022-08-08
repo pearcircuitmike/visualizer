@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
 import { Chart as ChartJS } from "chart.js/auto";
@@ -12,6 +14,7 @@ import {
   Grid,
   GridItem,
   SimpleGrid,
+  Button,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -218,6 +221,18 @@ const CountryDetails = ({ country }) => {
     ],
   };
 
+  const [copied, setCopied] = useState(false);
+
+  function copy() {
+    const el = document.createElement("input");
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    setCopied(true);
+  }
+
   return (
     <Container maxW="5xl" mt={35}>
       <Heading as="h1" size="4xl">
@@ -278,6 +293,9 @@ const CountryDetails = ({ country }) => {
         </Link>
         .
       </Text>
+      <Button onClick={copy} mt={5}>
+        {!copied ? "Copy report URL" : "Copied link!"}
+      </Button>
 
       <SimpleGrid columns={[1, null, 2]}>
         <GridItem w="100%" mt={10}>

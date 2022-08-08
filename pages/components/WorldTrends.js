@@ -58,6 +58,28 @@ export default function WorldTrends() {
       })
     )
   );
+  const filteredNewCasesPerMillion = JSON.parse(
+    JSON.stringify(
+      filter.map((y) => {
+        return y["new_cases_per_million"];
+      })
+    )
+  );
+  const filteredTotalCasesPerMillion = JSON.parse(
+    JSON.stringify(
+      filter.map((y) => {
+        return y["total_cases_per_million"];
+      })
+    )
+  );
+
+  const filteredTotalDeaths = JSON.parse(
+    JSON.stringify(
+      filter.map((y) => {
+        return y["total_deaths"];
+      })
+    )
+  );
 
   const chartData = {
     labels: filteredDates,
@@ -84,6 +106,27 @@ export default function WorldTrends() {
         data: filteredTotalCases,
       },
       {
+        label: "Total Cases Per Million",
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: colors.blueMunsell,
+        borderColor: colors.blueMunsell,
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: colors.blueMunsell,
+        pointBackgroundColor: colors.blueMunsell,
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: colors.blueMunsell,
+        pointHoverBorderColor: colors.blueMunsell,
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: filteredTotalCasesPerMillion,
+      },
+      {
         label: "New Cases",
         fill: true,
         lineTension: 0.1,
@@ -103,6 +146,49 @@ export default function WorldTrends() {
         pointRadius: 1,
         pointHitRadius: 10,
         data: filteredNewCases,
+      },
+      {
+        label: "New Cases Per Million",
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: colors.yellowGreenPale,
+        borderColor: colors.yellowGreenPale,
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: colors.yellowGreenPale,
+        pointBackgroundColor: colors.yellowGreenPale,
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: colors.yellowGreenPale,
+        pointHoverBorderColor: colors.yellowGreenPale,
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: filteredNewCasesPerMillion,
+      },
+
+      {
+        label: "Total Deaths",
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: colors.kineticBlack,
+        borderColor: colors.kineticBlack,
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: colors.kineticBlack,
+        pointBackgroundColor: colors.kineticBlack,
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: colors.kineticBlack,
+        pointHoverBorderColor: colors.kineticBlack,
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: filteredTotalDeaths,
       },
     ],
   };

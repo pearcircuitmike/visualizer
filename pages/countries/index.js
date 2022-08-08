@@ -35,7 +35,7 @@ const Countries = ({ countryVals }) => {
           borderWidth="1px"
           borderRadius="lg"
           overflow="hidden"
-          pt={3}
+          pt={2}
           pb={3}
           pr={10}
           pl={10}

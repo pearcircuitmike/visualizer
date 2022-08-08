@@ -27,8 +27,14 @@ export const getStaticProps = async () => {
 const Countries = ({ countryVals }) => {
   return (
     <Container maxW="5xl">
-      <Heading>All countries</Heading>
-      <Text>Desc</Text>
+      <Heading mt={10}>All countries</Heading>
+      <Text mt={5}>
+        Select a country to view more details about their Monkeypox situation.
+        Each country has a situation report, automatically generated from the
+        most recent data. You can also view graphs of the disease activity in
+        each country, and review data in tabular form. Data is sourced from Our
+        World In Data and the US CDC.
+      </Text>
 
       {countryVals.map((countryVal) => (
         <Box

@@ -315,7 +315,7 @@ const CountryDetails = ({ country }) => {
             <Heading as="h3" size="sm">
               <Center mb={1}>{countryName}: Monkeypox Deaths</Center>
             </Heading>
-            <Bar data={chartDataTotalDeaths} />
+            <Line data={chartDataTotalDeaths} />
           </GridItem>
         </SimpleGrid>
 

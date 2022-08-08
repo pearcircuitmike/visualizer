@@ -36,7 +36,7 @@ const MapChart = ({ setTooltipContent }) => {
     <>
       <Box>
         <Center>
-          <Heading as="h2" mb={5}>
+          <Heading as="h2" size="lg" mb={5}>
             Global confirmed cases
           </Heading>
         </Center>

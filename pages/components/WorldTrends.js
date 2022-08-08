@@ -197,8 +197,8 @@ export default function WorldTrends() {
     <>
       <Box mt={2} mb={20}>
         <Center>
-          <Heading as="h2" mb={5}>
-            Global confirmed cases over time
+          <Heading as="h2" size="lg" mb={5}>
+            Global spread and activity over time
           </Heading>
         </Center>
 

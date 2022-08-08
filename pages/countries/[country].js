@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Head from "next/head.js";
 import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
 import { Chart as ChartJS } from "chart.js/auto";
@@ -258,6 +258,42 @@ const CountryDetails = ({ country }) => {
 
   return (
     <>
+      <Head>
+        <title>{countryName} | Monkeypox Tracker</title>
+        <meta
+          name="description"
+          content={`Statistics and information on the 2022 Monkeypox outbreak in ${countryName}, including maps, charts, and tables.`}
+        />
+
+        <meta
+          property="og:title"
+          content={`Monkeypox in ${countryName} | Monkeypox Tracker - Monkeypox Statistics`}
+        />
+        <meta
+          property="og:description"
+          content={`Statistics and information on the 2022 Monkeypox outbreak in ${countryName}, including maps, charts, and tables.`}
+        />
+
+        <meta property="og:url" content="https://monkeypoxtracker.net/" />
+        <meta
+          property="og:image"
+          content="https://monkeypoxtracker.net/socialImg.png"
+        />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:description"
+          content={`Statistics and information on the 2022 Monkeypox outbreak in ${countryName}, including maps, charts, and tables.`}
+        />
+        <meta
+          property="twitter:image"
+          content="https://monkeypoxtracker.net/socialImg.png"
+        />
+
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Container maxW="5xl" mt={35}>
         <Heading as="h1" size="4xl">
           {countryName}

@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 
 export const getStaticProps = async () => {
-  const date = Math.floor(new Date("2012.08.10").getTime() / 1000);
+  const date = Math.floor(new Date().getTime() / 1000);
   const url = `https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/MPX-Cases-Deaths-by-Country.csv?v=${date} `;
 
   const res = await fetch(url);

@@ -21,7 +21,7 @@ import Link from "next/link";
 export const getStaticPaths = async () => {
   // paths come from this source, because it's deduped already
   const url =
-    "https://raw.githubusercontent.com/owid/notebooks/main/EdouardMathieu/monkeypox/owid-monkeypox-data.csv";
+    "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
 
   const res = await fetch(url);
   const text = await res.text();
@@ -50,7 +50,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const country = context.params.country;
   const countryDataUrl =
-    "https://raw.githubusercontent.com/owid/notebooks/main/EdouardMathieu/monkeypox/owid-monkeypox-data.csv";
+    "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
 
   const res = await fetch(countryDataUrl);
   const text = await res.text();

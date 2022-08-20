@@ -13,7 +13,7 @@ export default function WorldTrends() {
 
   useEffect(() => {
     const url =
-      "https://raw.githubusercontent.com/owid/notebooks/main/EdouardMathieu/monkeypox/owid-monkeypox-data.csv";
+      "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
 
     const fetchData = async () => {
       try {

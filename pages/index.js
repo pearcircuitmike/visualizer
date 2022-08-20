@@ -91,7 +91,7 @@ export default function Home() {
             py={{ base: 10, md: 20 }}
           >
             <Heading as="h1" size="3xl">
-              There are <Text as={"span"}>28,220</Text> active cases.
+              There are <Text as={"span"}>41,034</Text> active cases.
             </Heading>
             <Text color={"gray.500"} maxW={"5xl"}>
               This site is dedicated to tracking the spread of the 2022

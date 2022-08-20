@@ -7,6 +7,7 @@ import {
   Box,
   Divider,
   Tooltip,
+  Center,
 } from "@chakra-ui/react";
 
 const Navbar = () => {
@@ -14,7 +15,9 @@ const Navbar = () => {
     <nav>
       <Box mt={6} mr={5} ml={5} style={{ marginLeft: "1rem" }}>
         <Text fontSize="2xl" as="b" mt={8} ml={5}>
-          MonkeypoxTracker.net
+          <Link href="/">
+            <a>MonkeypoxTracker</a>
+          </Link>
         </Text>
         <Stack
           flex={{ base: 1, md: 0 }}
@@ -24,15 +27,11 @@ const Navbar = () => {
           mt={-9}
           mr={5}
         >
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/about">
-            <a>About</a>
-          </Link>
-          <Link href="/countries">
-            <a>Countries Listing</a>
-          </Link>
+          <Center>
+            <Link href="/countries">
+              <a>By country</a>
+            </Link>
+          </Center>
         </Stack>
       </Box>
     </nav>

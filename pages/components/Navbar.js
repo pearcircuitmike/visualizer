@@ -31,6 +31,9 @@ const Navbar = () => {
             <Link href="/countries">
               <a>By country</a>
             </Link>
+            <Link pl={5} href="/states">
+              <a>By state</a>
+            </Link>
           </Center>
         </Stack>
       </Box>

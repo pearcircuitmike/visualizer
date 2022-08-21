@@ -12,7 +12,7 @@ import { csv } from "csvtojson";
 
 import { colors } from "../../styles/colors.js";
 
-const WorldMapChart = ({ setTooltipContent }) => {
+const USMapChart = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -114,4 +114,4 @@ const WorldMapChart = ({ setTooltipContent }) => {
   );
 };
 
-export default memo(WorldMapChart);
+export default memo(USMapChart);

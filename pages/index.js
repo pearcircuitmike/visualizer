@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 
 import Script from "next/script";
-import MapChart from "./components/WorldMap.js";
+import WorldMapChart from "./components/WorldMap.js";
 import DataTable from "./components/WorldTable.js";
 import WorldTrends from "./components/WorldTrends.js";
 
@@ -106,7 +106,7 @@ export default function Home() {
 
         <Container maxW={"5xl"}>
           <WorldTrends />
-          <MapChart setTooltipContent={setContent} />
+          <WorldMapChart setTooltipContent={setContent} />
           {content && (
             <ReactTooltip>
               <Tooltip>{content}</Tooltip>

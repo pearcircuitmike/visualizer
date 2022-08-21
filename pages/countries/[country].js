@@ -339,19 +339,34 @@ const CountryDetails = ({ country }) => {
             <Heading as="h3" size="sm">
               <Center mb={1}>{countryName}: Total Monkeypox Cases</Center>
             </Heading>
-            <Line data={chartDataTotalCases} />
+            <div style={{ minHeight: "40vh" }}>
+              <Line
+                data={chartDataTotalCases}
+                options={{ maintainAspectRatio: false }}
+              />
+            </div>
           </GridItem>
           <GridItem w="100%" mt={10}>
             <Heading as="h3" size="sm">
               <Center mb={1}>{countryName}: Monkeypox Cases per Million</Center>
             </Heading>
-            <Line data={chartDataTotalCasesPerMillion} />
+            <div style={{ minHeight: "40vh" }}>
+              <Line
+                data={chartDataTotalCasesPerMillion}
+                options={{ maintainAspectRatio: false }}
+              />
+            </div>
           </GridItem>
           <GridItem w="100%" mt={10}>
             <Heading as="h3" size="sm">
               <Center mb={1}>{countryName}: Monkeypox Deaths</Center>
             </Heading>
-            <Line data={chartDataTotalDeaths} />
+            <div style={{ minHeight: "40vh" }}>
+              <Line
+                data={chartDataTotalDeaths}
+                options={{ maintainAspectRatio: false }}
+              />
+            </div>
           </GridItem>
         </SimpleGrid>
 

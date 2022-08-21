@@ -211,7 +211,11 @@ export default function WorldTrends() {
               </option>
             ))}
         </Select>
-        <Line data={chartData} />
+
+        <div style={{ minHeight: "50vh" }}>
+          <Line data={chartData} options={{ maintainAspectRatio: false }} />
+        </div>
+
         <Text mb={5} mt={10} color={"gray.500"}>
           Source:{" "}
           <a href={"https://ourworldindata.org/monkeypox"}>OurWorldInData</a>.

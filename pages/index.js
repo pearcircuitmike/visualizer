@@ -19,10 +19,40 @@ import DataTable from "./components/WorldTable.js";
 import WorldTrends from "./components/WorldTrends.js";
 
 import { useState, useEffect } from "react";
+import { csv } from "csvtojson";
 import ReactTooltip from "react-tooltip";
 
 export default function Home() {
   const [content, setContent] = useState("");
+
+  const [data, setData] = useState([]);
+  const [latestCaseTotal, setLatestCaseTotal] = useState("");
+  const [filterLocation, setFilterLocation] = useState("World");
+
+  useEffect(() => {
+    const url =
+      "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
+
+    const fetchData = async () => {
+      try {
+        const res = await fetch(url);
+        const text = await res.text();
+        const jsonArray = await csv().fromString(text);
+        setData(jsonArray);
+
+        const worldCaseData = jsonArray.filter((location) =>
+          location.location.includes("World")
+        );
+
+        setLatestCaseTotal(
+          ~~worldCaseData[worldCaseData.length - 1].total_cases
+        );
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -91,7 +121,13 @@ export default function Home() {
             py={{ base: 10, md: 20 }}
           >
             <Heading as="h1" size="3xl">
-              There are <Text as={"span"}>41,034</Text> active cases.
+              There are{" "}
+              <Text as={"span"}>
+                {latestCaseTotal.toLocaleString(undefined, {
+                  maximumFractionDigits: 2,
+                })}
+              </Text>{" "}
+              reported cases.
             </Heading>
             <Text color={"gray.500"} maxW={"5xl"}>
               This site is dedicated to tracking the spread of the 2022

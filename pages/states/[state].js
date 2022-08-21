@@ -57,8 +57,6 @@ export const getStaticProps = async (context) => {
     state.Location.includes(context.params.state)
   );
 
-  console.log(filteredData);
-
   return {
     props: { state: filteredData },
   };

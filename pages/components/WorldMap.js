@@ -6,6 +6,7 @@ import {
   ComposableMap,
   Geographies,
   Geography,
+  Graticule,
 } from "react-simple-maps";
 import { scaleLinear } from "d3-scale";
 import { Heading, Stack, Center, Box, Text } from "@chakra-ui/react";
@@ -46,6 +47,8 @@ const WorldMapChart = ({ setTooltipContent }) => {
       </Box>
       <div data-tip="">
         <ComposableMap projection="geoMercator">
+          <Graticule stroke="#f2f0f0" />
+
           <ZoomableGroup
             filterZoomEvent={(evt) => {
               return evt.type === "wheel" ? false : true;

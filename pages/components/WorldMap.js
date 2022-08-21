@@ -1,4 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
 import {
   ZoomableGroup,
   ComposableMap,
@@ -13,6 +15,7 @@ import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
 
 const WorldMapChart = ({ setTooltipContent }) => {
+  const router = useRouter();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -71,6 +74,12 @@ const WorldMapChart = ({ setTooltipContent }) => {
                       }}
                       onMouseLeave={() => {
                         setTooltipContent("");
+                      }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        d
+                          ? router.push(`/countries/${geo.properties.name}`)
+                          : console.log("none");
                       }}
                       style={{
                         default: {

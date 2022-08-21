@@ -15,6 +15,12 @@ import {
   GridItem,
   SimpleGrid,
   Button,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow,
+  StatGroup,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -243,17 +249,17 @@ const CountryDetails = ({ country }) => {
     country.length ? country[0].location : ""
   );
   const [countryNewCases, setCountryNewCases] = useState(
-    country.length ? country[country.length - 1].new_cases : ""
+    country.length ? ~~country[country.length - 1].new_cases : ""
   );
   const [countryNewDeaths, setCountryNewDeaths] = useState(
-    country.length ? country[country.length - 1].new_deaths : ""
+    country.length ? ~~country[country.length - 1].new_deaths : ""
   );
 
   const [countryTotalCases, setCountryTotalCases] = useState(
-    country.length ? country[country.length - 1].total_cases : ""
+    country.length ? ~~country[country.length - 1].total_cases : ""
   );
   const [countryTotalDeaths, setCountryTotalDeaths] = useState(
-    country.length ? country[country.length - 1].total_deaths : ""
+    country.length ? ~~country[country.length - 1].total_deaths : ""
   );
 
   return (
@@ -302,6 +308,31 @@ const CountryDetails = ({ country }) => {
           Monkeypox Outbreak: Country Details
         </Heading>
 
+        <StatGroup mt={5} mb={5}>
+          <Stat>
+            <StatLabel>Total Cases</StatLabel>
+            <StatNumber>
+              {countryTotalCases.toLocaleString(undefined)}
+            </StatNumber>
+            <StatHelpText>
+              <StatArrow type="increase" />
+              {countryNewCases.toLocaleString(undefined)}
+            </StatHelpText>
+          </Stat>
+
+          <Stat>
+            <StatLabel>Total Deaths</StatLabel>
+            <StatNumber>
+              {" "}
+              {countryTotalDeaths.toLocaleString(undefined)}
+            </StatNumber>
+            <StatHelpText>
+              <StatArrow type="increase" />
+              {countryNewDeaths.toLocaleString(undefined)}
+            </StatHelpText>
+          </Stat>
+        </StatGroup>
+
         <Heading as="h3" size="sm" mt={10}>
           {countryName}: Monkeypox Situation Report
         </Heading>
@@ -311,14 +342,18 @@ const CountryDetails = ({ country }) => {
           <br />
           <br />
           Based on the most recent reports available, health authorities in{" "}
-          {countryName} have reported {countryNewCases} new case
+          {countryName} have reported{" "}
+          {countryNewCases.toLocaleString(undefined)} new case
           {countryNewCases == 1 ? `` : `s`} and{" "}
-          {countryNewDeaths ? countryNewDeaths : 0} new death
+          {countryNewDeaths ? countryNewDeaths.toLocaleString(undefined) : 0}{" "}
+          new death
           {countryNewDeaths == 1 ? `` : `s`}. The people of {countryName} have
-          experienced {countryTotalCases} total case
+          experienced {countryTotalCases.toLocaleString(undefined)} total case
           {countryTotalCases == 1 ? `` : `s`} and{" "}
-          {countryTotalDeaths ? countryTotalDeaths : 0} total deaths since the
-          start of the outbreak.
+          {countryTotalDeaths
+            ? countryTotalDeaths.toLocaleString(undefined)
+            : 0}{" "}
+          total deaths since the start of the outbreak.
           <br />
           <br />
           You can use the charts on this page to explore the spread of Monkeypox

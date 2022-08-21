@@ -11,7 +11,7 @@ import {
 const About = () => {
   return (
     <div>
-      <Container mt={10} mb={10}>
+      <Container mt={10} mb={10} maxW={"5xl"}>
         <Heading as="h1">About</Heading>
         <Text>
           The first human case of monkeypox was recorded in 1970 in the

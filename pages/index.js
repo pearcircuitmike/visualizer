@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 import Link from "next/link";
+import { colors } from "../styles/colors.js";
 
 import Script from "next/script";
 import WorldMapChart from "./components/WorldMap.js";
@@ -131,11 +132,19 @@ export default function Home() {
             </Heading>
             <Text color={"gray.500"} maxW={"5xl"}>
               This site is dedicated to tracking the spread of the 2022
-              monkeypox outbreak, and is updated every few hours. Click here to{" "}
+              monkeypox outbreak, and is updated every few hours. You can{" "}
               <Link href="/countries">
-                <a>view the countries listing page</a>
+                <a style={{ color: `${colors.blueMunsell}` }}>
+                  view the countries listing page
+                </a>
               </Link>{" "}
-              for a more detailed breakdown.
+              for a more detailed breakdown. You can also{" "}
+              <Link href="/states">
+                <a style={{ color: `${colors.blueMunsell}` }}>
+                  view the states listing page
+                </a>
+              </Link>{" "}
+              for a breakdown of U.S. cases by state.
             </Text>
           </Stack>
         </Container>

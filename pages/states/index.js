@@ -41,6 +41,7 @@ const States = ({ stateVals }) => {
       <HStack mt={10}>
         <Heading>All States </Heading>
         <Spacer />
+
         <Link href={"/countries"}>
           <Button
             size="sm"

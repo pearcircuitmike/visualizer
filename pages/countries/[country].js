@@ -21,7 +21,14 @@ import {
   StatHelpText,
   StatArrow,
   StatGroup,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
 } from "@chakra-ui/react";
+
+import { ChevronRightIcon } from "@chakra-ui/icons";
+
 import Link from "next/link";
 
 export const getStaticPaths = async () => {
@@ -301,6 +308,33 @@ const CountryDetails = ({ country }) => {
       </Head>
 
       <Container maxW="5xl" mt={35}>
+        <Breadcrumb
+          spacing="8px"
+          separator={<ChevronRightIcon color="gray.500" />}
+        >
+          <BreadcrumbItem>
+            <BreadcrumbLink>
+              <Link href="/">
+                <a>Home</a>
+              </Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem>
+            <BreadcrumbLink>
+              <Link href="/countries">
+                <a>Countries</a>
+              </Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink>
+              <a>{countryName}</a>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+
         <Heading as="h1" size="4xl">
           {countryName}
         </Heading>

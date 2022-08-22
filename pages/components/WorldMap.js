@@ -71,9 +71,11 @@ const WorldMapChart = ({ setTooltipContent }) => {
                       onMouseEnter={() => {
                         d
                           ? setTooltipContent(
-                              `${geo.properties.name} ${d.Cases}`
+                              `${geo.properties.name}: ${parseInt(
+                                d.Cases
+                              ).toLocaleString()}`
                             )
-                          : setTooltipContent(`${geo.properties.name} 0`);
+                          : setTooltipContent(`${geo.properties.name}: 0`);
                       }}
                       onMouseLeave={() => {
                         setTooltipContent("");

@@ -176,7 +176,7 @@ const Faq = () => {
             <AccordionPanel pb={4}>
               Data is updated every few hours. Note that our sources may not
               have any updates to their own data during this time, so sometimes
-              it may appear as if data is stale or hasn't changed, even if we
+              it may appear as if data is stale or has not changed, even if we
               have fetched new numbers since your last visit.
             </AccordionPanel>
           </AccordionItem>

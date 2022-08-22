@@ -8,8 +8,16 @@ import {
   Spacer,
   Button,
   Center,
+  Input,
+  InputGroup,
+  InputAddon,
+  InputRightElement,
 } from "@chakra-ui/react";
+
+import { SearchIcon } from "@chakra-ui/icons";
+
 import Link from "next/link";
+import React, { useState } from "react";
 
 export const getStaticProps = async () => {
   const date = Math.floor(new Date().getTime() / 1000);
@@ -25,6 +33,9 @@ export const getStaticProps = async () => {
 };
 
 const Countries = ({ countryVals }) => {
+  const [countryFilter, setCountryFilter] = useState("");
+  const handleSearch = (event) => setCountryFilter(event.target.value);
+
   return (
     <Container maxW="5xl">
       <Heading mt={10}>All countries</Heading>
@@ -36,39 +47,58 @@ const Countries = ({ countryVals }) => {
         World In Data and the US CDC.
       </Text>
 
-      {countryVals.map((countryVal) => (
-        <Box
-          key={countryVal.Country}
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-          pt={2}
-          pb={3}
-          pr={10}
-          pl={10}
-          mt={5}
-        >
-          <Flex spacing={8} direction="row">
-            <Center>
-              <div>
-                <Heading size="md" mt={1}>
-                  {countryVal.Country}
-                </Heading>
-                <Text>Currently active cases: {countryVal.Cases}</Text>
-              </div>
-            </Center>
+      <InputGroup mt={5}>
+        <Input
+          variant="outline"
+          value={countryFilter}
+          onChange={handleSearch}
+          placeholder="Search for a country by typing the name here"
+        />
+        <InputRightElement mr={3}>
+          <SearchIcon />
+        </InputRightElement>
+      </InputGroup>
 
-            <Spacer />
-            <Center>
-              <Button>
-                <Link href={"/countries/" + countryVal.Country}>
-                  <a>View data</a>
-                </Link>
-              </Button>
-            </Center>
-          </Flex>
-        </Box>
-      ))}
+      {countryVals
+        .filter((country) =>
+          country.Country.toLowerCase().includes(countryFilter.toLowerCase())
+        )
+        .map((countryVal) => (
+          <Box
+            key={countryVal.Country}
+            borderWidth="1px"
+            borderRadius="lg"
+            overflow="hidden"
+            pt={2}
+            pb={3}
+            pr={10}
+            pl={10}
+            mt={5}
+          >
+            <Flex spacing={8} direction="row">
+              <Center>
+                <div>
+                  <Heading size="md" mt={1}>
+                    {countryVal.Country}
+                  </Heading>
+                  <Text>
+                    Currently active cases:{" "}
+                    {parseInt(countryVal.Cases).toLocaleString(undefined)}
+                  </Text>
+                </div>
+              </Center>
+
+              <Spacer />
+              <Center>
+                <Button>
+                  <Link href={"/countries/" + countryVal.Country}>
+                    <a>View data</a>
+                  </Link>
+                </Button>
+              </Center>
+            </Flex>
+          </Box>
+        ))}
     </Container>
   );
 };

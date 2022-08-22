@@ -52,7 +52,7 @@ const Countries = ({ countryVals }) => {
           variant="outline"
           value={countryFilter}
           onChange={handleSearch}
-          placeholder="Search for a country by typing the name here"
+          placeholder="Search by country name"
         />
         <InputRightElement mr={3}>
           <SearchIcon />

@@ -8,8 +8,14 @@ import {
   Spacer,
   Button,
   Center,
+  Input,
+  InputGroup,
+  InputAddon,
+  InputRightElement,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { SearchIcon } from "@chakra-ui/icons";
+import React, { useState } from "react";
 
 export const getStaticProps = async () => {
   const date = Math.floor(new Date().getTime() / 1000);
@@ -25,6 +31,9 @@ export const getStaticProps = async () => {
 };
 
 const States = ({ stateVals }) => {
+  const [stateFilter, setStateFilter] = useState("");
+  const handleSearch = (event) => setStateFilter(event.target.value);
+
   return (
     <Container maxW="5xl">
       <Heading mt={10}>All states</Heading>
@@ -36,39 +45,58 @@ const States = ({ stateVals }) => {
         World In Data and the US CDC.
       </Text>
 
-      {stateVals.map((stateVal) => (
-        <Box
-          key={stateVal.Location}
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-          pt={2}
-          pb={3}
-          pr={10}
-          pl={10}
-          mt={5}
-        >
-          <Flex spacing={8} direction="row">
-            <Center>
-              <div>
-                <Heading size="md" mt={1}>
-                  {stateVal.Location}
-                </Heading>
-                <Text>Currently active cases: {stateVal.Cases}</Text>
-              </div>
-            </Center>
+      <InputGroup mt={5}>
+        <Input
+          variant="outline"
+          value={stateFilter}
+          onChange={handleSearch}
+          placeholder="Search by state name"
+        />
+        <InputRightElement mr={3}>
+          <SearchIcon />
+        </InputRightElement>
+      </InputGroup>
 
-            <Spacer />
-            <Center>
-              <Button>
-                <Link href={"/states/" + stateVal.Location}>
-                  <a>View data</a>
-                </Link>
-              </Button>
-            </Center>
-          </Flex>
-        </Box>
-      ))}
+      {stateVals
+        .filter((state) =>
+          state.Location.toLowerCase().includes(stateFilter.toLowerCase())
+        )
+        .map((stateVal) => (
+          <Box
+            key={stateVal.Location}
+            borderWidth="1px"
+            borderRadius="lg"
+            overflow="hidden"
+            pt={2}
+            pb={3}
+            pr={10}
+            pl={10}
+            mt={5}
+          >
+            <Flex spacing={8} direction="row">
+              <Center>
+                <div>
+                  <Heading size="md" mt={1}>
+                    {stateVal.Location}
+                  </Heading>
+                  <Text>
+                    Currently active cases:{" "}
+                    {parseInt(stateVal.Cases).toLocaleString()}
+                  </Text>
+                </div>
+              </Center>
+
+              <Spacer />
+              <Center>
+                <Button>
+                  <Link href={"/states/" + stateVal.Location}>
+                    <a>View data</a>
+                  </Link>
+                </Button>
+              </Center>
+            </Flex>
+          </Box>
+        ))}
     </Container>
   );
 };

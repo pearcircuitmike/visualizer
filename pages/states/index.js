@@ -12,10 +12,12 @@ import {
   InputGroup,
   InputAddon,
   InputRightElement,
+  HStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { SearchIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
+import { colors } from "../../styles/colors.js";
 
 export const getStaticProps = async () => {
   const date = Math.floor(new Date().getTime() / 1000);
@@ -36,7 +38,19 @@ const States = ({ stateVals }) => {
 
   return (
     <Container maxW="5xl">
-      <Heading mt={10}>All states</Heading>
+      <HStack mt={10}>
+        <Heading>All States </Heading>
+        <Spacer />
+        <Link href={"/countries"}>
+          <Button
+            size="sm"
+            style={{ backgroundColor: `${colors.yellowGreen}` }}
+          >
+            View countries
+          </Button>
+        </Link>
+      </HStack>
+
       <Text mt={5}>
         Select a country to view more details about their Monkeypox situation.
         Each country has a situation report, automatically generated from the
@@ -88,11 +102,11 @@ const States = ({ stateVals }) => {
 
               <Spacer />
               <Center>
-                <Button>
-                  <Link href={"/states/" + stateVal.Location}>
+                <Link href={"/states/" + stateVal.Location}>
+                  <Button>
                     <a>View data</a>
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </Center>
             </Flex>
           </Box>

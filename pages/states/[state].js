@@ -15,8 +15,13 @@ import {
   GridItem,
   SimpleGrid,
   Button,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 
 export const getStaticPaths = async () => {
   const url =
@@ -164,6 +169,33 @@ const StateDetails = ({ state }) => {
       </Head>
 
       <Container maxW="5xl" mt={35}>
+        <Breadcrumb
+          spacing="8px"
+          separator={<ChevronRightIcon color="gray.500" />}
+        >
+          <BreadcrumbItem>
+            <BreadcrumbLink>
+              <Link href="/">
+                <a>Home</a>
+              </Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem>
+            <BreadcrumbLink>
+              <Link href="/states">
+                <a>States</a>
+              </Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink>
+              <a>{stateName}</a>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+
         <Heading as="h1" size="4xl">
           {stateName}
         </Heading>
@@ -180,7 +212,8 @@ const StateDetails = ({ state }) => {
           <br />
           <br />
           Based on the most recent reports available, health authorities in{" "}
-          {stateName} have reported {stateNewCases} case
+          {stateName} have reported {parseInt(stateNewCases).toLocaleString()}{" "}
+          case
           {stateNewCases == 1 ? `` : `s`}.
           <br />
           <br />

@@ -9,6 +9,8 @@ import {
   Box,
   Divider,
   Tooltip,
+  HStack,
+  Button,
 } from "@chakra-ui/react";
 
 import Link from "next/link";
@@ -146,6 +148,14 @@ export default function Home() {
               </Link>{" "}
               for a breakdown of U.S. cases by state.
             </Text>
+            <HStack spacing={4}>
+              <Link href={"/countries"}>
+                <Button size="lg">Explore country data</Button>
+              </Link>
+              <Link href={"/states"}>
+                <Button size="lg">Explore state data</Button>
+              </Link>
+            </HStack>
           </Stack>
         </Container>
 

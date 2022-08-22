@@ -12,7 +12,9 @@ import {
   InputGroup,
   InputAddon,
   InputRightElement,
+  HStack,
 } from "@chakra-ui/react";
+import { colors } from "../../styles/colors.js";
 
 import { SearchIcon } from "@chakra-ui/icons";
 
@@ -38,7 +40,19 @@ const Countries = ({ countryVals }) => {
 
   return (
     <Container maxW="5xl">
-      <Heading mt={10}>All countries</Heading>
+      <HStack mt={10}>
+        <Heading>All Countries </Heading>
+        <Spacer />
+        <Link href={"/states"}>
+          <Button
+            size="sm"
+            style={{ backgroundColor: `${colors.yellowGreen}` }}
+          >
+            View states
+          </Button>
+        </Link>
+      </HStack>
+
       <Text mt={5}>
         Select a country to view more details about their Monkeypox situation.
         Each country has a situation report, automatically generated from the
@@ -90,11 +104,11 @@ const Countries = ({ countryVals }) => {
 
               <Spacer />
               <Center>
-                <Button>
-                  <Link href={"/countries/" + countryVal.Country}>
+                <Link href={"/countries/" + countryVal.Country}>
+                  <Button>
                     <a>View data</a>
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </Center>
             </Flex>
           </Box>

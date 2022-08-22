@@ -25,6 +25,7 @@ import WorldTrends from "./components/WorldTrends.js";
 import { useState, useEffect } from "react";
 import { csv } from "csvtojson";
 import ReactTooltip from "react-tooltip";
+import LineListTable from "./components/LineListTable.js";
 
 export default function Home() {
   const [content, setContent] = useState("");

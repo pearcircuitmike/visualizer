@@ -53,11 +53,11 @@ const States = ({ stateVals }) => {
       </HStack>
 
       <Text mt={5}>
-        Select a country to view more details about their Monkeypox situation.
-        Each country has a situation report, automatically generated from the
-        most recent data. You can also view graphs of the disease activity in
-        each country, and review data in tabular form. Data is sourced from Our
-        World In Data and the US CDC.
+        Select a state to view more details about their Monkeypox situation.
+        Each state has a situation report, automatically generated from the most
+        recent data. You can also view graphs of the disease activity in each
+        state, and review data in tabular form. Data is sourced from Our World
+        In Data and the US CDC.
       </Text>
 
       <InputGroup mt={5}>

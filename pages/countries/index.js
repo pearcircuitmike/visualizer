@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { csv } from "csvtojson";
 import {
   Container,
@@ -39,81 +40,135 @@ const Countries = ({ countryVals }) => {
   const handleSearch = (event) => setCountryFilter(event.target.value);
 
   return (
-    <Container maxW="5xl">
-      <HStack mt={10}>
-        <Heading>All Countries </Heading>
-        <Spacer />
-        <Link href={"/states"}>
-          <Button
-            size="sm"
-            style={{ backgroundColor: `${colors.yellowGreen}` }}
-          >
-            View states
-          </Button>
-        </Link>
-      </HStack>
-
-      <Text mt={5}>
-        Select a country to view more details about their Monkeypox situation.
-        Each country has a situation report, automatically generated from the
-        most recent data. You can also view graphs of the disease activity in
-        each country, and review data in tabular form. Data is sourced from Our
-        World In Data and the US CDC.
-      </Text>
-
-      <InputGroup mt={5}>
-        <Input
-          variant="outline"
-          value={countryFilter}
-          onChange={handleSearch}
-          placeholder="Search by country name"
+    <>
+      <Head>
+        <title>Monkeypox Tracker | Countries</title>
+        <meta
+          name="description"
+          content="Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world."
         />
-        <InputRightElement mr={3}>
-          <SearchIcon />
-        </InputRightElement>
-      </InputGroup>
 
-      {countryVals
-        .filter((country) =>
-          country.Country.toLowerCase().includes(countryFilter.toLowerCase())
-        )
-        .map((countryVal) => (
-          <Box
-            key={countryVal.Country}
-            borderWidth="1px"
-            borderRadius="lg"
-            overflow="hidden"
-            pt={2}
-            pb={3}
-            pr={10}
-            pl={10}
-            mt={5}
-          >
-            <Flex spacing={8} direction="row">
-              <Center>
-                <div>
-                  <Heading size="md" mt={1}>
-                    {countryVal.Country}
-                  </Heading>
-                  <Text>
-                    Currently active cases:{" "}
-                    {parseInt(countryVal.Cases).toLocaleString(undefined)}
-                  </Text>
-                </div>
-              </Center>
+        <meta property="og:title" content="Monkeypox Tracker | FAQ" />
+        <meta
+          property="og:description"
+          content="Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world."
+        />
 
-              <Spacer />
-              <Center>
-                <Link href={"/countries/" + countryVal.Country}>
-                  <Button>
-                    <a>View data</a>
-                  </Button>
-                </Link>
-              </Center>
-            </Flex>
-          </Box>
-        ))}
-    </Container>
+        <meta property="og:url" content="https://monkeypoxtracker.net/" />
+        <meta
+          property="og:image"
+          content="https://monkeypoxtracker.net/socialImg.png"
+        />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:description"
+          content="Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world."
+        />
+        <meta
+          property="twitter:image"
+          content="https://monkeypoxtracker.net/socialImg.png"
+        />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4489327921275613"
+          crossOrigin="anonymous"
+        />
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-DFXC4Y1G0E"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+
+       gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');`,
+          }}
+        />
+
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Container maxW="5xl">
+        <HStack mt={10}>
+          <Heading>All Countries </Heading>
+          <Spacer />
+          <Link href={"/states"}>
+            <Button
+              size="sm"
+              style={{ backgroundColor: `${colors.yellowGreen}` }}
+            >
+              View states
+            </Button>
+          </Link>
+        </HStack>
+
+        <Text mt={5}>
+          Select a country to view more details about their Monkeypox situation.
+          Each country has a situation report, automatically generated from the
+          most recent data. You can also view graphs of the disease activity in
+          each country, and review data in tabular form. Data is sourced from
+          Our World In Data and the US CDC.
+        </Text>
+
+        <InputGroup mt={5}>
+          <Input
+            variant="outline"
+            value={countryFilter}
+            onChange={handleSearch}
+            placeholder="Search by country name"
+          />
+          <InputRightElement mr={3}>
+            <SearchIcon />
+          </InputRightElement>
+        </InputGroup>
+
+        {countryVals
+          .filter((country) =>
+            country.Country.toLowerCase().includes(countryFilter.toLowerCase())
+          )
+          .map((countryVal) => (
+            <Box
+              key={countryVal.Country}
+              borderWidth="1px"
+              borderRadius="lg"
+              overflow="hidden"
+              pt={2}
+              pb={3}
+              pr={10}
+              pl={10}
+              mt={5}
+            >
+              <Flex spacing={8} direction="row">
+                <Center>
+                  <div>
+                    <Heading size="md" mt={1}>
+                      {countryVal.Country}
+                    </Heading>
+                    <Text>
+                      Currently active cases:{" "}
+                      {parseInt(countryVal.Cases).toLocaleString(undefined)}
+                    </Text>
+                  </div>
+                </Center>
+
+                <Spacer />
+                <Center>
+                  <Link href={"/countries/" + countryVal.Country}>
+                    <Button>
+                      <a>View data</a>
+                    </Button>
+                  </Link>
+                </Center>
+              </Flex>
+            </Box>
+          ))}
+      </Container>
+    </>
   );
 };
 

@@ -20,7 +20,7 @@ const WorldMapChart = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const date = Math.floor(new Date("2012.08.10").getTime() / 1000);
+    const date = Math.floor(new Date().getDate() / 1000);
     const url = `https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/MPX-Cases-Deaths-by-Country.csv?v=${date} `;
 
     const fetchData = async () => {

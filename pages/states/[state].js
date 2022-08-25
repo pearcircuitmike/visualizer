@@ -207,6 +207,14 @@ const StateDetails = ({ state }) => {
           {stateName}: Monkeypox Situation Report
         </Heading>
         <Text>
+          Monkeypox is a rare disease caused by infection with the monkeypox
+          virus. Monkeypox virus is part of the same family of viruses as
+          variola virus, the virus that causes smallpox. Monkeypox symptoms are
+          similar to smallpox symptoms, but milder, and monkeypox is rarely
+          fatal.
+          <br /> <br />
+        </Text>
+        <Text>
           This page shows data for the Monkeypox outbreak currently taking place
           in {stateName}.
           <br />

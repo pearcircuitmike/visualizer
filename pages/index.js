@@ -21,6 +21,7 @@ import Script from "next/script";
 import WorldMapChart from "./components/WorldMap.js";
 import DataTable from "./components/WorldTable.js";
 import WorldTrends from "./components/WorldTrends.js";
+import USMap from "./components/USMap";
 
 import { useState, useEffect } from "react";
 import { csv } from "csvtojson";

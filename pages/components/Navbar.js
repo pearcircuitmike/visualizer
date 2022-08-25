@@ -46,6 +46,9 @@ const Navbar = () => {
               <Link href="/states" aria-label="States" m={5} w="100%">
                 <a>State data</a>
               </Link>
+              <Link href="/us/testing" aria-label="Countries" m={5} w="100%">
+                <a>US testing</a>
+              </Link>
               <Link href="/about" aria-label="About" m={5} w="100%">
                 <a>About</a>
               </Link>
@@ -106,6 +109,15 @@ const Navbar = () => {
             </Link>
             <Link pl={5} href="/states" aria-label="States" my={5} w="100%">
               <a onClick={() => changeDisplay("none")}>State data</a>
+            </Link>
+            <Link
+              pl={5}
+              href="/us/testing"
+              aria-label="US testing"
+              my={5}
+              w="100%"
+            >
+              <a onClick={() => changeDisplay("none")}>US Testing</a>
             </Link>
             <Link href="/about" aria-label="About" m={5} w="100%">
               <a onClick={() => changeDisplay("none")}>About</a>

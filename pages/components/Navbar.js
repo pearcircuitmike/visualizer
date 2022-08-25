@@ -104,25 +104,19 @@ const Navbar = () => {
             </Flex>
           </HStack>
           <Flex flexDir="column" align="center">
-            <Link href="/countries" aria-label="Countries" my={5} w="100%">
+            <Link href="/countries" aria-label="Countries" m={2} w="100%">
               <a onClick={() => changeDisplay("none")}>Country data</a>
             </Link>
-            <Link pl={5} href="/states" aria-label="States" my={5} w="100%">
+            <Link href="/states" aria-label="States" m={2} w="100%">
               <a onClick={() => changeDisplay("none")}>State data</a>
             </Link>
-            <Link
-              pl={5}
-              href="/us/testing"
-              aria-label="US testing"
-              my={5}
-              w="100%"
-            >
+            <Link href="/us/testing" aria-label="US testing" m={2} w="100%">
               <a onClick={() => changeDisplay("none")}>US Testing</a>
             </Link>
-            <Link href="/about" aria-label="About" m={5} w="100%">
+            <Link href="/about" aria-label="About" m={2} w="100%">
               <a onClick={() => changeDisplay("none")}>About</a>
             </Link>
-            <Link href="/faq" aria-label="FAQ" m={5} w="100%">
+            <Link href="/faq" aria-label="FAQ" m={2} w="100%">
               <a onClick={() => changeDisplay("none")}>FAQ</a>
             </Link>
           </Flex>

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head.js";
 import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Chart, Bar, Line } from "react-chartjs-2";
+
 import {
   Select,
   Box,
@@ -19,9 +20,13 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
+  Tooltip,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import ReactTooltip from "react-tooltip";
+import Router, { useRouter } from "next/router.js";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import USMapChart from "../components/USMap.js";
 
 export const getStaticPaths = async () => {
   const url =
@@ -68,51 +73,55 @@ export const getStaticProps = async (context) => {
 };
 
 const StateDetails = ({ state }) => {
-  const filteredDates = JSON.parse(
-    JSON.stringify(
-      state.map((y) => {
-        return y["date"];
-      })
-    )
-  );
-  const filteredTotalCases = JSON.parse(
-    JSON.stringify(
-      state.map((y) => {
-        return y["Cases"];
-      })
-    )
-  );
-  const filteredNewCases = JSON.parse(
-    JSON.stringify(
-      state.map((y) => {
-        return y["new_cases"];
-      })
-    )
-  );
-  const filteredNewCasesPerMillion = JSON.parse(
-    JSON.stringify(
-      state.map((y) => {
-        return y["new_cases_per_million"];
-      })
-    )
-  );
-  const filteredTotalCasesPerMillion = JSON.parse(
-    JSON.stringify(
-      state.map((y) => {
-        return y["total_cases_per_million"];
-      })
-    )
-  );
+  const router = useRouter();
 
-  const filteredTotalDeaths = JSON.parse(
-    JSON.stringify(
-      state.map((y) => {
-        return y["total_deaths"];
-      })
-    )
-  );
+  useEffect(() => {
+    const filteredDates = JSON.parse(
+      JSON.stringify(
+        state.map((y) => {
+          return y["date"];
+        })
+      )
+    );
+    const filteredTotalCases = JSON.parse(
+      JSON.stringify(
+        state.map((y) => {
+          return y["Cases"];
+        })
+      )
+    );
+    const filteredNewCases = JSON.parse(
+      JSON.stringify(
+        state.map((y) => {
+          return y["new_cases"];
+        })
+      )
+    );
+    const filteredNewCasesPerMillion = JSON.parse(
+      JSON.stringify(
+        state.map((y) => {
+          return y["new_cases_per_million"];
+        })
+      )
+    );
+    const filteredTotalCasesPerMillion = JSON.parse(
+      JSON.stringify(
+        state.map((y) => {
+          return y["total_cases_per_million"];
+        })
+      )
+    );
 
-  const [copied, setCopied] = useState(false);
+    const filteredTotalDeaths = JSON.parse(
+      JSON.stringify(
+        state.map((y) => {
+          return y["total_deaths"];
+        })
+      )
+    );
+
+    setStateName(state[0].Location);
+  }, [useRouter().asPath]);
 
   function copy() {
     const el = document.createElement("input");
@@ -123,6 +132,9 @@ const StateDetails = ({ state }) => {
     document.body.removeChild(el);
     setCopied(true);
   }
+  const [copied, setCopied] = useState(false);
+
+  const [content, setContent] = useState("");
   const [stateName, setStateName] = useState(
     state.length ? state[0].Location : ""
   );
@@ -131,7 +143,7 @@ const StateDetails = ({ state }) => {
   );
 
   return (
-    <>
+    <div key={router.pathname}>
       <Head>
         <title>{stateName} | Monkeypox Tracker</title>
         <meta
@@ -168,31 +180,25 @@ const StateDetails = ({ state }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container maxW="5xl" mt={35}>
+      <Container maxW="5xl" mt={35} key={router.asPath}>
         <Breadcrumb
           spacing="8px"
           separator={<ChevronRightIcon color="gray.500" />}
         >
           <BreadcrumbItem>
-            <BreadcrumbLink>
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </BreadcrumbLink>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
           </BreadcrumbItem>
 
           <BreadcrumbItem>
-            <BreadcrumbLink>
-              <Link href="/states">
-                <a>States</a>
-              </Link>
-            </BreadcrumbLink>
+            <Link href="/states">
+              <a>States</a>
+            </Link>
           </BreadcrumbItem>
 
           <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLink>
-              <a>{stateName}</a>
-            </BreadcrumbLink>
+            <a>{stateName}</a>
           </BreadcrumbItem>
         </Breadcrumb>
 
@@ -202,6 +208,15 @@ const StateDetails = ({ state }) => {
         <Heading as="h2" size="md">
           Monkeypox Outbreak: State Details
         </Heading>
+
+        <Container maxW={"5xl"}>
+          <USMapChart setTooltipContent={setContent} />
+          {content && (
+            <ReactTooltip>
+              <Tooltip>{content}</Tooltip>
+            </ReactTooltip>
+          )}
+        </Container>
 
         <Heading as="h3" size="sm" mt={10}>
           {stateName}: Monkeypox Situation Report
@@ -241,7 +256,7 @@ const StateDetails = ({ state }) => {
           {Date().toLocaleString().substring(0, 16)}
         </Text>
       </Container>
-    </>
+    </div>
   );
 };
 

@@ -313,25 +313,19 @@ const CountryDetails = ({ country }) => {
           separator={<ChevronRightIcon color="gray.500" />}
         >
           <BreadcrumbItem>
-            <BreadcrumbLink>
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </BreadcrumbLink>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
           </BreadcrumbItem>
 
           <BreadcrumbItem>
-            <BreadcrumbLink>
-              <Link href="/countries">
-                <a>Countries</a>
-              </Link>
-            </BreadcrumbLink>
+            <Link href="/countries">
+              <a>Countries</a>
+            </Link>
           </BreadcrumbItem>
 
           <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLink>
-              <a>{countryName}</a>
-            </BreadcrumbLink>
+            <a>{countryName}</a>
           </BreadcrumbItem>
         </Breadcrumb>
 

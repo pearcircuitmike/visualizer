@@ -1400,7 +1400,7 @@
     "lodash" "^4.17.3"
     "strip-bom" "^2.0.0"
 
-"d3-array@^2.5.0", "d3-array@2 - 3", "d3-array@2.10.0 - 3":
+"d3-array@^2.5.0", "d3-array@2 - 3", "d3-array@2.10.0 - 3", "d3-array@2.5.0 - 3":
   "integrity" "sha512-B0ErZK/66mHtEsR1TkPEEkwdy+WDesimkM5gpZr5Dsg54BiTA5RXtYW5qTLIAcekaS9xfZrzBLF/OAkB3Qn1YQ=="
   "resolved" "https://registry.npmjs.org/d3-array/-/d3-array-2.12.1.tgz"
   "version" "2.12.1"
@@ -1414,7 +1414,7 @@
   dependencies:
     "internmap" "1 - 2"
 
-"d3-array@2.5.0 - 3", "d3-array@3":
+"d3-array@3":
   "integrity" "sha512-3yXFQo0oG3QCxbF06rMPFyGRMGJNS7NvsV1+2joOjbBE+9xvWQ8+GcMJAjRCzw06zQ3/arXeJgbPYcjUCuC+3g=="
   "resolved" "https://registry.npmjs.org/d3-array/-/d3-array-3.2.0.tgz"
   "version" "3.2.0"
@@ -1541,7 +1541,7 @@
   dependencies:
     "d3-array" "^2.5.0"
 
-"d3-geo@3":
+"d3-geo@^3.0.1", "d3-geo@3":
   "integrity" "sha512-Wt23xBych5tSy9IYAM1FR2rWIBFWa52B/oF/GYe5zbdHrg08FU8+BuI6X4PvTwPDdqdAdq04fuWJpELtsaEjeA=="
   "resolved" "https://registry.npmjs.org/d3-geo/-/d3-geo-3.0.1.tgz"
   "version" "3.0.1"

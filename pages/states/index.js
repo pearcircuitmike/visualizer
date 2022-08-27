@@ -14,11 +14,17 @@ import {
   InputAddon,
   InputRightElement,
   HStack,
+  Tooltip,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import Script from "next/script.js";
+
 import { SearchIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 import { colors } from "../../styles/colors.js";
+import ReactTooltip from "react-tooltip";
+
+import USMapChart from "../components/USMap.js";
 
 export const getStaticProps = async () => {
   const date = Math.floor(new Date().getTime() / 1000);
@@ -36,6 +42,8 @@ export const getStaticProps = async () => {
 const States = ({ stateVals }) => {
   const [stateFilter, setStateFilter] = useState("");
   const handleSearch = (event) => setStateFilter(event.target.value);
+
+  const [content, setContent] = useState("");
 
   return (
     <>
@@ -68,26 +76,6 @@ const States = ({ stateVals }) => {
           property="twitter:image"
           content="https://monkeypoxtracker.net/socialImg.png"
         />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4489327921275613"
-          crossOrigin="anonymous"
-        />
-
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-DFXC4Y1G0E"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-       window.dataLayer = window.dataLayer || [];
-       function gtag(){dataLayer.push(arguments);}
-       gtag('js', new Date());
-
-       gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');`,
-          }}
-        />
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -105,6 +93,15 @@ const States = ({ stateVals }) => {
             </Button>
           </Link>
         </HStack>
+
+        <Container maxW={"5xl"}>
+          <USMapChart setTooltipContent={setContent} />
+          {content && (
+            <ReactTooltip>
+              <Tooltip>{content}</Tooltip>
+            </ReactTooltip>
+          )}
+        </Container>
 
         <Text mt={5}>
           Select a state to view more details about their Monkeypox situation.

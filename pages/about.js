@@ -8,6 +8,7 @@ import {
   Divider,
   Tooltip,
 } from "@chakra-ui/react";
+import Script from "next/script";
 
 const About = () => {
   return (
@@ -40,26 +41,6 @@ const About = () => {
         <meta
           property="twitter:image"
           content="https://monkeypoxtracker.net/socialImg.png"
-        />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4489327921275613"
-          crossOrigin="anonymous"
-        />
-
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-DFXC4Y1G0E"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-   window.dataLayer = window.dataLayer || [];
-   function gtag(){dataLayer.push(arguments);}
-   gtag('js', new Date());
-
-   gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');`,
-          }}
         />
 
         <link rel="icon" href="/favicon.ico" />

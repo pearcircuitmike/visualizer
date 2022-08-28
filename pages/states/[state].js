@@ -209,15 +209,6 @@ const StateDetails = ({ state }) => {
           Monkeypox Outbreak: State Details
         </Heading>
 
-        <Container maxW={"5xl"}>
-          <USMapChart setTooltipContent={setContent} />
-          {content && (
-            <ReactTooltip>
-              <Tooltip>{content}</Tooltip>
-            </ReactTooltip>
-          )}
-        </Container>
-
         <Heading as="h3" size="sm" mt={10}>
           {stateName}: Monkeypox Situation Report
         </Heading>
@@ -247,14 +238,21 @@ const StateDetails = ({ state }) => {
           </Link>
           .
         </Text>
-        <Button onClick={copy} mt={5}>
+        <Button onClick={copy} mt={5} mb={5}>
           {!copied ? "Copy report URL" : "Copied link!"}
         </Button>
 
-        <Text mb={5} mt={10} color={"gray.500"}>
-          Source: <a href={"https://cdc.gov"}>US CDC</a>. Last update:{" "}
-          {Date().toLocaleString().substring(0, 16)}
-        </Text>
+        <Heading size="md">
+          Click on another state to view more details.
+        </Heading>
+        <Container maxW={"5xl"}>
+          <USMapChart setTooltipContent={setContent} />
+          {content && (
+            <ReactTooltip>
+              <Tooltip>{content}</Tooltip>
+            </ReactTooltip>
+          )}
+        </Container>
       </Container>
     </div>
   );

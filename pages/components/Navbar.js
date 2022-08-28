@@ -50,10 +50,10 @@ gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');`}
           <Flex display={["none", "none", "flex", "flex"]}>
             <HStack spacing={10}>
               <Link href="/countries" aria-label="Countries" m={5} w="100%">
-                <a>Country data</a>
+                <a>Global data</a>
               </Link>
               <Link href="/states" aria-label="States" m={5} w="100%">
-                <a>State data</a>
+                <a>US state data</a>
               </Link>
               <Link href="/us/testing" aria-label="Countries" m={5} w="100%">
                 <a>US testing</a>
@@ -104,7 +104,7 @@ gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');`}
             <Spacer />
             <Flex>
               <IconButton
-                mr={5}
+                mr={2}
                 aria-label="Close Menu"
                 size="lg"
                 icon={<CloseIcon />}
@@ -113,19 +113,24 @@ gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');`}
             </Flex>
           </HStack>
           <Flex flexDir="column" align="center">
-            <Link href="/countries" aria-label="Countries" m={2} w="100%">
-              <a onClick={() => changeDisplay("none")}>Country data</a>
+            <Link href="/countries" aria-label="Countries" m={"10px"} w="100%">
+              <a onClick={() => changeDisplay("none")}>Global data</a>
             </Link>
-            <Link href="/states" aria-label="States" m={2} w="100%">
-              <a onClick={() => changeDisplay("none")}>State data</a>
+            <Link href="/states" aria-label="States" m={"10px"} w="100%">
+              <a onClick={() => changeDisplay("none")}>US state data </a>
             </Link>
-            <Link href="/us/testing" aria-label="US testing" m={2} w="100%">
+            <Link
+              href="/us/testing"
+              aria-label="US testing"
+              m={"10px"}
+              w="100%"
+            >
               <a onClick={() => changeDisplay("none")}>US Testing</a>
             </Link>
-            <Link href="/about" aria-label="About" m={2} w="100%">
+            <Link href="/about" aria-label="About" m={"10px"} w="100%">
               <a onClick={() => changeDisplay("none")}>About</a>
             </Link>
-            <Link href="/faq" aria-label="FAQ" m={2} w="100%">
+            <Link href="/faq" aria-label="FAQ" m={"10px"} w="100%">
               <a onClick={() => changeDisplay("none")}>FAQ</a>
             </Link>
           </Flex>

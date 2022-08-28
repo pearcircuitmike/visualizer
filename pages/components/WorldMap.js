@@ -38,13 +38,6 @@ const WorldMapChart = ({ setTooltipContent }) => {
 
   return (
     <>
-      <Box>
-        <Center>
-          <Heading as="h2" size="lg" mb={5}>
-            Global confirmed cases
-          </Heading>
-        </Center>
-      </Box>
       <div data-tip="">
         <ComposableMap projection="geoMercator">
           <Graticule stroke="#f2f0f0" />

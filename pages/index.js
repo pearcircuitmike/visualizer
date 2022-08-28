@@ -26,6 +26,7 @@ import { useState, useEffect } from "react";
 import { csv } from "csvtojson";
 import ReactTooltip from "react-tooltip";
 import LineListTable from "./components/LineListTable.js";
+import USMapChart from "./components/USMap.js";
 
 export default function Home() {
   const [content, setContent] = useState("");
@@ -133,10 +134,10 @@ export default function Home() {
             <Show above="sm">
               <HStack spacing={4}>
                 <Link href={"/countries"}>
-                  <Button size="lg">Explore country data</Button>
+                  <Button size="lg">Explore global data</Button>
                 </Link>
                 <Link href={"/states"}>
-                  <Button size="lg">Explore state data</Button>
+                  <Button size="lg">Explore US data</Button>
                 </Link>
               </HStack>
             </Show>
@@ -144,13 +145,40 @@ export default function Home() {
         </Container>
 
         <Container maxW={"5xl"}>
-          <WorldTrends />
+          <Box textAlign={"center"}>
+            <Heading as="h2" size="lg">
+              US confirmed cases
+            </Heading>
+            <Text size="md">Click on a state to view more details</Text>
+          </Box>
+          <USMapChart setTooltipContent={setContent} />
+          {content && (
+            <ReactTooltip>
+              <Tooltip>{content}</Tooltip>
+            </ReactTooltip>
+          )}
+
+          <Box textAlign={"center"}>
+            <Heading as="h2" size="lg" mt={"50px"}>
+              Global confirmed cases
+            </Heading>
+            <Text size="md" mb={5}>
+              Click on a country to view more details
+            </Text>
+          </Box>
           <WorldMapChart setTooltipContent={setContent} />
           {content && (
             <ReactTooltip>
               <Tooltip>{content}</Tooltip>
             </ReactTooltip>
           )}
+
+          <Box textAlign={"center"}>
+            <Heading as="h2" size="lg" mb={5} mt={"50px"}>
+              Global spread and activity over time
+            </Heading>
+          </Box>
+          <WorldTrends />
 
           <DataTable />
         </Container>

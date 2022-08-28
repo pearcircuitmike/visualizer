@@ -82,6 +82,7 @@ const States = ({ stateVals }) => {
       <Container maxW="5xl">
         <HStack mt={10}>
           <Heading>All States </Heading>
+
           <Spacer />
 
           <Link href={"/countries"}>
@@ -93,7 +94,9 @@ const States = ({ stateVals }) => {
             </Button>
           </Link>
         </HStack>
-
+        <Text size="md">
+          Click a state to view detail, or scroll down to search by name.
+        </Text>
         <Container maxW={"5xl"}>
           <USMapChart setTooltipContent={setContent} />
           {content && (

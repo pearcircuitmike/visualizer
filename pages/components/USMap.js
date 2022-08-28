@@ -63,7 +63,7 @@ const USMapChart = ({ setTooltipContent }) => {
 
                 const d = data.find((s) => s.Location === geo.properties.name);
                 const colorScale = scaleLinear()
-                  .domain([0, 5400])
+                  .domain([0, 2500])
                   .range([colors.aquamarine, colors.spaceCadet]);
 
                 return (

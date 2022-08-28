@@ -196,12 +196,6 @@ export default function WorldTrends() {
   return (
     <>
       <Box mt={2} mb={20}>
-        <Center>
-          <Heading as="h2" size="lg" mb={5}>
-            Global spread and activity over time
-          </Heading>
-        </Center>
-
         <Select onChange={(e) => setFilterLocation(e.target.value)}>
           <option defaultValue={"World"}>World</option>
           {uniqueLocationOptions &&

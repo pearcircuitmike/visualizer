@@ -33,7 +33,7 @@ const About = () => {
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
         <meta
           property="og:image"
-          content="https://monkeypoxtracker.net/socialImg.png"
+          content="https://monkeypoxtracker.net/usTestingSocialImg.png"
         />
         <meta property="og:type" content="website" />
 
@@ -44,7 +44,7 @@ const About = () => {
         />
         <meta
           property="twitter:image"
-          content="https://monkeypoxtracker.net/socialImg.png"
+          content="https://monkeypoxtracker.net/usTestingSocialImg.png"
         />
 
         <link rel="icon" href="/favicon.ico" />

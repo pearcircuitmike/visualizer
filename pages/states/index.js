@@ -63,7 +63,7 @@ const States = ({ stateVals }) => {
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
         <meta
           property="og:image"
-          content="https://monkeypoxtracker.net/socialImg.png"
+          content="https://monkeypoxtracker.net/usSocialImg.png"
         />
         <meta property="og:type" content="website" />
 
@@ -74,7 +74,7 @@ const States = ({ stateVals }) => {
         />
         <meta
           property="twitter:image"
-          content="https://monkeypoxtracker.net/socialImg.png"
+          content="https://monkeypoxtracker.net/usSocialImg.png"
         />
 
         <link rel="icon" href="/favicon.ico" />

@@ -163,7 +163,7 @@ const StateDetails = ({ state }) => {
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
         <meta
           property="og:image"
-          content="https://monkeypoxtracker.net/socialImg.png"
+          content="https://monkeypoxtracker.net/usSocialImg.png"
         />
         <meta property="og:type" content="website" />
 
@@ -174,7 +174,7 @@ const StateDetails = ({ state }) => {
         />
         <meta
           property="twitter:image"
-          content="https://monkeypoxtracker.net/socialImg.png"
+          content="https://monkeypoxtracker.net/usSocialImg.png"
         />
 
         <link rel="icon" href="/favicon.ico" />

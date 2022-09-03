@@ -80,20 +80,21 @@ const States = ({ stateVals }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container maxW="5xl">
-        <HStack mt={10}>
-          <Heading>All States </Heading>
+        <Heading as="h1" mt={5}>
+          Monkeypox cases and deaths by state
+        </Heading>
 
-          <Spacer />
+        <Link href={"/countries"}>
+          <Button
+            size="sm"
+            mt={5}
+            mb={5}
+            style={{ backgroundColor: `${colors.yellowGreen}` }}
+          >
+            View countries
+          </Button>
+        </Link>
 
-          <Link href={"/countries"}>
-            <Button
-              size="sm"
-              style={{ backgroundColor: `${colors.yellowGreen}` }}
-            >
-              View countries
-            </Button>
-          </Link>
-        </HStack>
         <Text size="md">
           Click a state to view detail, or scroll down to search by name.
         </Text>

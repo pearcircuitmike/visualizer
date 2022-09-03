@@ -81,18 +81,20 @@ const Countries = ({ countryVals }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container maxW="5xl">
-        <HStack mt={10}>
-          <Heading>All Countries </Heading>
-          <Spacer />
-          <Link href={"/states"}>
-            <Button
-              size="sm"
-              style={{ backgroundColor: `${colors.yellowGreen}` }}
-            >
-              View states
-            </Button>
-          </Link>
-        </HStack>
+        <Heading as="h1" mt={5}>
+          Monkeypox cases and deaths by country
+        </Heading>
+
+        <Link href={"/states"}>
+          <Button
+            size="sm"
+            m={5}
+            style={{ backgroundColor: `${colors.yellowGreen}` }}
+          >
+            View states
+          </Button>
+        </Link>
+
         <Container maxW={"5xl"} mt={5}>
           <WorldMap setTooltipContent={setContent} />
           {content && (

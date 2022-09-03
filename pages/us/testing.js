@@ -18,7 +18,7 @@ const About = () => {
         <title>U.S. Testing Information | Monkeypox Tracker</title>
         <meta
           name="description"
-          content={`Statistics and information on Monkeypox testing in the United States, including maps, charts, and tables.`}
+          content={`Statistics and information on Monkeypox testing in the United States, including maps, charts, and tables. Inspired by the BNO Monkeypox tracker.`}
         />
 
         <meta
@@ -27,7 +27,7 @@ const About = () => {
         />
         <meta
           property="og:description"
-          content={`Statistics and information on Monkeypox testing in the United States, including maps, charts, and tables`}
+          content={`Statistics and information on Monkeypox testing in the United States, including maps, charts, and tables. Inspired by the BNO Monkeypox tracker.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -40,7 +40,7 @@ const About = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Statistics and information on Monkeypox testing in the United States, including maps, charts, and tables`}
+          content={`Statistics and information on Monkeypox testing in the United States, including maps, charts, and tables. Inspired by the BNO Monkeypox tracker.`}
         />
         <meta
           property="twitter:image"

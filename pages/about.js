@@ -9,13 +9,13 @@ const About = () => {
         <title>Monkeypox Tracker | About</title>
         <meta
           name="description"
-          content="More info about the MonkeypoxTacker.net website."
+          content="More info about the MonkeypoxTacker.net website. Inspired by the BNO Monkeypox tracker."
         />
 
         <meta property="og:title" content="Monkeypox Tracker | About" />
         <meta
           property="og:description"
-          content="More info about the MonkeypoxTacker.net website.."
+          content="More info about the MonkeypoxTacker.net website. Inspired by the BNO Monkeypox tracker."
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -28,7 +28,7 @@ const About = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="More info about the MonkeypoxTacker.net website."
+          content="More info about the MonkeypoxTacker.net website. Inspired by the BNO Monkeypox tracker."
         />
         <meta
           property="twitter:image"

@@ -149,7 +149,7 @@ const StateDetails = ({ state }) => {
         <title>{stateName} | Monkeypox Tracker</title>
         <meta
           name="description"
-          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${stateName}, including maps, charts, and tables.`}
+          content={`The 2022 Monkeypox virus disease outbreak in ${stateName}, including ${stateName} Monkeypox case counts, ${stateName} Monkeypox case counts deaths, and ${stateName} Monkeypox data.`}
         />
 
         <meta
@@ -158,7 +158,7 @@ const StateDetails = ({ state }) => {
         />
         <meta
           property="og:description"
-          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${stateName}, including maps, charts, and tables.`}
+          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${stateName}, including ${stateName} Monkeypox case counts, ${stateName} Monkeypox case counts deaths, and ${stateName} Monkeypox data.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -171,7 +171,7 @@ const StateDetails = ({ state }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${stateName}, including maps, charts, and tables.`}
+          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${stateName}, including ${stateName} Monkeypox case counts, ${stateName} Monkeypox case counts deaths, and ${stateName} Monkeypox data.`}
         />
         <meta
           property="twitter:image"

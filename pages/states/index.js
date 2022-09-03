@@ -51,13 +51,13 @@ const States = ({ stateVals }) => {
         <title>Monkeypox Tracker | States</title>
         <meta
           name="description"
-          content="Monkeypox case counts, deaths, confirmed cases, and new cases for U.S. states."
+          content="Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker."
         />
 
         <meta property="og:title" content="Monkeypox Tracker | FAQ" />
         <meta
           property="og:description"
-          content="Monkeypox case counts, deaths, confirmed cases, and new cases for U.S. states."
+          content="Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker."
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -70,7 +70,7 @@ const States = ({ stateVals }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Monkeypox case counts, deaths, confirmed cases, and new cases for U.S. states."
+          content="Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states."
         />
         <meta
           property="twitter:image"

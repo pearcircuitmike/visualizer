@@ -78,7 +78,7 @@ export default function Home() {
         <title>Monkeypox Tracker | Monkeypox Statistics</title>
         <meta
           name="description"
-          content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world."
+          content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world. Inspired by the BNO Monkeypox tracker."
         />
 
         <meta
@@ -87,7 +87,7 @@ export default function Home() {
         />
         <meta
           property="og:description"
-          content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world."
+          content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world. Inspired by the BNO Monkeypox tracker."
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -100,7 +100,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world."
+          content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world. Inspired by the BNO Monkeypox tracker."
         />
         <meta
           property="twitter:image"
@@ -119,17 +119,18 @@ export default function Home() {
             py={{ base: 10, md: 20 }}
           >
             <Heading as="h1" size="3xl">
-              There are{" "}
+              Monkeypox Tracker:{" "}
               <Text as={"span"}>
                 {latestCaseTotal.toLocaleString(undefined, {
                   maximumFractionDigits: 2,
                 })}
               </Text>{" "}
-              reported cases.
+              Monkeypox cases detected
             </Heading>
             <Text color={"gray.500"} maxW={"5xl"}>
               This site is dedicated to tracking the spread of the 2022
-              monkeypox outbreak, and is updated every few hours. You can{" "}
+              monkeypox virus disease outbreak, and is updated every few hours.
+              You can{" "}
               <Link href="/countries">
                 <a style={{ color: `${colors.blueMunsell}` }}>
                   view the countries listing page
@@ -167,7 +168,7 @@ export default function Home() {
         <Container maxW={"5xl"}>
           <Box textAlign={"center"}>
             <Heading as="h2" size="lg">
-              US confirmed cases
+              US confirmed Monkeypox cases
             </Heading>
             <Text size="md">Click on a state to view more details</Text>
           </Box>
@@ -180,7 +181,7 @@ export default function Home() {
 
           <Box textAlign={"center"}>
             <Heading as="h2" size="lg" mt={"50px"}>
-              Global confirmed cases
+              Global confirmed Monkeypox cases
             </Heading>
             <Text size="md" mb={5}>
               Click on a country to view more details
@@ -195,7 +196,7 @@ export default function Home() {
 
           <Box textAlign={"center"}>
             <Heading as="h2" size="lg" mb={5} mt={"50px"}>
-              Global spread and activity over time
+              Global Monkeypox virus spread over time
             </Heading>
           </Box>
           <WorldTrends />

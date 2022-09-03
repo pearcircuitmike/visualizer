@@ -24,13 +24,13 @@ const Faq = () => {
         <title>Monkeypox Tracker | FAQ</title>
         <meta
           name="description"
-          content="Frquently asked questions about Monkeypox as a disease, including symptom information, treatment information, vaccination information, and statistics."
+          content="Frquently asked questions about Monkeypox as a disease, including symptom information, treatment information, vaccination information, and statistics. Inspired by the BNO Monkeypox tracker."
         />
 
         <meta property="og:title" content="Monkeypox Tracker | FAQ" />
         <meta
           property="og:description"
-          content="Frquently asked questions about Monkeypox as a disease, including symptom information, treatment information, vaccination information, and statistics."
+          content="Frquently asked questions about Monkeypox as a disease, including symptom information, treatment information, vaccination information, and statistics. Inspired by the BNO Monkeypox tracker."
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -43,7 +43,7 @@ const Faq = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Frquently asked questions about Monkeypox virus, including symptom information, treatment information, vaccination information, and statistics."
+          content="Frquently asked questions about Monkeypox virus, including symptom information, treatment information, vaccination information, and statistics. Inspired by the BNO Monkeypox tracker."
         />
         <meta
           property="twitter:image"

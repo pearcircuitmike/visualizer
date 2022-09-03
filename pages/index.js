@@ -78,7 +78,7 @@ export default function Home() {
         <title>Monkeypox Tracker | Monkeypox Statistics</title>
         <meta
           name="description"
-          content="Statistics and information on the 2022 Monkeypox outbreak, including maps, charts, and tables from sources around the world."
+          content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world."
         />
 
         <meta
@@ -87,7 +87,7 @@ export default function Home() {
         />
         <meta
           property="og:description"
-          content="Statistics and information on the 2022 Monkeypox outbreak, including maps, charts, and tables from sources around the world."
+          content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world."
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -100,7 +100,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Statistics and information on the 2022 Monkeypox outbreak, including maps, charts, and tables from sources around the world."
+          content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world."
         />
         <meta
           property="twitter:image"

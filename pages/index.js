@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
-import Script from "next/script";
+
+import { FaTwitter } from "react-icons/fa";
 
 import {
   Container,
@@ -15,6 +15,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 
+import { useToast } from "@chakra-ui/react";
+
 import Link from "next/link";
 import { colors } from "../styles/colors.js";
 
@@ -25,7 +27,6 @@ import WorldTrends from "./components/WorldTrends.js";
 import { useState, useEffect } from "react";
 import { csv } from "csvtojson";
 import ReactTooltip from "react-tooltip";
-import LineListTable from "./components/LineListTable.js";
 import USMapChart from "./components/USMap.js";
 
 export default function Home() {
@@ -34,31 +35,42 @@ export default function Home() {
   const [data, setData] = useState([]);
   const [latestCaseTotal, setLatestCaseTotal] = useState("");
   const [filterLocation, setFilterLocation] = useState("World");
+  const toast = useToast();
+
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps
 
   useEffect(() => {
-    const url =
-      "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
-
-    const fetchData = async () => {
-      try {
-        const res = await fetch(url);
-        const text = await res.text();
-        const jsonArray = await csv().fromString(text);
-        setData(jsonArray);
-
-        const worldCaseData = jsonArray.filter((location) =>
-          location.location.includes("World")
-        );
-
-        setLatestCaseTotal(
-          ~~worldCaseData[worldCaseData.length - 1].total_cases
-        );
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-    fetchData();
+    setIsLoaded(true);
   }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      setIsPageLoaded(true);
+      const url =
+        "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
+
+      const fetchData = async () => {
+        try {
+          const res = await fetch(url);
+          const text = await res.text();
+          const jsonArray = await csv().fromString(text);
+          setData(jsonArray);
+          const worldCaseData = jsonArray.filter((location) =>
+            location.location.includes("World")
+          );
+          setLatestCaseTotal(
+            ~~worldCaseData[worldCaseData.length - 1].total_cases
+          );
+        } catch (error) {
+          console.log("error", error);
+        }
+      };
+      fetchData();
+    }
+  }, [isLoaded]);
+
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -141,6 +153,14 @@ export default function Home() {
                 </Link>
               </HStack>
             </Show>
+            <a
+              style={{ marginTop: "15px !important" }}
+              href="https://twitter.com/monkeypox_stats"
+            >
+              <Button colorScheme="twitter" leftIcon={<FaTwitter />}>
+                Follow updates on Twitter
+              </Button>
+            </a>
           </Stack>
         </Container>
 

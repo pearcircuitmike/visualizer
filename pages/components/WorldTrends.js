@@ -1,8 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Chart as ChartJS } from "chart.js/auto";
-import { Chart, Line } from "react-chartjs-2";
-import { Select, Box, Text, Center, Heading } from "@chakra-ui/react";
+import { Line } from "react-chartjs-2";
+import { Select, Box, Text } from "@chakra-ui/react";
 import { colors } from "../../styles/colors.js";
 
 import { csv } from "csvtojson";

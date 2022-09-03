@@ -1,18 +1,5 @@
 import Link from "next/link";
-import Script from "next/script";
-import {
-  Container,
-  Heading,
-  HStack,
-  Text,
-  Box,
-  Divider,
-  Tooltip,
-  Center,
-  Flex,
-  IconButton,
-  Spacer,
-} from "@chakra-ui/react";
+import { Heading, HStack, Flex, IconButton, Spacer } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
@@ -21,14 +8,6 @@ const Navbar = () => {
 
   return (
     <nav>
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');`}
-      </Script>
       <Flex
         p={5}
         borderBottom={1}

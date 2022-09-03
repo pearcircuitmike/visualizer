@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { colors } from "../styles/colors.js";
-import Script from "next/script.js";
 
 const Faq = () => {
   return (

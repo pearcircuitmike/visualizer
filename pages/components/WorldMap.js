@@ -1,6 +1,8 @@
 import React, { memo, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+import Chart from "chart.js/auto";
+
 import {
   ZoomableGroup,
   ComposableMap,

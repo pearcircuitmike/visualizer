@@ -1,15 +1,9 @@
 import React, { memo, useEffect, useState } from "react";
 import { geoCentroid } from "d3-geo";
 
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  Marker,
-  Annotation,
-} from "react-simple-maps";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { scaleLinear } from "d3-scale";
-import { Heading, Stack, Center, Box, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 import { csv } from "csvtojson";
@@ -21,22 +15,31 @@ const USMapChart = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
   const router = useRouter();
 
-  useEffect(() => {
-    const date = Math.floor(new Date("2012.08.10").getTime() / 1000);
-    const url = `https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/USmap_counts.csv?v=${date} `;
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps
 
-    const fetchData = async () => {
-      try {
-        const res = await fetch(url);
-        const text = await res.text();
-        const jsonArray = await csv().fromString(text);
-        setData(jsonArray);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-    fetchData();
-  }, [useRouter().asPath]);
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      const date = Math.floor(new Date("2012.08.10").getTime() / 1000);
+      const url = `https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/USmap_counts.csv?v=${date} `;
+
+      const fetchData = async () => {
+        try {
+          const res = await fetch(url);
+          const text = await res.text();
+          const jsonArray = await csv().fromString(text);
+          setData(jsonArray);
+        } catch (error) {
+          console.log("error", error);
+        }
+      };
+      fetchData();
+    }
+  }, [isLoaded, useRouter().asPath]);
 
   const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
   const offsets = {

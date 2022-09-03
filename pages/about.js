@@ -1,13 +1,5 @@
 import Head from "next/head";
-import {
-  Container,
-  Heading,
-  Stack,
-  Text,
-  Box,
-  Divider,
-  Tooltip,
-} from "@chakra-ui/react";
+import { Container, Heading, Text } from "@chakra-ui/react";
 import Script from "next/script";
 
 const About = () => {

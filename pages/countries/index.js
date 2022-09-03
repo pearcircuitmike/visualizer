@@ -15,13 +15,16 @@ import {
   InputAddon,
   InputRightElement,
   HStack,
+  Tooltip,
 } from "@chakra-ui/react";
 import { colors } from "../../styles/colors.js";
+import ReactTooltip from "react-tooltip";
 
 import { SearchIcon } from "@chakra-ui/icons";
 
 import Link from "next/link";
 import React, { useState } from "react";
+import WorldMap from "../components/WorldMap.js";
 
 export const getStaticProps = async () => {
   const date = Math.floor(new Date().getTime() / 1000);
@@ -39,6 +42,7 @@ export const getStaticProps = async () => {
 const Countries = ({ countryVals }) => {
   const [countryFilter, setCountryFilter] = useState("");
   const handleSearch = (event) => setCountryFilter(event.target.value);
+  const [content, setContent] = useState("");
 
   return (
     <>
@@ -89,6 +93,14 @@ const Countries = ({ countryVals }) => {
             </Button>
           </Link>
         </HStack>
+        <Container maxW={"5xl"} mt={5}>
+          <WorldMap setTooltipContent={setContent} />
+          {content && (
+            <ReactTooltip>
+              <Tooltip>{content}</Tooltip>
+            </ReactTooltip>
+          )}
+        </Container>
 
         <Text mt={5}>
           Select a country to view more details about their Monkeypox situation.

@@ -27,6 +27,7 @@ import ReactTooltip from "react-tooltip";
 import Router, { useRouter } from "next/router.js";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import USMapChart from "../components/USMap.js";
+import Faq from "../faq.js";
 
 export const getStaticPaths = async () => {
   const url =
@@ -234,7 +235,9 @@ const StateDetails = ({ state }) => {
           You can see how the {stateName} Monkeypox situation compares with the
           situation globally on the{" "}
           <Link href="/">
-            <a>MonkeypoxTracker homepage</a>
+            <a style={{ color: `${colors.blueMunsell}` }}>
+              MonkeypoxTracker homepage
+            </a>
           </Link>
           .
         </Text>
@@ -253,6 +256,8 @@ const StateDetails = ({ state }) => {
             </ReactTooltip>
           )}
         </Container>
+
+        <Faq />
       </Container>
     </div>
   );

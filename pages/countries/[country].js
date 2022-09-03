@@ -27,6 +27,7 @@ import {
   BreadcrumbSeparator,
 } from "@chakra-ui/react";
 
+import Faq from "../faq.js";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 
 import Link from "next/link";
@@ -361,8 +362,9 @@ const CountryDetails = ({ country }) => {
           </Stat>
         </StatGroup>
 
-        <Heading as="h3" size="sm" mt={10}>
-          {countryName}: Monkeypox Situation Report
+        <Heading as="h2" mt={10} mb={5}>
+          Monkeypox virus disease outbreak in {countryName}: case counts,
+          deaths, and statistics
         </Heading>
         <Text>
           Monkeypox is a rare disease caused by infection with the monkeypox
@@ -397,7 +399,9 @@ const CountryDetails = ({ country }) => {
           table provided below. Lastly, you can see how the {countryName}{" "}
           Monkeypox situation compares with the situation globally on the{" "}
           <Link href="/">
-            <a>MonkeypoxTracker homepage</a>
+            <a style={{ color: `${colors.blueMunsell}` }}>
+              MonkeypoxTracker homepage
+            </a>
           </Link>
           .
         </Text>
@@ -447,6 +451,7 @@ const CountryDetails = ({ country }) => {
           Last update: {Date().toLocaleString().substring(0, 16)}
         </Text>
       </Container>
+      <Faq />
     </>
   );
 };

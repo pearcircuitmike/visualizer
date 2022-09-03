@@ -54,12 +54,11 @@ const Faq = () => {
       </Head>
       <div>
         <Container mt={10} mb={10} maxW={"5xl"}>
-          <Heading as="h1">Frequently Asked Questions</Heading>
+          <Heading as="h2">Frequently Asked Questions</Heading>
           <Text>
-            This page is devoted to some frequently asked questions about
-            MonkeypoxTracker.net and the Monkeypox disease. Information about
-            Monkeypox is reported as provided by the U.S. CDC. Read on to learn
-            more!
+            Want to learn more about Monkeypox? The following are some
+            frequently asked questions about the monkeypox virus, the current
+            disease outbreak, and what to do if you are exposed to Monkeypox.
           </Text>
           <Accordion allowToggle allowMultiple mt={10} mb={10}>
             <AccordionItem>
@@ -297,16 +296,17 @@ const Faq = () => {
                 <Text>
                   Monkeypox can more accurately be described as “sexually
                   transmissible.” In other words, sex is just one of the ways
-                  that monkeypox can be spread. In the past, monkeypox outbreaks
-                  have been linked to direct exposure to infected animals and
-                  animal products, with limited person-to-person spread. In the
-                  current monkeypox outbreak, the virus is spreading primarily
-                  through close personal contact. This may include contact with
-                  infectious lesions or respiratory secretions via close,
-                  sustained skin-to-skin contact that occurs during sex.
-                  However, any close, sustained skin-to-skin contact with
-                  someone who has monkeypox can spread the virus. The contact
-                  does not have to be exclusively intimate or sexual.
+                  that monkeypox can be spread. In the past, Monkeypox virus
+                  disease outbreaks have been linked to direct exposure to
+                  infected animals and animal products, with limited
+                  person-to-person spread. In the current monkeypox outbreak,
+                  the virus is spreading primarily through close personal
+                  contact. This may include contact with infectious lesions or
+                  respiratory secretions via close, sustained skin-to-skin
+                  contact that occurs during sex. However, any close, sustained
+                  skin-to-skin contact with someone who has monkeypox can spread
+                  the virus. The contact does not have to be exclusively
+                  intimate or sexual.
                 </Text>
               </AccordionPanel>
             </AccordionItem>

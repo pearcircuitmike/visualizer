@@ -1,6 +1,8 @@
 import Head from "next/head";
 
 import { FaTwitter } from "react-icons/fa";
+import dynamic from "next/dynamic.js";
+import Chart from "chart.js/auto";
 
 import {
   Container,
@@ -8,26 +10,29 @@ import {
   Stack,
   Text,
   Box,
-  Divider,
   Tooltip,
   HStack,
   Show,
   Button,
 } from "@chakra-ui/react";
 
-import { useToast } from "@chakra-ui/react";
-
 import Link from "next/link";
 import { colors } from "../styles/colors.js";
 
-import WorldMapChart from "./components/WorldMap.js";
+const WorldMapChart = dynamic(() => import("./components/WorldMap.js"), {
+  ssr: false,
+});
 import DataTable from "./components/WorldTable.js";
-import WorldTrends from "./components/WorldTrends.js";
+const WorldTrends = dynamic(() => import("./components/WorldTrends.js"), {
+  ssr: false,
+});
+const USMapChart = dynamic(() => import("./components/USMap.js"), {
+  ssr: false,
+});
 
 import { useState, useEffect } from "react";
 import { csv } from "csvtojson";
 import ReactTooltip from "react-tooltip";
-import USMapChart from "./components/USMap.js";
 
 export default function Home() {
   const [content, setContent] = useState("");
@@ -35,7 +40,6 @@ export default function Home() {
   const [data, setData] = useState([]);
   const [latestCaseTotal, setLatestCaseTotal] = useState("");
   const [filterLocation, setFilterLocation] = useState("World");
-  const toast = useToast();
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps
@@ -62,6 +66,7 @@ export default function Home() {
           setLatestCaseTotal(
             ~~worldCaseData[worldCaseData.length - 1].total_cases
           );
+          console.log("ok");
         } catch (error) {
           console.log("error", error);
         }
@@ -187,14 +192,12 @@ export default function Home() {
               Click on a country to view more details
             </Text>
           </Box>
-          {/*
-         <WorldMapChart setTooltipContent={setContent} />
+          <WorldMapChart setTooltipContent={setContent} />
           {content && (
             <ReactTooltip>
               <Tooltip>{content}</Tooltip>
             </ReactTooltip>
           )}
-          */}
 
           <Box textAlign={"center"}>
             <Heading as="h2" size="lg" mb={5} mt={"50px"}>

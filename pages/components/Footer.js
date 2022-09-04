@@ -1,14 +1,4 @@
-import Link from "next/link";
-import {
-  Container,
-  Heading,
-  Stack,
-  Text,
-  Box,
-  Divider,
-  Tooltip,
-  Button,
-} from "@chakra-ui/react";
+import { Container, Button } from "@chakra-ui/react";
 import { FaTwitter } from "react-icons/fa";
 
 const Footer = () => {

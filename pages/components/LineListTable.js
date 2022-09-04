@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import {
   Table,
   Thead,
@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 
 import { csv } from "csvtojson";
-import { json } from "d3-fetch";
 
 export default function LineListTable() {
   const [data, setData] = useState([]);

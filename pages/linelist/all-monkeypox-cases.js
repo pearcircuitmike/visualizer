@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { Container, Heading, Text } from "@chakra-ui/react";
-import LineListTable from "../components/LineListTable.js";
 
 const History = () => {
   return (

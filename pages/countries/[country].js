@@ -2,16 +2,12 @@ import React, { useState } from "react";
 import Head from "next/head.js";
 import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
-import { Chart as ChartJS } from "chart.js/auto";
-import { Chart, Bar, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import {
-  Select,
-  Box,
   Text,
   Center,
   Heading,
   Container,
-  Grid,
   GridItem,
   SimpleGrid,
   Button,
@@ -23,8 +19,6 @@ import {
   StatGroup,
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 
 import Faq from "../faq.js";

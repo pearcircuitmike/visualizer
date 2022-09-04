@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script.js";
 import { csv } from "csvtojson";
 import {
   Container,
@@ -12,9 +11,7 @@ import {
   Center,
   Input,
   InputGroup,
-  InputAddon,
   InputRightElement,
-  HStack,
   Tooltip,
 } from "@chakra-ui/react";
 import { colors } from "../../styles/colors.js";

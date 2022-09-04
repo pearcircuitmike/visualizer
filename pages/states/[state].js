@@ -2,24 +2,14 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head.js";
 import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
-import { Chart as ChartJS } from "chart.js/auto";
-import { Chart, Bar, Line } from "react-chartjs-2";
 
 import {
-  Select,
-  Box,
   Text,
-  Center,
   Heading,
   Container,
-  Grid,
-  GridItem,
-  SimpleGrid,
   Button,
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
   Tooltip,
 } from "@chakra-ui/react";
 import Link from "next/link";

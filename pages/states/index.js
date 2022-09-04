@@ -11,9 +11,7 @@ import {
   Center,
   Input,
   InputGroup,
-  InputAddon,
   InputRightElement,
-  HStack,
   Tooltip,
 } from "@chakra-ui/react";
 import Link from "next/link";

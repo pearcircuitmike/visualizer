@@ -21,7 +21,6 @@ import {
   BreadcrumbItem,
 } from "@chakra-ui/react";
 
-import Faq from "../faq.js";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 
 import Link from "next/link";
@@ -445,7 +444,6 @@ const CountryDetails = ({ country }) => {
           Last update: {Date().toLocaleString().substring(0, 16)}
         </Text>
       </Container>
-      <Faq />
     </>
   );
 };

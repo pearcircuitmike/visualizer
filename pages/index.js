@@ -187,12 +187,14 @@ export default function Home() {
               Click on a country to view more details
             </Text>
           </Box>
-          <WorldMapChart setTooltipContent={setContent} />
+          {/*
+         <WorldMapChart setTooltipContent={setContent} />
           {content && (
             <ReactTooltip>
               <Tooltip>{content}</Tooltip>
             </ReactTooltip>
           )}
+          */}
 
           <Box textAlign={"center"}>
             <Heading as="h2" size="lg" mb={5} mt={"50px"}>

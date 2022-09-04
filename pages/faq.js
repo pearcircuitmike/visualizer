@@ -2,22 +2,24 @@ import Head from "next/head";
 import {
   Container,
   Heading,
-  Stack,
   Text,
   Box,
-  Divider,
-  Tooltip,
   Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Button,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { colors } from "../styles/colors.js";
 
-const Faq = () => {
+export async function getStaticProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
+
+export default function FAQ() {
   return (
     <>
       <Head>
@@ -445,6 +447,4 @@ const Faq = () => {
       </div>
     </>
   );
-};
-
-export default Faq;
+}

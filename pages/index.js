@@ -39,43 +39,30 @@ export default function Home() {
 
   const [data, setData] = useState([]);
   const [latestCaseTotal, setLatestCaseTotal] = useState("");
-  const [filterLocation, setFilterLocation] = useState("World");
-
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps
 
   useEffect(() => {
-    setIsLoaded(true);
+    const url =
+      "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
+
+    const fetchData = async () => {
+      try {
+        const res = await fetch(url);
+        const text = await res.text();
+        const jsonArray = await csv().fromString(text);
+        setData(jsonArray);
+        const worldCaseData = jsonArray.filter((location) =>
+          location.location.includes("World")
+        );
+        setLatestCaseTotal(
+          ~~worldCaseData[worldCaseData.length - 1].total_cases
+        );
+        console.log("ok");
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchData();
   }, []);
-
-  useEffect(() => {
-    if (isLoaded) {
-      setIsPageLoaded(true);
-      const url =
-        "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
-
-      const fetchData = async () => {
-        try {
-          const res = await fetch(url);
-          const text = await res.text();
-          const jsonArray = await csv().fromString(text);
-          setData(jsonArray);
-          const worldCaseData = jsonArray.filter((location) =>
-            location.location.includes("World")
-          );
-          setLatestCaseTotal(
-            ~~worldCaseData[worldCaseData.length - 1].total_cases
-          );
-          console.log("ok");
-        } catch (error) {
-          console.log("error", error);
-        }
-      };
-      fetchData();
-    }
-  }, [isLoaded]);
-
-  useEffect(() => {}, []);
 
   return (
     <>

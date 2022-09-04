@@ -52,7 +52,7 @@ const Countries = ({ countryVals }) => {
           content="Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world."
         />
 
-        <meta property="og:title" content="Monkeypox Tracker | FAQ" />
+        <meta property="og:title" content="Monkeypox Tracker | Countries" />
         <meta
           property="og:description"
           content="Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world."

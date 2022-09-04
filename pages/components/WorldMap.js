@@ -1,7 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import Chart from "chart.js/auto";
 
 import {
   ZoomableGroup,
@@ -11,7 +10,7 @@ import {
   Graticule,
 } from "react-simple-maps";
 import { scaleLinear } from "d3-scale";
-import { Heading, Stack, Center, Box, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 import { csv } from "csvtojson";
 

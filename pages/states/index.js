@@ -52,7 +52,7 @@ const States = ({ stateVals }) => {
           content="Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker."
         />
 
-        <meta property="og:title" content="Monkeypox Tracker | FAQ" />
+        <meta property="og:title" content="Monkeypox Tracker | States" />
         <meta
           property="og:description"
           content="Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker."
@@ -158,7 +158,7 @@ const States = ({ stateVals }) => {
                 <Center>
                   <Link href={"/states/" + stateVal.Location}>
                     <Button>
-                      <a>View data</a>
+                      <a href={"/states/" + stateVal.Location}>View data</a>
                     </Button>
                   </Link>
                 </Center>

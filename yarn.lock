@@ -1400,6 +1400,11 @@
     "path-type" "^4.0.0"
     "yaml" "^1.7.2"
 
+"country-state-city@^3.1.1":
+  "integrity" "sha512-aXex18axihqUhWhlMSarEf/EWXSG1L3VeLlM8G/WHM8unO9tyahEPUR+l29RMrW2vijwKeABw1aEajMyr1x8cw=="
+  "resolved" "https://registry.npmjs.org/country-state-city/-/country-state-city-3.1.1.tgz"
+  "version" "3.1.1"
+
 "cross-env@^7.0.3":
   "integrity" "sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw=="
   "resolved" "https://registry.npmjs.org/cross-env/-/cross-env-7.0.3.tgz"

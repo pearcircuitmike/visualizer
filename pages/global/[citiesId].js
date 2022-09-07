@@ -28,9 +28,9 @@ import {
   StatHelpText,
 } from "@chakra-ui/react";
 
-export const getStaticPaths = async () => {
-  const cities = allcities;
+const cities = allcities;
 
+export const getStaticPaths = async () => {
   const paths = cities.map((cityVal) => {
     return {
       params: { citiesId: cityVal.id.toString() },
@@ -45,8 +45,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const cityId = context.params.citiesId;
-  const cities = allcities;
-  const workingCity = allcities.find((s) => s.id === parseInt(cityId));
+  const workingCity = cities.find((s) => s.id === parseInt(cityId));
 
   return {
     props: {

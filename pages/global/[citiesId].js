@@ -4,14 +4,14 @@ import React, { useEffect, useState } from "react";
 import { csv } from "csvtojson";
 import Head from "next/head.js";
 import Link from "next/link";
-import {
+/*import {
   ComposableMap,
   Graticule,
   ZoomableGroup,
   Geographies,
   Marker,
   Geography,
-} from "react-simple-maps";
+} from "react-simple-maps"; */
 
 import { colors } from "../../styles/colors.js";
 
@@ -159,7 +159,7 @@ const CityDetails = ({ cityId, stateData, countryData }) => {
           {countryData.name}
         </Heading>
 
-        <div data-tip="">
+        {/* <div data-tip="">
           <ComposableMap projection="geoMercator">
             <Graticule stroke="#f2f0f0" />
 
@@ -193,7 +193,7 @@ const CityDetails = ({ cityId, stateData, countryData }) => {
               </Marker>
             </ZoomableGroup>
           </ComposableMap>
-        </div>
+              </div> */}
 
         <SimpleGrid m={10} columns={[1, null, 3]}>
           <GridItem>

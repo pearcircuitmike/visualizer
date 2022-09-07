@@ -22,6 +22,7 @@ import {
 } from "@chakra-ui/react";
 
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import Chart from "chart.js/auto";
 
 import Link from "next/link";
 
@@ -263,22 +264,28 @@ const CountryDetails = ({ country }) => {
     country.length ? ~~country[country.length - 1].total_deaths : ""
   );
 
+  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <Head>
-        <title>{countryName} | Monkeypox Tracker</title>
+        <title>
+          Monkeypox in {countryName} as of {currentMonth} {currentYear} |
+          Monkeypox Cases
+        </title>
         <meta
           name="description"
-          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${countryName}, including ${countryName} Monkeypox case counts, ${countryName} Monkeypox case counts deaths, and ${countryName} Monkeypox data.`}
+          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
         />
 
         <meta
           property="og:title"
-          content={`Monkeypox in ${countryName} | Monkeypox Tracker - Monkeypox Statistics`}
+          content={`Monkeypox in ${countryName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Statistics`}
         />
         <meta
           property="og:description"
-          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${countryName}, including ${countryName} Monkeypox case counts, ${countryName} Monkeypox case counts deaths, and ${countryName} Monkeypox data.`}
+          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -291,7 +298,7 @@ const CountryDetails = ({ country }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${countryName}, including ${countryName} Monkeypox case counts, ${countryName} Monkeypox case counts deaths, and ${countryName} Monkeypox data.`}
+          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
         />
         <meta
           property="twitter:image"

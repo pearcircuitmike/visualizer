@@ -51,6 +51,7 @@ export const getStaticProps = async (context) => {
     props: {
       cityData: workingCity,
     },
+    revalidate: 60, // In seconds
   };
 };
 

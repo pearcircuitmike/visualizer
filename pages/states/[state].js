@@ -132,22 +132,28 @@ const StateDetails = ({ state }) => {
     state.length ? state[state.length - 1].Cases : ""
   );
 
+  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+  const currentYear = new Date().getFullYear();
+
   return (
     <div key={router.pathname}>
       <Head>
-        <title>{stateName} | Monkeypox Tracker</title>
+        <title>
+          Monkeypox in {stateName} as of {currentMonth} {currentYear} |
+          Monkeypox Cases
+        </title>
         <meta
           name="description"
-          content={`The 2022 Monkeypox virus disease outbreak in ${stateName}, including ${stateName} Monkeypox case counts, ${stateName} Monkeypox case counts deaths, and ${stateName} Monkeypox data.`}
+          content={`Monkeypox cases in ${stateName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
         />
 
         <meta
           property="og:title"
-          content={`Monkeypox in ${stateName} | Monkeypox Tracker - Monkeypox Statistics`}
+          content={`Monkeypox in ${stateName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Statistics`}
         />
         <meta
           property="og:description"
-          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${stateName}, including ${stateName} Monkeypox case counts, ${stateName} Monkeypox case counts deaths, and ${stateName} Monkeypox data.`}
+          content={`Monkeypox cases in ${stateName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -160,7 +166,7 @@ const StateDetails = ({ state }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Statistics and information on the 2022 Monkeypox virus disease outbreak in ${stateName}, including ${stateName} Monkeypox case counts, ${stateName} Monkeypox case counts deaths, and ${stateName} Monkeypox data.`}
+          content={`Monkeypox cases in ${stateName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
         />
         <meta
           property="twitter:image"

@@ -56,7 +56,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { cityId: cityId, stateData: state, countryData: country },
-    revalidate: 60,
+    revalidate: 86400,
   };
 };
 

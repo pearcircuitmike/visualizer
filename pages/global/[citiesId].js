@@ -1,4 +1,3 @@
-import { Country, State, City } from "country-state-city";
 // Import Interfaces
 import React, { useEffect, useState } from "react";
 import { csv } from "csvtojson";
@@ -14,6 +13,7 @@ import {
 } from "react-simple-maps";
 
 import { colors } from "../../styles/colors.js";
+import allcities from "../../public/allcities.json";
 
 import {
   Text,
@@ -29,13 +29,7 @@ import {
 } from "@chakra-ui/react";
 
 export const getStaticPaths = async () => {
-  const citiesListUrl =
-    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/csv/cities.csv";
-
-  const res = await fetch(citiesListUrl);
-  const text = await res.text();
-  const jsonArray = await csv().fromString(text);
-  const cities = jsonArray;
+  const cities = allcities;
 
   const paths = cities.map((cityVal) => {
     return {
@@ -51,62 +45,21 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const cityId = context.params.citiesId;
-
-  //console.log(cityId);
-
-  const citiesListUrl =
-    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/csv/cities.csv";
-
-  const res = await fetch(citiesListUrl);
-  const text = await res.text();
-  const jsonArray = await csv().fromString(text);
-  const cities = jsonArray;
-
-  const workingCity = cities.filter((x) => x.id === cityId);
-  // console.log(workingCity[0].country_id);
-
-  const countriesListUrl =
-    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/csv/countries.csv";
-
-  const countriesRes = await fetch(countriesListUrl);
-  const countriesText = await countriesRes.text();
-  const countriesJsonArray = await csv().fromString(countriesText);
-  const countries = countriesJsonArray;
-
-  const workingCountry = countries.filter(
-    (x) => x.id === workingCity[0].country_id
-  );
-
-  // console.log(workingCountry);
-
-  const statesListUrl =
-    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/csv/states.csv";
-
-  const statesRes = await fetch(statesListUrl);
-  const statesText = await statesRes.text();
-  const statesJsonArray = await csv().fromString(statesText);
-  const states = statesJsonArray;
-
-  const workingState = states.filter((x) => x.id === workingCity[0].state_id);
-
-  //console.log(workingState);
+  const cities = allcities;
+  const workingCity = allcities.find((s) => s.id === parseInt(cityId));
 
   return {
     props: {
-      cityData: workingCity[0],
-      stateData: workingState[0],
-      countryData: workingCountry[0],
+      cityData: workingCity,
     },
   };
 };
 
-const CityDetails = ({ cityData, stateData, countryData }) => {
+const CityDetails = ({ cityData }) => {
   const [data, setData] = useState([]);
 
+  // get cases
   useEffect(() => {
-    const url =
-      "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
-
     const fetchData = async () => {
       try {
         const res = await fetch(url);
@@ -121,7 +74,7 @@ const CityDetails = ({ cityData, stateData, countryData }) => {
   }, []);
 
   const filter = data.filter((x) =>
-    x.location.toLowerCase().includes(countryData.name.toLowerCase())
+    x.location.toLowerCase().includes(cityData.country_name.toLowerCase())
   );
 
   let countryNewCases = "0";
@@ -157,16 +110,16 @@ const CityDetails = ({ cityData, stateData, countryData }) => {
         <title>{cityData.name} | Monkeypox Tracker</title>
         <meta
           name="description"
-          content={`Monkeypox cases in ${cityData.name}, ${stateData.name} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from ${countryData.name} .`}
+          content={`Monkeypox cases in ${cityData.name}, ${cityData.state_name} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from ${cityData.country_name} .`}
         />
 
         <meta
           property="og:title"
-          content={`Monkeypox cases in ${cityData.name}, ${stateData.name} | Monkeypox Tracker - Monkeypox Cases`}
+          content={`Monkeypox cases in ${cityData.name}, ${cityData.state_name} | Monkeypox Tracker - Monkeypox Cases`}
         />
         <meta
           property="og:description"
-          content={`Monkeypox cases in ${cityData.name}, ${stateData.name} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from ${countryData.name} .`}
+          content={`Monkeypox cases in ${cityData.name}, ${cityData.state_name} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from ${cityData.country_name} .`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -179,7 +132,7 @@ const CityDetails = ({ cityData, stateData, countryData }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Monkeypox cases in ${cityData.name}, ${stateData.name} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from ${countryData.name} .`}
+          content={`Monkeypox cases in ${cityData.name}, ${cityData.state_name} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from ${cityData.country_name} .`}
         />
         <meta
           property="twitter:image"
@@ -191,11 +144,11 @@ const CityDetails = ({ cityData, stateData, countryData }) => {
 
       <Container mt={5} maxW="5xl">
         <Heading as="h1">
-          Monkeypox in {cityData.name}, {countryData.name} {countryData.flag}
+          Monkeypox in {cityData.name}, {cityData.country_name}
         </Heading>
         <Heading as="h2" size="md" mb={5}>
-          Tracking case counts and deaths in the {stateData.name} region of{" "}
-          {countryData.name}
+          Tracking case counts and deaths in the {cityData.state_name} region of{" "}
+          {cityData.country_name}
         </Heading>
 
         <div data-tip="">
@@ -227,7 +180,7 @@ const CityDetails = ({ cityData, stateData, countryData }) => {
                   alignmentBaseline="middle"
                   fill={colors.spaceCadet}
                 >
-                  {cityData.name}, {countryData.name}
+                  {cityData.name}, {cityData.country_name}
                 </text>
               </Marker>
             </ZoomableGroup>
@@ -246,7 +199,7 @@ const CityDetails = ({ cityData, stateData, countryData }) => {
             <Stat>
               <StatLabel>Region:</StatLabel>
               <StatNumber>
-                {stateData.name} ({stateData.state_code})
+                {cityData.state_name} ({cityData.state_code})
               </StatNumber>
               <StatHelpText>State or Province</StatHelpText>
             </Stat>
@@ -255,7 +208,7 @@ const CityDetails = ({ cityData, stateData, countryData }) => {
             <Stat>
               <StatLabel>Country</StatLabel>
               <StatNumber>
-                {countryData.name} {countryData.emoji} ({countryData.iso3})
+                {cityData.country_name} ({cityData.country_code})
               </StatNumber>
               <StatHelpText>Country</StatHelpText>
             </Stat>
@@ -272,8 +225,8 @@ const CityDetails = ({ cityData, stateData, countryData }) => {
         </Text>
         <Text>
           This page shows data for the monkeypox outbreak currently taking place
-          in {cityData.name}, located in the {stateData.name} region of{" "}
-          {countryData.name}.
+          in {cityData.name}, located in the {cityData.state_name} region of{" "}
+          {cityData.country_name}.
           <br />
           <br />
         </Text>
@@ -282,22 +235,23 @@ const CityDetails = ({ cityData, stateData, countryData }) => {
         </Heading>
         <Text>
           Based on the most recent reports available, health authorities in{" "}
-          {countryData.name} have reported {countryNewCases.toLocaleString()}{" "}
-          new case
+          {cityData.country_name} have reported{" "}
+          {countryNewCases.toLocaleString()} new case
           {countryNewCases == 1 ? `` : `s`} and{" "}
           {countryNewDeaths ? countryNewDeaths.toLocaleString() : 0} new death
-          {countryNewDeaths == 1 ? `` : `s`}. The people of {countryData.name}{" "}
-          have experienced {countryTotalCases.toLocaleString()} total case
+          {countryNewDeaths == 1 ? `` : `s`}. The people of{" "}
+          {cityData.country_name} have experienced{" "}
+          {countryTotalCases.toLocaleString()} total case
           {countryTotalCases == 1 ? `` : `s`} and{" "}
           {countryTotalDeaths ? countryTotalDeaths.toLocaleString() : 0} total
           deaths since the start of the outbreak.
           <br />
           <br />
           You can use the charts on this page to explore the spread of Monkeypox
-          in {countryData.name}. You can also refer to the {countryData.name}{" "}
-          case history table provided below. Lastly, you can see how the{" "}
-          {countryData.name} Monkeypox situation compares with the situation
-          globally on the{" "}
+          in {cityData.country_name}. You can also refer to the{" "}
+          {cityData.country_name} case history table provided below. Lastly, you
+          can see how the {cityData.country_name} Monkeypox situation compares
+          with the situation globally on the{" "}
           <Link href="/">
             <a style={{ color: `${colors.blueMunsell}` }}>
               MonkeypoxTracker homepage

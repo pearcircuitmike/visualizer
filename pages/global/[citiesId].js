@@ -1,6 +1,5 @@
 import { Country, State, City } from "country-state-city";
 // Import Interfaces
-import { ICountry, IState, ICity } from "country-state-city";
 import React, { useEffect, useState } from "react";
 import { csv } from "csvtojson";
 import Head from "next/head.js";
@@ -12,14 +11,12 @@ import {
   Geographies,
   Marker,
   Geography,
-  Annotation,
 } from "react-simple-maps";
 
 import { colors } from "../../styles/colors.js";
-import { Line } from "react-chartjs-2";
+
 import {
   Text,
-  Center,
   Heading,
   Container,
   GridItem,
@@ -29,10 +26,6 @@ import {
   StatLabel,
   StatNumber,
   StatHelpText,
-  StatArrow,
-  StatGroup,
-  Breadcrumb,
-  BreadcrumbItem,
 } from "@chakra-ui/react";
 
 export const getStaticPaths = async () => {
@@ -51,7 +44,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const cityId = context.params.citiesId;
   const country = Country.getCountryByCode(
     City.getAllCities()[cityId].countryCode

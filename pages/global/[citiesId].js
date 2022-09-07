@@ -44,7 +44,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const cityId = context.params.citiesId;
   const country = Country.getCountryByCode(
     City.getAllCities()[cityId].countryCode
@@ -56,6 +56,7 @@ export const getServerSideProps = async (context) => {
 
   return {
     props: { cityId: cityId, stateData: state, countryData: country },
+    revalidate: 60,
   };
 };
 

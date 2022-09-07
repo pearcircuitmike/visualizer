@@ -4,14 +4,14 @@ import React, { useEffect, useState } from "react";
 import { csv } from "csvtojson";
 import Head from "next/head.js";
 import Link from "next/link";
-/*import {
+import {
   ComposableMap,
   Graticule,
   ZoomableGroup,
   Geographies,
   Marker,
   Geography,
-} from "react-simple-maps"; */
+} from "react-simple-maps";
 
 import { colors } from "../../styles/colors.js";
 
@@ -29,12 +29,17 @@ import {
 } from "@chakra-ui/react";
 
 export const getStaticPaths = async () => {
-  let cities = City.getAllCities();
-  let citiesId = Object.keys(cities);
+  const citiesListUrl =
+    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/csv/cities.csv";
 
-  const paths = citiesId.map((cityVal) => {
+  const res = await fetch(citiesListUrl);
+  const text = await res.text();
+  const jsonArray = await csv().fromString(text);
+  const cities = jsonArray;
+
+  const paths = cities.map((cityVal) => {
     return {
-      params: { citiesId: cityVal.toString() },
+      params: { citiesId: cityVal.id.toString() },
     };
   });
 
@@ -46,22 +51,56 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const cityId = context.params.citiesId;
-  const country = Country.getCountryByCode(
-    City.getAllCities()[cityId].countryCode
-  );
-  const state = State.getStateByCodeAndCountry(
-    City.getAllCities()[cityId].stateCode,
-    City.getAllCities()[cityId].countryCode
+
+  //console.log(cityId);
+
+  const citiesListUrl =
+    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/csv/cities.csv";
+
+  const res = await fetch(citiesListUrl);
+  const text = await res.text();
+  const jsonArray = await csv().fromString(text);
+  const cities = jsonArray;
+
+  const workingCity = cities.filter((x) => x.id === cityId);
+  // console.log(workingCity[0].country_id);
+
+  const countriesListUrl =
+    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/csv/countries.csv";
+
+  const countriesRes = await fetch(countriesListUrl);
+  const countriesText = await countriesRes.text();
+  const countriesJsonArray = await csv().fromString(countriesText);
+  const countries = countriesJsonArray;
+
+  const workingCountry = countries.filter(
+    (x) => x.id === workingCity[0].country_id
   );
 
+  // console.log(workingCountry);
+
+  const statesListUrl =
+    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/csv/states.csv";
+
+  const statesRes = await fetch(statesListUrl);
+  const statesText = await statesRes.text();
+  const statesJsonArray = await csv().fromString(statesText);
+  const states = statesJsonArray;
+
+  const workingState = states.filter((x) => x.id === workingCity[0].state_id);
+
+  //console.log(workingState);
+
   return {
-    props: { cityId: cityId, stateData: state, countryData: country },
-    revalidate: 86400,
+    props: {
+      cityData: workingCity[0],
+      stateData: workingState[0],
+      countryData: workingCountry[0],
+    },
   };
 };
 
-const CityDetails = ({ cityId, stateData, countryData }) => {
-  const cityData = City.getAllCities()[cityId];
+const CityDetails = ({ cityData, stateData, countryData }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -159,7 +198,7 @@ const CityDetails = ({ cityId, stateData, countryData }) => {
           {countryData.name}
         </Heading>
 
-        {/* <div data-tip="">
+        <div data-tip="">
           <ComposableMap projection="geoMercator">
             <Graticule stroke="#f2f0f0" />
 
@@ -193,7 +232,7 @@ const CityDetails = ({ cityId, stateData, countryData }) => {
               </Marker>
             </ZoomableGroup>
           </ComposableMap>
-              </div> */}
+        </div>
 
         <SimpleGrid m={10} columns={[1, null, 3]}>
           <GridItem>
@@ -207,7 +246,7 @@ const CityDetails = ({ cityId, stateData, countryData }) => {
             <Stat>
               <StatLabel>Region:</StatLabel>
               <StatNumber>
-                {stateData.name} ({stateData.isoCode})
+                {stateData.name} ({stateData.state_code})
               </StatNumber>
               <StatHelpText>State or Province</StatHelpText>
             </Stat>
@@ -216,7 +255,7 @@ const CityDetails = ({ cityId, stateData, countryData }) => {
             <Stat>
               <StatLabel>Country</StatLabel>
               <StatNumber>
-                {countryData.name} {countryData.flag} ({countryData.isoCode})
+                {countryData.name} {countryData.emoji} ({countryData.iso3})
               </StatNumber>
               <StatHelpText>Country</StatHelpText>
             </Stat>

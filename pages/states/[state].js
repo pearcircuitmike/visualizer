@@ -432,7 +432,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
           </Text>
         ) : (
           <Text>
-            At present, we don't have data specific to {stateName} monkeypox
+            At present, we do not have data specific to {stateName} monkeypox
             cases or deaths. However, we do have {countryName}-level data, which
             is presented below.
             <br />

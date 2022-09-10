@@ -318,21 +318,21 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
     <>
       <Head>
         <title>
-          Monkeypox in {countryName} as of {currentMonth} {currentYear} |
-          Monkeypox Cases
+          Monkeypox in {stateName}, {countryName} as of {currentMonth}{" "}
+          {currentYear} | Monkeypox Cases
         </title>
         <meta
           name="description"
-          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
+          content={`Monkeypox cases in ${stateName}, ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
         />
 
         <meta
           property="og:title"
-          content={`Monkeypox in ${countryName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Statistics`}
+          content={`Monkeypox in ${stateName}, ${countryName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Statistics`}
         />
         <meta
           property="og:description"
-          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
+          content={`Monkeypox cases in ${stateName}, ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -345,7 +345,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
+          content={`Monkeypox cases in ${stateName}, ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
         />
         <meta
           property="twitter:image"

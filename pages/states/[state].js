@@ -422,7 +422,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
         {countryDetails.iso2 == "US" ? (
           <Text>
             Monkeypox case data for {stateDetails.name} is available under the
-            "US state data tab", which you can also click{" "}
+            US state data tab, which you can also click{" "}
             <Link href={"/usstates"}>
               <a style={{ color: `${colors.blueMunsell}` }}>here</a>
             </Link>{" "}

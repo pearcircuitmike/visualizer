@@ -9674,37 +9674,37 @@
         {
           "arcs": [[0, 1, 2, 3, 4, 5]],
           "type": "Polygon",
-          "properties": { "name": "Afghanistan", "Alpha-2": "AF" },
+          "properties": { "name": "Afghanistan", "Alpha_2": "AF" },
           "id": "AFG"
         },
         {
           "arcs": [[[6, 7, 8, 9]], [[10, 11, 12]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Angola", "Alpha-2": "AO" },
+          "properties": { "name": "Angola", "Alpha_2": "AO" },
           "id": "AGO"
         },
         {
           "arcs": [[13, 14, 15, 16, 17]],
           "type": "Polygon",
-          "properties": { "name": "Albania", "Alpha-2": "AL" },
+          "properties": { "name": "Albania", "Alpha_2": "AL" },
           "id": "ALB"
         },
         {
           "arcs": [[18, 19, 20, 21, 22]],
           "type": "Polygon",
-          "properties": { "name": "United Arab Emirates", "Alpha-2": "AE" },
+          "properties": { "name": "United Arab Emirates", "Alpha_2": "AE" },
           "id": "ARE"
         },
         {
           "arcs": [[[23, 24]], [[25, 26, 27, 28, 29, 30]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Argentina", "Alpha-2": "AR" },
+          "properties": { "name": "Argentina", "Alpha_2": "AR" },
           "id": "ARG"
         },
         {
           "arcs": [[31, 32, 33, 34, 35]],
           "type": "Polygon",
-          "properties": { "name": "Armenia", "Alpha-2": "AM" },
+          "properties": { "name": "Armenia", "Alpha_2": "AM" },
           "id": "ARM"
         },
         {
@@ -9719,7 +9719,7 @@
             [[43]]
           ],
           "type": "MultiPolygon",
-          "properties": { "name": "Antarctica", "Alpha-2": "AQ" },
+          "properties": { "name": "Antarctica", "Alpha_2": "AQ" },
           "id": "ATA"
         },
         {
@@ -9727,86 +9727,86 @@
           "type": "Polygon",
           "properties": {
             "name": "French Southern and Antarctic Lands",
-            "Alpha-2": "TF"
+            "Alpha_2": "TF"
           },
           "id": "ATF"
         },
         {
           "arcs": [[[45]], [[46]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Australia", "Alpha-2": "AU" },
+          "properties": { "name": "Australia", "Alpha_2": "AU" },
           "id": "AUS"
         },
         {
           "arcs": [[47, 48, 49, 50, 51, 52, 53]],
           "type": "Polygon",
-          "properties": { "name": "Austria", "Alpha-2": "AT" },
+          "properties": { "name": "Austria", "Alpha_2": "AT" },
           "id": "AUT"
         },
         {
           "arcs": [[[54, -35]], [[55, 56, 57, -33, 58, 59]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Azerbaijan", "Alpha-2": "AZ" },
+          "properties": { "name": "Azerbaijan", "Alpha_2": "AZ" },
           "id": "AZE"
         },
         {
           "arcs": [[60, 61, 62]],
           "type": "Polygon",
-          "properties": { "name": "Burundi", "Alpha-2": "BI" },
+          "properties": { "name": "Burundi", "Alpha_2": "BI" },
           "id": "BDI"
         },
         {
           "arcs": [[63, 64, 65, 66, 67, 68]],
           "type": "Polygon",
-          "properties": { "name": "Belgium", "Alpha-2": "BE" },
+          "properties": { "name": "Belgium", "Alpha_2": "BE" },
           "id": "BEL"
         },
         {
           "arcs": [[69, 70, 71, 72, 73]],
           "type": "Polygon",
-          "properties": { "name": "Benin", "Alpha-2": "BJ" },
+          "properties": { "name": "Benin", "Alpha_2": "BJ" },
           "id": "BEN"
         },
         {
           "arcs": [[74, 75, 76, -72, 77, 78]],
           "type": "Polygon",
-          "properties": { "name": "Burkina Faso", "Alpha-2": "BF" },
+          "properties": { "name": "Burkina Faso", "Alpha_2": "BF" },
           "id": "BFA"
         },
         {
           "arcs": [[79, 80, 81]],
           "type": "Polygon",
-          "properties": { "name": "Bangladesh", "Alpha-2": "BD" },
+          "properties": { "name": "Bangladesh", "Alpha_2": "BD" },
           "id": "BGD"
         },
         {
           "arcs": [[82, 83, 84, 85, 86, 87]],
           "type": "Polygon",
-          "properties": { "name": "Bulgaria", "Alpha-2": "BG" },
+          "properties": { "name": "Bulgaria", "Alpha_2": "BG" },
           "id": "BGR"
         },
         {
           "arcs": [[[88]], [[89]], [[90]]],
           "type": "MultiPolygon",
-          "properties": { "name": "The Bahamas", "Alpha-2": "BS" },
+          "properties": { "name": "The Bahamas", "Alpha_2": "BS" },
           "id": "BHS"
         },
         {
           "arcs": [[91, 92, 93]],
           "type": "Polygon",
-          "properties": { "name": "Bosnia and Herzegovina", "Alpha-2": "BA" },
+          "properties": { "name": "Bosnia and Herzegovina", "Alpha_2": "BA" },
           "id": "BIH"
         },
         {
           "arcs": [[94, 95, 96, 97, 98]],
           "type": "Polygon",
-          "properties": { "name": "Belarus", "Alpha-2": "BY" },
+          "properties": { "name": "Belarus", "Alpha_2": "BY" },
           "id": "BLR"
         },
         {
           "arcs": [[99, 100, 101]],
           "type": "Polygon",
-          "properties": { "name": "Belize", "Alpha-2": "BZ" },
+          "properties": { "name": "Belize", "Alpha_2": "BZ" },
           "id": "BLZ"
         },
         {
@@ -9817,43 +9817,43 @@
             ]
           ],
           "type": "Polygon",
-          "properties": { "name": "Bermuda", "Alpha-2": "BM" },
+          "properties": { "name": "Bermuda", "Alpha_2": "BM" },
           "id": "BMU"
         },
         {
           "arcs": [[120, 121, 122, 123, -31]],
           "type": "Polygon",
-          "properties": { "name": "Bolivia", "Alpha-2": "BO" },
+          "properties": { "name": "Bolivia", "Alpha_2": "BO" },
           "id": "BOL"
         },
         {
           "arcs": [[-27, 124, -123, 125, 126, 127, 128, 129, 130, 131, 132]],
           "type": "Polygon",
-          "properties": { "name": "Brazil", "Alpha-2": "BR" },
+          "properties": { "name": "Brazil", "Alpha_2": "BR" },
           "id": "BRA"
         },
         {
           "arcs": [[133, 134]],
           "type": "Polygon",
-          "properties": { "name": "Brunei", "Alpha-2": "BN" },
+          "properties": { "name": "Brunei", "Alpha_2": "BN" },
           "id": "BRN"
         },
         {
           "arcs": [[135, 136]],
           "type": "Polygon",
-          "properties": { "name": "Bhutan", "Alpha-2": "BT" },
+          "properties": { "name": "Bhutan", "Alpha_2": "BT" },
           "id": "BTN"
         },
         {
           "arcs": [[137, 138, 139, 140]],
           "type": "Polygon",
-          "properties": { "name": "Botswana", "Alpha-2": "BW" },
+          "properties": { "name": "Botswana", "Alpha_2": "BW" },
           "id": "BWA"
         },
         {
           "arcs": [[141, 142, 143, 144, 145, 146, 147]],
           "type": "Polygon",
-          "properties": { "name": "Central African Republic", "Alpha-2": "CF" },
+          "properties": { "name": "Central African Republic", "Alpha_2": "CF" },
           "id": "CAF"
         },
         {
@@ -9890,19 +9890,19 @@
             [[180]]
           ],
           "type": "MultiPolygon",
-          "properties": { "name": "Canada", "Alpha-2": "CA" },
+          "properties": { "name": "Canada", "Alpha_2": "CA" },
           "id": "CAN"
         },
         {
           "arcs": [[-51, 181, 182, 183]],
           "type": "Polygon",
-          "properties": { "name": "Switzerland", "Alpha-2": "CH" },
+          "properties": { "name": "Switzerland", "Alpha_2": "CH" },
           "id": "CHE"
         },
         {
           "arcs": [[[-24, 184]], [[-30, 185, 186, 187, -121]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Chile", "Alpha-2": "CL" },
+          "properties": { "name": "Chile", "Alpha_2": "CL" },
           "id": "CHL"
         },
         {
@@ -9916,19 +9916,19 @@
             ]
           ],
           "type": "MultiPolygon",
-          "properties": { "name": "China", "Alpha-2": "CN" },
+          "properties": { "name": "China", "Alpha_2": "CN" },
           "id": "CHN"
         },
         {
           "arcs": [[206, 207, 208, 209, -75, 210]],
           "type": "Polygon",
-          "properties": { "name": "Ivory Coast", "Alpha-2": "CI" },
+          "properties": { "name": "Ivory Coast", "Alpha_2": "CI" },
           "id": "CIV"
         },
         {
           "arcs": [[211, 212, 213, 214, 215, 216, -148, 217]],
           "type": "Polygon",
-          "properties": { "name": "Cameroon", "Alpha-2": "CM" },
+          "properties": { "name": "Cameroon", "Alpha_2": "CM" },
           "id": "CMR"
         },
         {
@@ -9938,242 +9938,242 @@
           "type": "Polygon",
           "properties": {
             "name": "Democratic Republic of the Congo",
-            "Alpha-2": "CD"
+            "Alpha_2": "CD"
           },
           "id": "COD"
         },
         {
           "arcs": [[-12, 226, 227, -218, -147, -224]],
           "type": "Polygon",
-          "properties": { "name": "Republic of the Congo", "Alpha-2": "CG" },
+          "properties": { "name": "Republic of the Congo", "Alpha_2": "CG" },
           "id": "COG"
         },
         {
           "arcs": [[228, 229, 230, 231, 232, -127, 233]],
           "type": "Polygon",
-          "properties": { "name": "Colombia", "Alpha-2": "CO" },
+          "properties": { "name": "Colombia", "Alpha_2": "CO" },
           "id": "COL"
         },
         {
           "arcs": [[234, 235, 236, 237]],
           "type": "Polygon",
-          "properties": { "name": "Costa Rica", "Alpha-2": "CR" },
+          "properties": { "name": "Costa Rica", "Alpha_2": "CR" },
           "id": "CRI"
         },
         {
           "arcs": [[238]],
           "type": "Polygon",
-          "properties": { "name": "Cuba", "Alpha-2": "CU" },
+          "properties": { "name": "Cuba", "Alpha_2": "CU" },
           "id": "CUB"
         },
         {
           "arcs": [[239, 240]],
           "type": "Polygon",
-          "properties": { "name": "Northern Cyprus", "Alpha-2": null },
+          "properties": { "name": "Northern Cyprus", "Alpha_2": null },
           "id": "-99"
         },
         {
           "arcs": [[241, -241]],
           "type": "Polygon",
-          "properties": { "name": "Cyprus", "Alpha-2": "CY" },
+          "properties": { "name": "Cyprus", "Alpha_2": "CY" },
           "id": "CYP"
         },
         {
           "arcs": [[-53, 242, 243, 244]],
           "type": "Polygon",
-          "properties": { "name": "Czech Republic", "Alpha-2": "CZ" },
+          "properties": { "name": "Czech Republic", "Alpha_2": "CZ" },
           "id": "CZE"
         },
         {
           "arcs": [[245, 246, -243, -52, -184, 247, 248, -65, 249, 250, 251]],
           "type": "Polygon",
-          "properties": { "name": "Germany", "Alpha-2": "DE" },
+          "properties": { "name": "Germany", "Alpha_2": "DE" },
           "id": "DEU"
         },
         {
           "arcs": [[252, 253, 254, 255]],
           "type": "Polygon",
-          "properties": { "name": "Djibouti", "Alpha-2": "DJ" },
+          "properties": { "name": "Djibouti", "Alpha_2": "DJ" },
           "id": "DJI"
         },
         {
           "arcs": [[[256]], [[-252, 257]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Denmark", "Alpha-2": "DK" },
+          "properties": { "name": "Denmark", "Alpha_2": "DK" },
           "id": "DNK"
         },
         {
           "arcs": [[258, 259]],
           "type": "Polygon",
-          "properties": { "name": "Dominican Republic", "Alpha-2": "DO" },
+          "properties": { "name": "Dominican Republic", "Alpha_2": "DO" },
           "id": "DOM"
         },
         {
           "arcs": [[260, 261, 262, 263, 264, 265, 266, 267]],
           "type": "Polygon",
-          "properties": { "name": "Algeria", "Alpha-2": "DZ" },
+          "properties": { "name": "Algeria", "Alpha_2": "DZ" },
           "id": "DZA"
         },
         {
           "arcs": [[268, -229, 269]],
           "type": "Polygon",
-          "properties": { "name": "Ecuador", "Alpha-2": "EC" },
+          "properties": { "name": "Ecuador", "Alpha_2": "EC" },
           "id": "ECU"
         },
         {
           "arcs": [[270, 271, 272, 273, 274]],
           "type": "Polygon",
-          "properties": { "name": "Egypt", "Alpha-2": "EG" },
+          "properties": { "name": "Egypt", "Alpha_2": "EG" },
           "id": "EGY"
         },
         {
           "arcs": [[275, 276, 277, -256]],
           "type": "Polygon",
-          "properties": { "name": "Eritrea", "Alpha-2": "ER" },
+          "properties": { "name": "Eritrea", "Alpha_2": "ER" },
           "id": "ERI"
         },
         {
           "arcs": [[278, 279, 280, 281]],
           "type": "Polygon",
-          "properties": { "name": "Spain", "Alpha-2": "ES" },
+          "properties": { "name": "Spain", "Alpha_2": "ES" },
           "id": "ESP"
         },
         {
           "arcs": [[282, 283, 284]],
           "type": "Polygon",
-          "properties": { "name": "Estonia", "Alpha-2": "EE" },
+          "properties": { "name": "Estonia", "Alpha_2": "EE" },
           "id": "EST"
         },
         {
           "arcs": [[-276, -255, 285, 286, 287, 288, 289, 290]],
           "type": "Polygon",
-          "properties": { "name": "Ethiopia", "Alpha-2": "ET" },
+          "properties": { "name": "Ethiopia", "Alpha_2": "ET" },
           "id": "ETH"
         },
         {
           "arcs": [[291, 292, 293, 294]],
           "type": "Polygon",
-          "properties": { "name": "Finland", "Alpha-2": "FI" },
+          "properties": { "name": "Finland", "Alpha_2": "FI" },
           "id": "FIN"
         },
         {
           "arcs": [[[295]], [[296]], [[297]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Fiji", "Alpha-2": "FJ" },
+          "properties": { "name": "Fiji", "Alpha_2": "FJ" },
           "id": "FJI"
         },
         {
           "arcs": [[298]],
           "type": "Polygon",
-          "properties": { "name": "Falkland Islands", "Alpha-2": "FK" },
+          "properties": { "name": "Falkland Islands", "Alpha_2": "FK" },
           "id": "FLK"
         },
         {
           "arcs": [[[299]], [[300, -248, -183, 301, 302, -280, 303, -67]]],
           "type": "MultiPolygon",
-          "properties": { "name": "France", "Alpha-2": "FR" },
+          "properties": { "name": "France", "Alpha_2": "FR" },
           "id": "FRA"
         },
         {
           "arcs": [[304, 305, -212, -228]],
           "type": "Polygon",
-          "properties": { "name": "Gabon", "Alpha-2": "GA" },
+          "properties": { "name": "Gabon", "Alpha_2": "GA" },
           "id": "GAB"
         },
         {
           "arcs": [[[306, 307]], [[308, 309]]],
           "type": "MultiPolygon",
-          "properties": { "name": "United Kingdom", "Alpha-2": "GB" },
+          "properties": { "name": "United Kingdom", "Alpha_2": "GB" },
           "id": "GBR"
         },
         {
           "arcs": [[310, 311, -59, -32, 312]],
           "type": "Polygon",
-          "properties": { "name": "Georgia", "Alpha-2": "GE" },
+          "properties": { "name": "Georgia", "Alpha_2": "GE" },
           "id": "GEO"
         },
         {
           "arcs": [[313, -211, -79, 314]],
           "type": "Polygon",
-          "properties": { "name": "Ghana", "Alpha-2": "GH" },
+          "properties": { "name": "Ghana", "Alpha_2": "GH" },
           "id": "GHA"
         },
         {
           "arcs": [[315, 316, 317, 318, 319, 320, -209]],
           "type": "Polygon",
-          "properties": { "name": "Guinea", "Alpha-2": "GN" },
+          "properties": { "name": "Guinea", "Alpha_2": "GN" },
           "id": "GIN"
         },
         {
           "arcs": [[321, 322]],
           "type": "Polygon",
-          "properties": { "name": "Gambia", "Alpha-2": "GM" },
+          "properties": { "name": "Gambia", "Alpha_2": "GM" },
           "id": "GMB"
         },
         {
           "arcs": [[323, 324, -319]],
           "type": "Polygon",
-          "properties": { "name": "Guinea Bissau", "Alpha-2": "GW" },
+          "properties": { "name": "Guinea Bissau", "Alpha_2": "GW" },
           "id": "GNB"
         },
         {
           "arcs": [[325, -213, -306]],
           "type": "Polygon",
-          "properties": { "name": "Equatorial Guinea", "Alpha-2": "GQ" },
+          "properties": { "name": "Equatorial Guinea", "Alpha_2": "GQ" },
           "id": "GNQ"
         },
         {
           "arcs": [[[326]], [[327, -14, 328, -86, 329]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Greece", "Alpha-2": "GR" },
+          "properties": { "name": "Greece", "Alpha_2": "GR" },
           "id": "GRC"
         },
         {
           "arcs": [[330]],
           "type": "Polygon",
-          "properties": { "name": "Greenland", "Alpha-2": "GL" },
+          "properties": { "name": "Greenland", "Alpha_2": "GL" },
           "id": "GRL"
         },
         {
           "arcs": [[331, 332, -102, 333, 334, 335]],
           "type": "Polygon",
-          "properties": { "name": "Guatemala", "Alpha-2": "GT" },
+          "properties": { "name": "Guatemala", "Alpha_2": "GT" },
           "id": "GTM"
         },
         {
           "arcs": [[336, 337, 338, -131]],
           "type": "Polygon",
-          "properties": { "name": "French Guiana", "Alpha-2": "GF" },
+          "properties": { "name": "French Guiana", "Alpha_2": "GF" },
           "id": "GUF"
         },
         {
           "arcs": [[339, 340, -129, 341]],
           "type": "Polygon",
-          "properties": { "name": "Guyana", "Alpha-2": "GY" },
+          "properties": { "name": "Guyana", "Alpha_2": "GY" },
           "id": "GUY"
         },
         {
           "arcs": [[342, 343, -335, 344, 345]],
           "type": "Polygon",
-          "properties": { "name": "Honduras", "Alpha-2": "HN" },
+          "properties": { "name": "Honduras", "Alpha_2": "HN" },
           "id": "HND"
         },
         {
           "arcs": [[346, -94, 347, 348, 349, 350]],
           "type": "Polygon",
-          "properties": { "name": "Croatia", "Alpha-2": "HR" },
+          "properties": { "name": "Croatia", "Alpha_2": "HR" },
           "id": "HRV"
         },
         {
           "arcs": [[-260, 351]],
           "type": "Polygon",
-          "properties": { "name": "Haiti", "Alpha-2": "HT" },
+          "properties": { "name": "Haiti", "Alpha_2": "HT" },
           "id": "HTI"
         },
         {
           "arcs": [[-48, 352, 353, 354, 355, -351, 356]],
           "type": "Polygon",
-          "properties": { "name": "Hungary", "Alpha-2": "HU" },
+          "properties": { "name": "Hungary", "Alpha_2": "HU" },
           "id": "HUN"
         },
         {
@@ -10193,325 +10193,325 @@
             [[372]]
           ],
           "type": "MultiPolygon",
-          "properties": { "name": "Indonesia", "Alpha-2": "ID" },
+          "properties": { "name": "Indonesia", "Alpha_2": "ID" },
           "id": "IDN"
         },
         {
           "arcs": [[-199, 373, -197, -136, -196, 374, -82, 375, 376]],
           "type": "Polygon",
-          "properties": { "name": "India", "Alpha-2": "IN" },
+          "properties": { "name": "India", "Alpha_2": "IN" },
           "id": "IND"
         },
         {
           "arcs": [[377, -307]],
           "type": "Polygon",
-          "properties": { "name": "Ireland", "Alpha-2": "IE" },
+          "properties": { "name": "Ireland", "Alpha_2": "IE" },
           "id": "IRL"
         },
         {
           "arcs": [[378, -6, 379, 380, 381, 382, -55, -34, -58, 383]],
           "type": "Polygon",
-          "properties": { "name": "Iran", "Alpha-2": "IR" },
+          "properties": { "name": "Iran", "Alpha_2": "IR" },
           "id": "IRN"
         },
         {
           "arcs": [[-382, 384, 385, 386, 387, 388, 389]],
           "type": "Polygon",
-          "properties": { "name": "Iraq", "Alpha-2": "IQ" },
+          "properties": { "name": "Iraq", "Alpha_2": "IQ" },
           "id": "IRQ"
         },
         {
           "arcs": [[390]],
           "type": "Polygon",
-          "properties": { "name": "Iceland", "Alpha-2": "IS" },
+          "properties": { "name": "Iceland", "Alpha_2": "IS" },
           "id": "ISL"
         },
         {
           "arcs": [[391, 392, 393, -274, 394, 395, 396]],
           "type": "Polygon",
-          "properties": { "name": "Israel", "Alpha-2": "IL" },
+          "properties": { "name": "Israel", "Alpha_2": "IL" },
           "id": "ISR"
         },
         {
           "arcs": [[[397]], [[398]], [[399, 400, -302, -182, -50]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Italy", "Alpha-2": "IT" },
+          "properties": { "name": "Italy", "Alpha_2": "IT" },
           "id": "ITA"
         },
         {
           "arcs": [[401]],
           "type": "Polygon",
-          "properties": { "name": "Jamaica", "Alpha-2": "JM" },
+          "properties": { "name": "Jamaica", "Alpha_2": "JM" },
           "id": "JAM"
         },
         {
           "arcs": [[-392, 402, -388, 403, 404, -394, 405]],
           "type": "Polygon",
-          "properties": { "name": "Jordan", "Alpha-2": "JO" },
+          "properties": { "name": "Jordan", "Alpha_2": "JO" },
           "id": "JOR"
         },
         {
           "arcs": [[[406]], [[407]], [[408]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Japan", "Alpha-2": "JP" },
+          "properties": { "name": "Japan", "Alpha_2": "JP" },
           "id": "JPN"
         },
         {
           "arcs": [[409, 410, 411, 412, -203, 413]],
           "type": "Polygon",
-          "properties": { "name": "Kazakhstan", "Alpha-2": "KZ" },
+          "properties": { "name": "Kazakhstan", "Alpha_2": "KZ" },
           "id": "KAZ"
         },
         {
           "arcs": [[414, 415, 416, 417, -288, 418]],
           "type": "Polygon",
-          "properties": { "name": "Kenya", "Alpha-2": "KE" },
+          "properties": { "name": "Kenya", "Alpha_2": "KE" },
           "id": "KEN"
         },
         {
           "arcs": [[-414, -202, 419, 420]],
           "type": "Polygon",
-          "properties": { "name": "Kyrgyzstan", "Alpha-2": "KG" },
+          "properties": { "name": "Kyrgyzstan", "Alpha_2": "KG" },
           "id": "KGZ"
         },
         {
           "arcs": [[421, 422, 423, 424]],
           "type": "Polygon",
-          "properties": { "name": "Cambodia", "Alpha-2": "KH" },
+          "properties": { "name": "Cambodia", "Alpha_2": "KH" },
           "id": "KHM"
         },
         {
           "arcs": [[425, 426]],
           "type": "Polygon",
-          "properties": { "name": "South Korea", "Alpha-2": "KR" },
+          "properties": { "name": "South Korea", "Alpha_2": "KR" },
           "id": "KOR"
         },
         {
           "arcs": [[-17, 427, 428, 429]],
           "type": "Polygon",
-          "properties": { "name": "Kosovo", "Alpha-2": null },
+          "properties": { "name": "Kosovo", "Alpha_2": null },
           "id": "CS-KM"
         },
         {
           "arcs": [[430, 431, -386]],
           "type": "Polygon",
-          "properties": { "name": "Kuwait", "Alpha-2": "KW" },
+          "properties": { "name": "Kuwait", "Alpha_2": "KW" },
           "id": "KWT"
         },
         {
           "arcs": [[432, 433, -194, 434, -423]],
           "type": "Polygon",
-          "properties": { "name": "Laos", "Alpha-2": "LA" },
+          "properties": { "name": "Laos", "Alpha_2": "LA" },
           "id": "LAO"
         },
         {
           "arcs": [[-396, 435, 436]],
           "type": "Polygon",
-          "properties": { "name": "Lebanon", "Alpha-2": "LB" },
+          "properties": { "name": "Lebanon", "Alpha_2": "LB" },
           "id": "LBN"
         },
         {
           "arcs": [[437, 438, -316, -208]],
           "type": "Polygon",
-          "properties": { "name": "Liberia", "Alpha-2": "LR" },
+          "properties": { "name": "Liberia", "Alpha_2": "LR" },
           "id": "LBR"
         },
         {
           "arcs": [[439, -268, 440, 441, -272, 442, 443]],
           "type": "Polygon",
-          "properties": { "name": "Libya", "Alpha-2": "LY" },
+          "properties": { "name": "Libya", "Alpha_2": "LY" },
           "id": "LBY"
         },
         {
           "arcs": [[444]],
           "type": "Polygon",
-          "properties": { "name": "Sri Lanka", "Alpha-2": "LK" },
+          "properties": { "name": "Sri Lanka", "Alpha_2": "LK" },
           "id": "LKA"
         },
         {
           "arcs": [[445]],
           "type": "Polygon",
-          "properties": { "name": "Lesotho", "Alpha-2": "LS" },
+          "properties": { "name": "Lesotho", "Alpha_2": "LS" },
           "id": "LSO"
         },
         {
           "arcs": [[446, 447, 448, -95, 449]],
           "type": "Polygon",
-          "properties": { "name": "Lithuania", "Alpha-2": "LT" },
+          "properties": { "name": "Lithuania", "Alpha_2": "LT" },
           "id": "LTU"
         },
         {
           "arcs": [[-249, -301, -66]],
           "type": "Polygon",
-          "properties": { "name": "Luxembourg", "Alpha-2": "LU" },
+          "properties": { "name": "Luxembourg", "Alpha_2": "LU" },
           "id": "LUX"
         },
         {
           "arcs": [[450, -285, 451, -96, -449]],
           "type": "Polygon",
-          "properties": { "name": "Latvia", "Alpha-2": "LV" },
+          "properties": { "name": "Latvia", "Alpha_2": "LV" },
           "id": "LVA"
         },
         {
           "arcs": [[-265, 452, 453, 454]],
           "type": "Polygon",
-          "properties": { "name": "Morocco", "Alpha-2": "MA" },
+          "properties": { "name": "Morocco", "Alpha_2": "MA" },
           "id": "MAR"
         },
         {
           "arcs": [[455, 456]],
           "type": "Polygon",
-          "properties": { "name": "Moldova", "Alpha-2": "MD" },
+          "properties": { "name": "Moldova", "Alpha_2": "MD" },
           "id": "MDA"
         },
         {
           "arcs": [[457]],
           "type": "Polygon",
-          "properties": { "name": "Madagascar", "Alpha-2": "MG" },
+          "properties": { "name": "Madagascar", "Alpha_2": "MG" },
           "id": "MDG"
         },
         {
           "arcs": [[-100, -333, 458, 459, 460]],
           "type": "Polygon",
-          "properties": { "name": "Mexico", "Alpha-2": "MX" },
+          "properties": { "name": "Mexico", "Alpha_2": "MX" },
           "id": "MEX"
         },
         {
           "arcs": [[-430, 461, -87, -329, -18]],
           "type": "Polygon",
-          "properties": { "name": "Macedonia", "Alpha-2": "MK" },
+          "properties": { "name": "Macedonia", "Alpha_2": "MK" },
           "id": "MKD"
         },
         {
           "arcs": [[462, -262, 463, -76, -210, -321, 464]],
           "type": "Polygon",
-          "properties": { "name": "Mali", "Alpha-2": "ML" },
+          "properties": { "name": "Mali", "Alpha_2": "ML" },
           "id": "MLI"
         },
         {
           "arcs": [[[465]], [[466]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Malta", "Alpha-2": "MT" },
+          "properties": { "name": "Malta", "Alpha_2": "MT" },
           "id": "MLT"
         },
         {
           "arcs": [[467, -80, -375, -195, -434, 468]],
           "type": "Polygon",
-          "properties": { "name": "Myanmar", "Alpha-2": "MM" },
+          "properties": { "name": "Myanmar", "Alpha_2": "MM" },
           "id": "MMR"
         },
         {
           "arcs": [[-16, 469, -348, -93, 470, -428]],
           "type": "Polygon",
-          "properties": { "name": "Montenegro", "Alpha-2": "ME" },
+          "properties": { "name": "Montenegro", "Alpha_2": "ME" },
           "id": "MNE"
         },
         {
           "arcs": [[471, -205]],
           "type": "Polygon",
-          "properties": { "name": "Mongolia", "Alpha-2": "MN" },
+          "properties": { "name": "Mongolia", "Alpha_2": "MN" },
           "id": "MNG"
         },
         {
           "arcs": [[472, 473, 474, 475, 476, 477, 478, 479]],
           "type": "Polygon",
-          "properties": { "name": "Mozambique", "Alpha-2": "MZ" },
+          "properties": { "name": "Mozambique", "Alpha_2": "MZ" },
           "id": "MOZ"
         },
         {
           "arcs": [[480, 481, 482, -263, -463]],
           "type": "Polygon",
-          "properties": { "name": "Mauritania", "Alpha-2": "MR" },
+          "properties": { "name": "Mauritania", "Alpha_2": "MR" },
           "id": "MRT"
         },
         {
           "arcs": [[-480, 483, 484]],
           "type": "Polygon",
-          "properties": { "name": "Malawi", "Alpha-2": "MW" },
+          "properties": { "name": "Malawi", "Alpha_2": "MW" },
           "id": "MWI"
         },
         {
           "arcs": [[[485, 486]], [[-371, 487, -135, 488]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Malaysia", "Alpha-2": "MY" },
+          "properties": { "name": "Malaysia", "Alpha_2": "MY" },
           "id": "MYS"
         },
         {
           "arcs": [[489, -8, 490, -139, 491]],
           "type": "Polygon",
-          "properties": { "name": "Namibia", "Alpha-2": "NA" },
+          "properties": { "name": "Namibia", "Alpha_2": "NA" },
           "id": "NAM"
         },
         {
           "arcs": [[492]],
           "type": "Polygon",
-          "properties": { "name": "New Caledonia", "Alpha-2": "NC" },
+          "properties": { "name": "New Caledonia", "Alpha_2": "NC" },
           "id": "NCL"
         },
         {
           "arcs": [[-77, -464, -261, -440, 493, -216, 494, -73]],
           "type": "Polygon",
-          "properties": { "name": "Niger", "Alpha-2": "NE" },
+          "properties": { "name": "Niger", "Alpha_2": "NE" },
           "id": "NER"
         },
         {
           "arcs": [[495, -74, -495, -215]],
           "type": "Polygon",
-          "properties": { "name": "Nigeria", "Alpha-2": "NG" },
+          "properties": { "name": "Nigeria", "Alpha_2": "NG" },
           "id": "NGA"
         },
         {
           "arcs": [[496, -346, 497, -236]],
           "type": "Polygon",
-          "properties": { "name": "Nicaragua", "Alpha-2": "NI" },
+          "properties": { "name": "Nicaragua", "Alpha_2": "NI" },
           "id": "NIC"
         },
         {
           "arcs": [[-250, -64, -69, 498]],
           "type": "Polygon",
-          "properties": { "name": "Netherlands", "Alpha-2": "NL" },
+          "properties": { "name": "Netherlands", "Alpha_2": "NL" },
           "id": "NLD"
         },
         {
           "arcs": [[[-295, 499, 500, 501]], [[502]], [[503]], [[504]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Norway", "Alpha-2": "NO" },
+          "properties": { "name": "Norway", "Alpha_2": "NO" },
           "id": "NOR"
         },
         {
           "arcs": [[-374, -198]],
           "type": "Polygon",
-          "properties": { "name": "Nepal", "Alpha-2": "NP" },
+          "properties": { "name": "Nepal", "Alpha_2": "NP" },
           "id": "NPL"
         },
         {
           "arcs": [[[505]], [[506]]],
           "type": "MultiPolygon",
-          "properties": { "name": "New Zealand", "Alpha-2": "NZ" },
+          "properties": { "name": "New Zealand", "Alpha_2": "NZ" },
           "id": "NZL"
         },
         {
           "arcs": [[[507, 508, -22, 509]], [[-20, 510]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Oman", "Alpha-2": "OM" },
+          "properties": { "name": "Oman", "Alpha_2": "OM" },
           "id": "OMN"
         },
         {
           "arcs": [[-200, -377, 511, -380, -5]],
           "type": "Polygon",
-          "properties": { "name": "Pakistan", "Alpha-2": "PK" },
+          "properties": { "name": "Pakistan", "Alpha_2": "PK" },
           "id": "PAK"
         },
         {
           "arcs": [[512, -238, 513, -231]],
           "type": "Polygon",
-          "properties": { "name": "Panama", "Alpha-2": "PA" },
+          "properties": { "name": "Panama", "Alpha_2": "PA" },
           "id": "PAN"
         },
         {
           "arcs": [[-188, 514, -270, -234, -126, -122]],
           "type": "Polygon",
-          "properties": { "name": "Peru", "Alpha-2": "PE" },
+          "properties": { "name": "Peru", "Alpha_2": "PE" },
           "id": "PER"
         },
         {
@@ -10525,55 +10525,55 @@
             [[521]]
           ],
           "type": "MultiPolygon",
-          "properties": { "name": "Philippines", "Alpha-2": "PH" },
+          "properties": { "name": "Philippines", "Alpha_2": "PH" },
           "id": "PHL"
         },
         {
           "arcs": [[[522]], [[523]], [[-367, 524]], [[525]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Papua New Guinea", "Alpha-2": "PG" },
+          "properties": { "name": "Papua New Guinea", "Alpha_2": "PG" },
           "id": "PNG"
         },
         {
           "arcs": [[-247, 526, 527, -450, -99, 528, 529, -244]],
           "type": "Polygon",
-          "properties": { "name": "Poland", "Alpha-2": "PL" },
+          "properties": { "name": "Poland", "Alpha_2": "PL" },
           "id": "POL"
         },
         {
           "arcs": [[530]],
           "type": "Polygon",
-          "properties": { "name": "Puerto Rico", "Alpha-2": "PR" },
+          "properties": { "name": "Puerto Rico", "Alpha_2": "PR" },
           "id": "PRI"
         },
         {
           "arcs": [[531, 532, -427, 533, -191]],
           "type": "Polygon",
-          "properties": { "name": "North Korea", "Alpha-2": "KP" },
+          "properties": { "name": "North Korea", "Alpha_2": "KP" },
           "id": "PRK"
         },
         {
           "arcs": [[-282, 534]],
           "type": "Polygon",
-          "properties": { "name": "Portugal", "Alpha-2": "PT" },
+          "properties": { "name": "Portugal", "Alpha_2": "PT" },
           "id": "PRT"
         },
         {
           "arcs": [[-124, -125, -26]],
           "type": "Polygon",
-          "properties": { "name": "Paraguay", "Alpha-2": "PY" },
+          "properties": { "name": "Paraguay", "Alpha_2": "PY" },
           "id": "PRY"
         },
         {
           "arcs": [[535, 536]],
           "type": "Polygon",
-          "properties": { "name": "Qatar", "Alpha-2": "QA" },
+          "properties": { "name": "Qatar", "Alpha_2": "QA" },
           "id": "QAT"
         },
         {
           "arcs": [[537, -457, 538, 539, -83, 540, -355]],
           "type": "Polygon",
-          "properties": { "name": "Romania", "Alpha-2": "RO" },
+          "properties": { "name": "Romania", "Alpha_2": "RO" },
           "id": "ROU"
         },
         {
@@ -10598,175 +10598,175 @@
             [[557]]
           ],
           "type": "MultiPolygon",
-          "properties": { "name": "Russia", "Alpha-2": "RU" },
+          "properties": { "name": "Russia", "Alpha_2": "RU" },
           "id": "RUS"
         },
         {
           "arcs": [[558, -62, -220, 559]],
           "type": "Polygon",
-          "properties": { "name": "Rwanda", "Alpha-2": "RW" },
+          "properties": { "name": "Rwanda", "Alpha_2": "RW" },
           "id": "RWA"
         },
         {
           "arcs": [[-453, -264, -483, 560, -454]],
           "type": "Polygon",
-          "properties": { "name": "Western Sahara", "Alpha-2": "EH" },
+          "properties": { "name": "Western Sahara", "Alpha_2": "EH" },
           "id": "ESH"
         },
         {
           "arcs": [[561, -404, -387, -432, 562, -537, 563, -23, -509, 564]],
           "type": "Polygon",
-          "properties": { "name": "Saudi Arabia", "Alpha-2": "SA" },
+          "properties": { "name": "Saudi Arabia", "Alpha_2": "SA" },
           "id": "SAU"
         },
         {
           "arcs": [[565, 566, -143, 567, -443, -271, 568, -277, -291, 569]],
           "type": "Polygon",
-          "properties": { "name": "Sudan", "Alpha-2": "SD" },
+          "properties": { "name": "Sudan", "Alpha_2": "SD" },
           "id": "SDN"
         },
         {
           "arcs": [[570, -289, -418, 571, -225, -145, 572, -566]],
           "type": "Polygon",
-          "properties": { "name": "South Sudan", "Alpha-2": null },
+          "properties": { "name": "South Sudan", "Alpha_2": null },
           "id": "SSD"
         },
         {
           "arcs": [[573, -481, -465, -320, -325, 574, -323]],
           "type": "Polygon",
-          "properties": { "name": "Senegal", "Alpha-2": "SN" },
+          "properties": { "name": "Senegal", "Alpha_2": "SN" },
           "id": "SEN"
         },
         {
           "arcs": [[[575]], [[576]], [[577]], [[578]], [[579]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Solomon Islands", "Alpha-2": "SB" },
+          "properties": { "name": "Solomon Islands", "Alpha_2": "SB" },
           "id": "SLB"
         },
         {
           "arcs": [[580, -317, -439]],
           "type": "Polygon",
-          "properties": { "name": "Sierra Leone", "Alpha-2": "SL" },
+          "properties": { "name": "Sierra Leone", "Alpha_2": "SL" },
           "id": "SLE"
         },
         {
           "arcs": [[581, -336, -344]],
           "type": "Polygon",
-          "properties": { "name": "El Salvador", "Alpha-2": "SV" },
+          "properties": { "name": "El Salvador", "Alpha_2": "SV" },
           "id": "SLV"
         },
         {
           "arcs": [[-286, -254, 582, 583]],
           "type": "Polygon",
-          "properties": { "name": "Somaliland", "Alpha-2": null },
+          "properties": { "name": "Somaliland", "Alpha_2": null },
           "id": "-99"
         },
         {
           "arcs": [[-419, -287, -584, 584]],
           "type": "Polygon",
-          "properties": { "name": "Somalia", "Alpha-2": "SO" },
+          "properties": { "name": "Somalia", "Alpha_2": "SO" },
           "id": "SOM"
         },
         {
           "arcs": [[-88, -462, -429, -471, -92, -347, -356, -541]],
           "type": "Polygon",
-          "properties": { "name": "Republic of Serbia", "Alpha-2": "RS" },
+          "properties": { "name": "Republic of Serbia", "Alpha_2": "RS" },
           "id": "SRB"
         },
         {
           "arcs": [[585, -338, 586, -130, -341]],
           "type": "Polygon",
-          "properties": { "name": "Suriname", "Alpha-2": "SR" },
+          "properties": { "name": "Suriname", "Alpha_2": "SR" },
           "id": "SUR"
         },
         {
           "arcs": [[-530, 587, -353, -54, -245]],
           "type": "Polygon",
-          "properties": { "name": "Slovakia", "Alpha-2": "SK" },
+          "properties": { "name": "Slovakia", "Alpha_2": "SK" },
           "id": "SVK"
         },
         {
           "arcs": [[-49, -357, -350, 588, -400]],
           "type": "Polygon",
-          "properties": { "name": "Slovenia", "Alpha-2": "SI" },
+          "properties": { "name": "Slovenia", "Alpha_2": "SI" },
           "id": "SVN"
         },
         {
           "arcs": [[-500, -294, 589], [590], [591], [592]],
           "type": "Polygon",
-          "properties": { "name": "Sweden", "Alpha-2": "SE" },
+          "properties": { "name": "Sweden", "Alpha_2": "SE" },
           "id": "SWE"
         },
         {
           "arcs": [[593, -476]],
           "type": "Polygon",
-          "properties": { "name": "Swaziland", "Alpha-2": "SZ" },
+          "properties": { "name": "Swaziland", "Alpha_2": "SZ" },
           "id": "SWZ"
         },
         {
           "arcs": [[-403, -397, -437, 594, 595, -389]],
           "type": "Polygon",
-          "properties": { "name": "Syria", "Alpha-2": "SY" },
+          "properties": { "name": "Syria", "Alpha_2": "SY" },
           "id": "SYR"
         },
         {
           "arcs": [[-494, -444, -568, -142, -217]],
           "type": "Polygon",
-          "properties": { "name": "Chad", "Alpha-2": "TD" },
+          "properties": { "name": "Chad", "Alpha_2": "TD" },
           "id": "TCD"
         },
         {
           "arcs": [[596, -315, -78, -71]],
           "type": "Polygon",
-          "properties": { "name": "Togo", "Alpha-2": "TG" },
+          "properties": { "name": "Togo", "Alpha_2": "TG" },
           "id": "TGO"
         },
         {
           "arcs": [[597, -487, 598, -469, -433, -422]],
           "type": "Polygon",
-          "properties": { "name": "Thailand", "Alpha-2": "TH" },
+          "properties": { "name": "Thailand", "Alpha_2": "TH" },
           "id": "THA"
         },
         {
           "arcs": [[-420, -201, -3, 599]],
           "type": "Polygon",
-          "properties": { "name": "Tajikistan", "Alpha-2": "TJ" },
+          "properties": { "name": "Tajikistan", "Alpha_2": "TJ" },
           "id": "TJK"
         },
         {
           "arcs": [[-379, 600, -411, 601, -1]],
           "type": "Polygon",
-          "properties": { "name": "Turkmenistan", "Alpha-2": "TM" },
+          "properties": { "name": "Turkmenistan", "Alpha_2": "TM" },
           "id": "TKM"
         },
         {
           "arcs": [[602, -359]],
           "type": "Polygon",
-          "properties": { "name": "East Timor", "Alpha-2": "TL" },
+          "properties": { "name": "East Timor", "Alpha_2": "TL" },
           "id": "TLS"
         },
         {
           "arcs": [[603]],
           "type": "Polygon",
-          "properties": { "name": "Trinidad and Tobago", "Alpha-2": "TT" },
+          "properties": { "name": "Trinidad and Tobago", "Alpha_2": "TT" },
           "id": "TTO"
         },
         {
           "arcs": [[-267, 604, -441]],
           "type": "Polygon",
-          "properties": { "name": "Tunisia", "Alpha-2": "TN" },
+          "properties": { "name": "Tunisia", "Alpha_2": "TN" },
           "id": "TUN"
         },
         {
           "arcs": [[[-313, -36, -383, -390, -596, 605]], [[-330, -85, 606]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Turkey", "Alpha-2": "TR" },
+          "properties": { "name": "Turkey", "Alpha_2": "TR" },
           "id": "TUR"
         },
         {
           "arcs": [[607]],
           "type": "Polygon",
-          "properties": { "name": "Taiwan", "Alpha-2": "TW" },
+          "properties": { "name": "Taiwan", "Alpha_2": "TW" },
           "id": "TWN"
         },
         {
@@ -10774,26 +10774,26 @@
           "type": "Polygon",
           "properties": {
             "name": "United Republic of Tanzania",
-            "Alpha-2": "TZ"
+            "Alpha_2": "TZ"
           },
           "id": "TZA"
         },
         {
           "arcs": [[-560, -219, -226, -572, -417, -611]],
           "type": "Polygon",
-          "properties": { "name": "Uganda", "Alpha-2": "UG" },
+          "properties": { "name": "Uganda", "Alpha_2": "UG" },
           "id": "UGA"
         },
         {
           "arcs": [[-553, 611, -539, -456, -538, -354, -588, -529, -98]],
           "type": "Polygon",
-          "properties": { "name": "Ukraine", "Alpha-2": "UA" },
+          "properties": { "name": "Ukraine", "Alpha_2": "UA" },
           "id": "UKR"
         },
         {
           "arcs": [[-133, 612, -28]],
           "type": "Polygon",
-          "properties": { "name": "Uruguay", "Alpha-2": "UY" },
+          "properties": { "name": "Uruguay", "Alpha_2": "UY" },
           "id": "URY"
         },
         {
@@ -10810,61 +10810,61 @@
             [[-161, 623]]
           ],
           "type": "MultiPolygon",
-          "properties": { "name": "United States", "Alpha-2": "US" },
+          "properties": { "name": "United States", "Alpha_2": "US" },
           "id": "USA"
         },
         {
           "arcs": [[-602, -410, -421, -600, -2]],
           "type": "Polygon",
-          "properties": { "name": "Uzbekistan", "Alpha-2": "UZ" },
+          "properties": { "name": "Uzbekistan", "Alpha_2": "UZ" },
           "id": "UZB"
         },
         {
           "arcs": [[624, -342, -128, -233]],
           "type": "Polygon",
-          "properties": { "name": "Venezuela", "Alpha-2": "VE" },
+          "properties": { "name": "Venezuela", "Alpha_2": "VE" },
           "id": "VEN"
         },
         {
           "arcs": [[625, -424, -435, -193]],
           "type": "Polygon",
-          "properties": { "name": "Vietnam", "Alpha-2": "VN" },
+          "properties": { "name": "Vietnam", "Alpha_2": "VN" },
           "id": "VNM"
         },
         {
           "arcs": [[[626]], [[627]]],
           "type": "MultiPolygon",
-          "properties": { "name": "Vanuatu", "Alpha-2": "VU" },
+          "properties": { "name": "Vanuatu", "Alpha_2": "VU" },
           "id": "VUT"
         },
         {
           "arcs": [[-406, -393]],
           "type": "Polygon",
-          "properties": { "name": "West Bank", "Alpha-2": "PS" },
+          "properties": { "name": "West Bank", "Alpha_2": "PS" },
           "id": "PSE"
         },
         {
           "arcs": [[628, -565, -508]],
           "type": "Polygon",
-          "properties": { "name": "Yemen", "Alpha-2": "YE" },
+          "properties": { "name": "Yemen", "Alpha_2": "YE" },
           "id": "YEM"
         },
         {
           "arcs": [[-492, -138, 629, -477, -594, -475, 630, 631], [-446]],
           "type": "Polygon",
-          "properties": { "name": "South Africa", "Alpha-2": "ZA" },
+          "properties": { "name": "South Africa", "Alpha_2": "ZA" },
           "id": "ZAF"
         },
         {
           "arcs": [[-484, -479, 632, -140, -491, -7, -222, -610]],
           "type": "Polygon",
-          "properties": { "name": "Zambia", "Alpha-2": "ZM" },
+          "properties": { "name": "Zambia", "Alpha_2": "ZM" },
           "id": "ZMB"
         },
         {
           "arcs": [[-630, -141, -633, -478]],
           "type": "Polygon",
-          "properties": { "name": "Zimbabwe", "Alpha-2": "ZW" },
+          "properties": { "name": "Zimbabwe", "Alpha_2": "ZW" },
           "id": "ZWE"
         }
       ]
@@ -10872,262 +10872,262 @@
     "countries2": {
       "type": "GeometryCollection",
       "geometries": [
-        { "type": null, "properties": { "Alpha-2": "AF", "Alpha-3": "AFG" } },
-        { "type": null, "properties": { "Alpha-2": "AL", "Alpha-3": "ALB" } },
-        { "type": null, "properties": { "Alpha-2": "DZ", "Alpha-3": "DZA" } },
-        { "type": null, "properties": { "Alpha-2": "AS", "Alpha-3": "ASM" } },
-        { "type": null, "properties": { "Alpha-2": "AD", "Alpha-3": "AND" } },
-        { "type": null, "properties": { "Alpha-2": "AO", "Alpha-3": "AGO" } },
-        { "type": null, "properties": { "Alpha-2": "AI", "Alpha-3": "AIA" } },
-        { "type": null, "properties": { "Alpha-2": "AQ", "Alpha-3": "ATA" } },
-        { "type": null, "properties": { "Alpha-2": "AG", "Alpha-3": "ATG" } },
-        { "type": null, "properties": { "Alpha-2": "AR", "Alpha-3": "ARG" } },
-        { "type": null, "properties": { "Alpha-2": "AM", "Alpha-3": "ARM" } },
-        { "type": null, "properties": { "Alpha-2": "AW", "Alpha-3": "ABW" } },
-        { "type": null, "properties": { "Alpha-2": "AU", "Alpha-3": "AUS" } },
-        { "type": null, "properties": { "Alpha-2": "AT", "Alpha-3": "AUT" } },
-        { "type": null, "properties": { "Alpha-2": "AZ", "Alpha-3": "AZE" } },
-        { "type": null, "properties": { "Alpha-2": "BS", "Alpha-3": "BHS" } },
-        { "type": null, "properties": { "Alpha-2": "BH", "Alpha-3": "BHR" } },
-        { "type": null, "properties": { "Alpha-2": "BD", "Alpha-3": "BGD" } },
-        { "type": null, "properties": { "Alpha-2": "BB", "Alpha-3": "BRB" } },
-        { "type": null, "properties": { "Alpha-2": "BY", "Alpha-3": "BLR" } },
-        { "type": null, "properties": { "Alpha-2": "BE", "Alpha-3": "BEL" } },
-        { "type": null, "properties": { "Alpha-2": "BZ", "Alpha-3": "BLZ" } },
-        { "type": null, "properties": { "Alpha-2": "BJ", "Alpha-3": "BEN" } },
-        { "type": null, "properties": { "Alpha-2": "BM", "Alpha-3": "BMU" } },
-        { "type": null, "properties": { "Alpha-2": "BT", "Alpha-3": "BTN" } },
-        { "type": null, "properties": { "Alpha-2": "BO", "Alpha-3": "BOL" } },
-        { "type": null, "properties": { "Alpha-2": "BO", "Alpha-3": "BOL" } },
-        { "type": null, "properties": { "Alpha-2": "BA", "Alpha-3": "BIH" } },
-        { "type": null, "properties": { "Alpha-2": "BW", "Alpha-3": "BWA" } },
-        { "type": null, "properties": { "Alpha-2": "BV", "Alpha-3": "BVT" } },
-        { "type": null, "properties": { "Alpha-2": "BR", "Alpha-3": "BRA" } },
-        { "type": null, "properties": { "Alpha-2": "IO", "Alpha-3": "IOT" } },
-        { "type": null, "properties": { "Alpha-2": "BN", "Alpha-3": "BRN" } },
-        { "type": null, "properties": { "Alpha-2": "BN", "Alpha-3": "BRN" } },
-        { "type": null, "properties": { "Alpha-2": "BG", "Alpha-3": "BGR" } },
-        { "type": null, "properties": { "Alpha-2": "BF", "Alpha-3": "BFA" } },
-        { "type": null, "properties": { "Alpha-2": "BI", "Alpha-3": "BDI" } },
-        { "type": null, "properties": { "Alpha-2": "KH", "Alpha-3": "KHM" } },
-        { "type": null, "properties": { "Alpha-2": "CM", "Alpha-3": "CMR" } },
-        { "type": null, "properties": { "Alpha-2": "CA", "Alpha-3": "CAN" } },
-        { "type": null, "properties": { "Alpha-2": "CV", "Alpha-3": "CPV" } },
-        { "type": null, "properties": { "Alpha-2": "KY", "Alpha-3": "CYM" } },
-        { "type": null, "properties": { "Alpha-2": "CF", "Alpha-3": "CAF" } },
-        { "type": null, "properties": { "Alpha-2": "TD", "Alpha-3": "TCD" } },
-        { "type": null, "properties": { "Alpha-2": "CL", "Alpha-3": "CHL" } },
-        { "type": null, "properties": { "Alpha-2": "CN", "Alpha-3": "CHN" } },
-        { "type": null, "properties": { "Alpha-2": "CX", "Alpha-3": "CXR" } },
-        { "type": null, "properties": { "Alpha-2": "CC", "Alpha-3": "CCK" } },
-        { "type": null, "properties": { "Alpha-2": "CO", "Alpha-3": "COL" } },
-        { "type": null, "properties": { "Alpha-2": "KM", "Alpha-3": "COM" } },
-        { "type": null, "properties": { "Alpha-2": "CG", "Alpha-3": "COG" } },
-        { "type": null, "properties": { "Alpha-2": "CD", "Alpha-3": "COD" } },
-        { "type": null, "properties": { "Alpha-2": "CK", "Alpha-3": "COK" } },
-        { "type": null, "properties": { "Alpha-2": "CR", "Alpha-3": "CRI" } },
-        { "type": null, "properties": { "Alpha-2": "CI", "Alpha-3": "CIV" } },
-        { "type": null, "properties": { "Alpha-2": "CI", "Alpha-3": "CIV" } },
-        { "type": null, "properties": { "Alpha-2": "HR", "Alpha-3": "HRV" } },
-        { "type": null, "properties": { "Alpha-2": "CU", "Alpha-3": "CUB" } },
-        { "type": null, "properties": { "Alpha-2": "CY", "Alpha-3": "CYP" } },
-        { "type": null, "properties": { "Alpha-2": "CZ", "Alpha-3": "CZE" } },
-        { "type": null, "properties": { "Alpha-2": "DK", "Alpha-3": "DNK" } },
-        { "type": null, "properties": { "Alpha-2": "DJ", "Alpha-3": "DJI" } },
-        { "type": null, "properties": { "Alpha-2": "DM", "Alpha-3": "DMA" } },
-        { "type": null, "properties": { "Alpha-2": "DO", "Alpha-3": "DOM" } },
-        { "type": null, "properties": { "Alpha-2": "EC", "Alpha-3": "ECU" } },
-        { "type": null, "properties": { "Alpha-2": "EG", "Alpha-3": "EGY" } },
-        { "type": null, "properties": { "Alpha-2": "SV", "Alpha-3": "SLV" } },
-        { "type": null, "properties": { "Alpha-2": "GQ", "Alpha-3": "GNQ" } },
-        { "type": null, "properties": { "Alpha-2": "ER", "Alpha-3": "ERI" } },
-        { "type": null, "properties": { "Alpha-2": "EE", "Alpha-3": "EST" } },
-        { "type": null, "properties": { "Alpha-2": "ET", "Alpha-3": "ETH" } },
-        { "type": null, "properties": { "Alpha-2": "FK", "Alpha-3": "FLK" } },
-        { "type": null, "properties": { "Alpha-2": "FO", "Alpha-3": "FRO" } },
-        { "type": null, "properties": { "Alpha-2": "FJ", "Alpha-3": "FJI" } },
-        { "type": null, "properties": { "Alpha-2": "FI", "Alpha-3": "FIN" } },
-        { "type": null, "properties": { "Alpha-2": "FR", "Alpha-3": "FRA" } },
-        { "type": null, "properties": { "Alpha-2": "GF", "Alpha-3": "GUF" } },
-        { "type": null, "properties": { "Alpha-2": "PF", "Alpha-3": "PYF" } },
-        { "type": null, "properties": { "Alpha-2": "TF", "Alpha-3": "ATF" } },
-        { "type": null, "properties": { "Alpha-2": "GA", "Alpha-3": "GAB" } },
-        { "type": null, "properties": { "Alpha-2": "GM", "Alpha-3": "GMB" } },
-        { "type": null, "properties": { "Alpha-2": "GE", "Alpha-3": "GEO" } },
-        { "type": null, "properties": { "Alpha-2": "DE", "Alpha-3": "DEU" } },
-        { "type": null, "properties": { "Alpha-2": "GH", "Alpha-3": "GHA" } },
-        { "type": null, "properties": { "Alpha-2": "GI", "Alpha-3": "GIB" } },
-        { "type": null, "properties": { "Alpha-2": "GR", "Alpha-3": "GRC" } },
-        { "type": null, "properties": { "Alpha-2": "GL", "Alpha-3": "GRL" } },
-        { "type": null, "properties": { "Alpha-2": "GD", "Alpha-3": "GRD" } },
-        { "type": null, "properties": { "Alpha-2": "GP", "Alpha-3": "GLP" } },
-        { "type": null, "properties": { "Alpha-2": "GU", "Alpha-3": "GUM" } },
-        { "type": null, "properties": { "Alpha-2": "GT", "Alpha-3": "GTM" } },
-        { "type": null, "properties": { "Alpha-2": "GG", "Alpha-3": "GGY" } },
-        { "type": null, "properties": { "Alpha-2": "GN", "Alpha-3": "GIN" } },
-        { "type": null, "properties": { "Alpha-2": "GW", "Alpha-3": "GNB" } },
-        { "type": null, "properties": { "Alpha-2": "GY", "Alpha-3": "GUY" } },
-        { "type": null, "properties": { "Alpha-2": "HT", "Alpha-3": "HTI" } },
-        { "type": null, "properties": { "Alpha-2": "HM", "Alpha-3": "HMD" } },
-        { "type": null, "properties": { "Alpha-2": "VA", "Alpha-3": "VAT" } },
-        { "type": null, "properties": { "Alpha-2": "HN", "Alpha-3": "HND" } },
-        { "type": null, "properties": { "Alpha-2": "HK", "Alpha-3": "HKG" } },
-        { "type": null, "properties": { "Alpha-2": "HU", "Alpha-3": "HUN" } },
-        { "type": null, "properties": { "Alpha-2": "IS", "Alpha-3": "ISL" } },
-        { "type": null, "properties": { "Alpha-2": "IN", "Alpha-3": "IND" } },
-        { "type": null, "properties": { "Alpha-2": "ID", "Alpha-3": "IDN" } },
-        { "type": null, "properties": { "Alpha-2": "IR", "Alpha-3": "IRN" } },
-        { "type": null, "properties": { "Alpha-2": "IQ", "Alpha-3": "IRQ" } },
-        { "type": null, "properties": { "Alpha-2": "IE", "Alpha-3": "IRL" } },
-        { "type": null, "properties": { "Alpha-2": "IM", "Alpha-3": "IMN" } },
-        { "type": null, "properties": { "Alpha-2": "IL", "Alpha-3": "ISR" } },
-        { "type": null, "properties": { "Alpha-2": "IT", "Alpha-3": "ITA" } },
-        { "type": null, "properties": { "Alpha-2": "JM", "Alpha-3": "JAM" } },
-        { "type": null, "properties": { "Alpha-2": "JP", "Alpha-3": "JPN" } },
-        { "type": null, "properties": { "Alpha-2": "JE", "Alpha-3": "JEY" } },
-        { "type": null, "properties": { "Alpha-2": "JO", "Alpha-3": "JOR" } },
-        { "type": null, "properties": { "Alpha-2": "KZ", "Alpha-3": "KAZ" } },
-        { "type": null, "properties": { "Alpha-2": "KE", "Alpha-3": "KEN" } },
-        { "type": null, "properties": { "Alpha-2": "KI", "Alpha-3": "KIR" } },
-        { "type": null, "properties": { "Alpha-2": "KP", "Alpha-3": "PRK" } },
-        { "type": null, "properties": { "Alpha-2": "KR", "Alpha-3": "KOR" } },
-        { "type": null, "properties": { "Alpha-2": "KR", "Alpha-3": "KOR" } },
-        { "type": null, "properties": { "Alpha-2": "KW", "Alpha-3": "KWT" } },
-        { "type": null, "properties": { "Alpha-2": "KG", "Alpha-3": "KGZ" } },
-        { "type": null, "properties": { "Alpha-2": "LA", "Alpha-3": "LAO" } },
-        { "type": null, "properties": { "Alpha-2": "LV", "Alpha-3": "LVA" } },
-        { "type": null, "properties": { "Alpha-2": "LB", "Alpha-3": "LBN" } },
-        { "type": null, "properties": { "Alpha-2": "LS", "Alpha-3": "LSO" } },
-        { "type": null, "properties": { "Alpha-2": "LR", "Alpha-3": "LBR" } },
-        { "type": null, "properties": { "Alpha-2": "LY", "Alpha-3": "LBY" } },
-        { "type": null, "properties": { "Alpha-2": "LY", "Alpha-3": "LBY" } },
-        { "type": null, "properties": { "Alpha-2": "LI", "Alpha-3": "LIE" } },
-        { "type": null, "properties": { "Alpha-2": "LT", "Alpha-3": "LTU" } },
-        { "type": null, "properties": { "Alpha-2": "LU", "Alpha-3": "LUX" } },
-        { "type": null, "properties": { "Alpha-2": "MO", "Alpha-3": "MAC" } },
-        { "type": null, "properties": { "Alpha-2": "MK", "Alpha-3": "MKD" } },
-        { "type": null, "properties": { "Alpha-2": "MG", "Alpha-3": "MDG" } },
-        { "type": null, "properties": { "Alpha-2": "MW", "Alpha-3": "MWI" } },
-        { "type": null, "properties": { "Alpha-2": "MY", "Alpha-3": "MYS" } },
-        { "type": null, "properties": { "Alpha-2": "MV", "Alpha-3": "MDV" } },
-        { "type": null, "properties": { "Alpha-2": "ML", "Alpha-3": "MLI" } },
-        { "type": null, "properties": { "Alpha-2": "MT", "Alpha-3": "MLT" } },
-        { "type": null, "properties": { "Alpha-2": "MH", "Alpha-3": "MHL" } },
-        { "type": null, "properties": { "Alpha-2": "MQ", "Alpha-3": "MTQ" } },
-        { "type": null, "properties": { "Alpha-2": "MR", "Alpha-3": "MRT" } },
-        { "type": null, "properties": { "Alpha-2": "MU", "Alpha-3": "MUS" } },
-        { "type": null, "properties": { "Alpha-2": "YT", "Alpha-3": "MYT" } },
-        { "type": null, "properties": { "Alpha-2": "MX", "Alpha-3": "MEX" } },
-        { "type": null, "properties": { "Alpha-2": "FM", "Alpha-3": "FSM" } },
-        { "type": null, "properties": { "Alpha-2": "MD", "Alpha-3": "MDA" } },
-        { "type": null, "properties": { "Alpha-2": "MC", "Alpha-3": "MCO" } },
-        { "type": null, "properties": { "Alpha-2": "MN", "Alpha-3": "MNG" } },
-        { "type": null, "properties": { "Alpha-2": "ME", "Alpha-3": "MNE" } },
-        { "type": null, "properties": { "Alpha-2": "MS", "Alpha-3": "MSR" } },
-        { "type": null, "properties": { "Alpha-2": "MA", "Alpha-3": "MAR" } },
-        { "type": null, "properties": { "Alpha-2": "MZ", "Alpha-3": "MOZ" } },
-        { "type": null, "properties": { "Alpha-2": "MM", "Alpha-3": "MMR" } },
-        { "type": null, "properties": { "Alpha-2": "MM", "Alpha-3": "MMR" } },
-        { "type": null, "properties": { "Alpha-2": "NA", "Alpha-3": "NAM" } },
-        { "type": null, "properties": { "Alpha-2": "NR", "Alpha-3": "NRU" } },
-        { "type": null, "properties": { "Alpha-2": "NP", "Alpha-3": "NPL" } },
-        { "type": null, "properties": { "Alpha-2": "NL", "Alpha-3": "NLD" } },
-        { "type": null, "properties": { "Alpha-2": "AN", "Alpha-3": "ANT" } },
-        { "type": null, "properties": { "Alpha-2": "NC", "Alpha-3": "NCL" } },
-        { "type": null, "properties": { "Alpha-2": "NZ", "Alpha-3": "NZL" } },
-        { "type": null, "properties": { "Alpha-2": "NI", "Alpha-3": "NIC" } },
-        { "type": null, "properties": { "Alpha-2": "NE", "Alpha-3": "NER" } },
-        { "type": null, "properties": { "Alpha-2": "NG", "Alpha-3": "NGA" } },
-        { "type": null, "properties": { "Alpha-2": "NU", "Alpha-3": "NIU" } },
-        { "type": null, "properties": { "Alpha-2": "NF", "Alpha-3": "NFK" } },
-        { "type": null, "properties": { "Alpha-2": "MP", "Alpha-3": "MNP" } },
-        { "type": null, "properties": { "Alpha-2": "NO", "Alpha-3": "NOR" } },
-        { "type": null, "properties": { "Alpha-2": "OM", "Alpha-3": "OMN" } },
-        { "type": null, "properties": { "Alpha-2": "PK", "Alpha-3": "PAK" } },
-        { "type": null, "properties": { "Alpha-2": "PW", "Alpha-3": "PLW" } },
-        { "type": null, "properties": { "Alpha-2": "PS", "Alpha-3": "PSE" } },
-        { "type": null, "properties": { "Alpha-2": "PA", "Alpha-3": "PAN" } },
-        { "type": null, "properties": { "Alpha-2": "PG", "Alpha-3": "PNG" } },
-        { "type": null, "properties": { "Alpha-2": "PY", "Alpha-3": "PRY" } },
-        { "type": null, "properties": { "Alpha-2": "PE", "Alpha-3": "PER" } },
-        { "type": null, "properties": { "Alpha-2": "PH", "Alpha-3": "PHL" } },
-        { "type": null, "properties": { "Alpha-2": "PN", "Alpha-3": "PCN" } },
-        { "type": null, "properties": { "Alpha-2": "PL", "Alpha-3": "POL" } },
-        { "type": null, "properties": { "Alpha-2": "PT", "Alpha-3": "PRT" } },
-        { "type": null, "properties": { "Alpha-2": "PR", "Alpha-3": "PRI" } },
-        { "type": null, "properties": { "Alpha-2": "QA", "Alpha-3": "QAT" } },
-        { "type": null, "properties": { "Alpha-2": "RE", "Alpha-3": "REU" } },
-        { "type": null, "properties": { "Alpha-2": "RO", "Alpha-3": "ROU" } },
-        { "type": null, "properties": { "Alpha-2": "RU", "Alpha-3": "RUS" } },
-        { "type": null, "properties": { "Alpha-2": "RU", "Alpha-3": "RUS" } },
-        { "type": null, "properties": { "Alpha-2": "RW", "Alpha-3": "RWA" } },
-        { "type": null, "properties": { "Alpha-2": "SH", "Alpha-3": "SHN" } },
-        { "type": null, "properties": { "Alpha-2": "KN", "Alpha-3": "KNA" } },
-        { "type": null, "properties": { "Alpha-2": "LC", "Alpha-3": "LCA" } },
-        { "type": null, "properties": { "Alpha-2": "PM", "Alpha-3": "SPM" } },
-        { "type": null, "properties": { "Alpha-2": "VC", "Alpha-3": "VCT" } },
-        { "type": null, "properties": { "Alpha-2": "VC", "Alpha-3": "VCT" } },
-        { "type": null, "properties": { "Alpha-2": "VC", "Alpha-3": "VCT" } },
-        { "type": null, "properties": { "Alpha-2": "WS", "Alpha-3": "WSM" } },
-        { "type": null, "properties": { "Alpha-2": "SM", "Alpha-3": "SMR" } },
-        { "type": null, "properties": { "Alpha-2": "ST", "Alpha-3": "STP" } },
-        { "type": null, "properties": { "Alpha-2": "SA", "Alpha-3": "SAU" } },
-        { "type": null, "properties": { "Alpha-2": "SN", "Alpha-3": "SEN" } },
-        { "type": null, "properties": { "Alpha-2": "RS", "Alpha-3": "SRB" } },
-        { "type": null, "properties": { "Alpha-2": "SC", "Alpha-3": "SYC" } },
-        { "type": null, "properties": { "Alpha-2": "SL", "Alpha-3": "SLE" } },
-        { "type": null, "properties": { "Alpha-2": "SG", "Alpha-3": "SGP" } },
-        { "type": null, "properties": { "Alpha-2": "SK", "Alpha-3": "SVK" } },
-        { "type": null, "properties": { "Alpha-2": "SI", "Alpha-3": "SVN" } },
-        { "type": null, "properties": { "Alpha-2": "SB", "Alpha-3": "SLB" } },
-        { "type": null, "properties": { "Alpha-2": "SO", "Alpha-3": "SOM" } },
-        { "type": null, "properties": { "Alpha-2": "ZA", "Alpha-3": "ZAF" } },
-        { "type": null, "properties": { "Alpha-2": "GS", "Alpha-3": "SGS" } },
-        { "type": null, "properties": { "Alpha-2": "ES", "Alpha-3": "ESP" } },
-        { "type": null, "properties": { "Alpha-2": "LK", "Alpha-3": "LKA" } },
-        { "type": null, "properties": { "Alpha-2": "SD", "Alpha-3": "SDN" } },
-        { "type": null, "properties": { "Alpha-2": "SR", "Alpha-3": "SUR" } },
-        { "type": null, "properties": { "Alpha-2": "SJ", "Alpha-3": "SJM" } },
-        { "type": null, "properties": { "Alpha-2": "SZ", "Alpha-3": "SWZ" } },
-        { "type": null, "properties": { "Alpha-2": "SE", "Alpha-3": "SWE" } },
-        { "type": null, "properties": { "Alpha-2": "CH", "Alpha-3": "CHE" } },
-        { "type": null, "properties": { "Alpha-2": "SY", "Alpha-3": "SYR" } },
-        { "type": null, "properties": { "Alpha-2": "TW", "Alpha-3": "TWN" } },
-        { "type": null, "properties": { "Alpha-2": "TW", "Alpha-3": "TWN" } },
-        { "type": null, "properties": { "Alpha-2": "TJ", "Alpha-3": "TJK" } },
-        { "type": null, "properties": { "Alpha-2": "TZ", "Alpha-3": "TZA" } },
-        { "type": null, "properties": { "Alpha-2": "TH", "Alpha-3": "THA" } },
-        { "type": null, "properties": { "Alpha-2": "TL", "Alpha-3": "TLS" } },
-        { "type": null, "properties": { "Alpha-2": "TG", "Alpha-3": "TGO" } },
-        { "type": null, "properties": { "Alpha-2": "TK", "Alpha-3": "TKL" } },
-        { "type": null, "properties": { "Alpha-2": "TO", "Alpha-3": "TON" } },
-        { "type": null, "properties": { "Alpha-2": "TT", "Alpha-3": "TTO" } },
-        { "type": null, "properties": { "Alpha-2": "TT", "Alpha-3": "TTO" } },
-        { "type": null, "properties": { "Alpha-2": "TN", "Alpha-3": "TUN" } },
-        { "type": null, "properties": { "Alpha-2": "TR", "Alpha-3": "TUR" } },
-        { "type": null, "properties": { "Alpha-2": "TM", "Alpha-3": "TKM" } },
-        { "type": null, "properties": { "Alpha-2": "TC", "Alpha-3": "TCA" } },
-        { "type": null, "properties": { "Alpha-2": "TV", "Alpha-3": "TUV" } },
-        { "type": null, "properties": { "Alpha-2": "UG", "Alpha-3": "UGA" } },
-        { "type": null, "properties": { "Alpha-2": "UA", "Alpha-3": "UKR" } },
-        { "type": null, "properties": { "Alpha-2": "AE", "Alpha-3": "ARE" } },
-        { "type": null, "properties": { "Alpha-2": "GB", "Alpha-3": "GBR" } },
-        { "type": null, "properties": { "Alpha-2": "US", "Alpha-3": "USA" } },
-        { "type": null, "properties": { "Alpha-2": "UM", "Alpha-3": "UMI" } },
-        { "type": null, "properties": { "Alpha-2": "UY", "Alpha-3": "URY" } },
-        { "type": null, "properties": { "Alpha-2": "UZ", "Alpha-3": "UZB" } },
-        { "type": null, "properties": { "Alpha-2": "VU", "Alpha-3": "VUT" } },
-        { "type": null, "properties": { "Alpha-2": "VE", "Alpha-3": "VEN" } },
-        { "type": null, "properties": { "Alpha-2": "VE", "Alpha-3": "VEN" } },
-        { "type": null, "properties": { "Alpha-2": "VN", "Alpha-3": "VNM" } },
-        { "type": null, "properties": { "Alpha-2": "VN", "Alpha-3": "VNM" } },
-        { "type": null, "properties": { "Alpha-2": "VG", "Alpha-3": "VGB" } },
-        { "type": null, "properties": { "Alpha-2": "VI", "Alpha-3": "VIR" } },
-        { "type": null, "properties": { "Alpha-2": "WF", "Alpha-3": "WLF" } },
-        { "type": null, "properties": { "Alpha-2": "EH", "Alpha-3": "ESH" } },
-        { "type": null, "properties": { "Alpha-2": "YE", "Alpha-3": "YEM" } },
-        { "type": null, "properties": { "Alpha-2": "ZM", "Alpha-3": "ZMB" } },
-        { "type": null, "properties": { "Alpha-2": "ZW", "Alpha-3": "ZWE" } }
+        { "type": null, "properties": { "Alpha_2": "AF", "Alpha_3": "AFG" } },
+        { "type": null, "properties": { "Alpha_2": "AL", "Alpha_3": "ALB" } },
+        { "type": null, "properties": { "Alpha_2": "DZ", "Alpha_3": "DZA" } },
+        { "type": null, "properties": { "Alpha_2": "AS", "Alpha_3": "ASM" } },
+        { "type": null, "properties": { "Alpha_2": "AD", "Alpha_3": "AND" } },
+        { "type": null, "properties": { "Alpha_2": "AO", "Alpha_3": "AGO" } },
+        { "type": null, "properties": { "Alpha_2": "AI", "Alpha_3": "AIA" } },
+        { "type": null, "properties": { "Alpha_2": "AQ", "Alpha_3": "ATA" } },
+        { "type": null, "properties": { "Alpha_2": "AG", "Alpha_3": "ATG" } },
+        { "type": null, "properties": { "Alpha_2": "AR", "Alpha_3": "ARG" } },
+        { "type": null, "properties": { "Alpha_2": "AM", "Alpha_3": "ARM" } },
+        { "type": null, "properties": { "Alpha_2": "AW", "Alpha_3": "ABW" } },
+        { "type": null, "properties": { "Alpha_2": "AU", "Alpha_3": "AUS" } },
+        { "type": null, "properties": { "Alpha_2": "AT", "Alpha_3": "AUT" } },
+        { "type": null, "properties": { "Alpha_2": "AZ", "Alpha_3": "AZE" } },
+        { "type": null, "properties": { "Alpha_2": "BS", "Alpha_3": "BHS" } },
+        { "type": null, "properties": { "Alpha_2": "BH", "Alpha_3": "BHR" } },
+        { "type": null, "properties": { "Alpha_2": "BD", "Alpha_3": "BGD" } },
+        { "type": null, "properties": { "Alpha_2": "BB", "Alpha_3": "BRB" } },
+        { "type": null, "properties": { "Alpha_2": "BY", "Alpha_3": "BLR" } },
+        { "type": null, "properties": { "Alpha_2": "BE", "Alpha_3": "BEL" } },
+        { "type": null, "properties": { "Alpha_2": "BZ", "Alpha_3": "BLZ" } },
+        { "type": null, "properties": { "Alpha_2": "BJ", "Alpha_3": "BEN" } },
+        { "type": null, "properties": { "Alpha_2": "BM", "Alpha_3": "BMU" } },
+        { "type": null, "properties": { "Alpha_2": "BT", "Alpha_3": "BTN" } },
+        { "type": null, "properties": { "Alpha_2": "BO", "Alpha_3": "BOL" } },
+        { "type": null, "properties": { "Alpha_2": "BO", "Alpha_3": "BOL" } },
+        { "type": null, "properties": { "Alpha_2": "BA", "Alpha_3": "BIH" } },
+        { "type": null, "properties": { "Alpha_2": "BW", "Alpha_3": "BWA" } },
+        { "type": null, "properties": { "Alpha_2": "BV", "Alpha_3": "BVT" } },
+        { "type": null, "properties": { "Alpha_2": "BR", "Alpha_3": "BRA" } },
+        { "type": null, "properties": { "Alpha_2": "IO", "Alpha_3": "IOT" } },
+        { "type": null, "properties": { "Alpha_2": "BN", "Alpha_3": "BRN" } },
+        { "type": null, "properties": { "Alpha_2": "BN", "Alpha_3": "BRN" } },
+        { "type": null, "properties": { "Alpha_2": "BG", "Alpha_3": "BGR" } },
+        { "type": null, "properties": { "Alpha_2": "BF", "Alpha_3": "BFA" } },
+        { "type": null, "properties": { "Alpha_2": "BI", "Alpha_3": "BDI" } },
+        { "type": null, "properties": { "Alpha_2": "KH", "Alpha_3": "KHM" } },
+        { "type": null, "properties": { "Alpha_2": "CM", "Alpha_3": "CMR" } },
+        { "type": null, "properties": { "Alpha_2": "CA", "Alpha_3": "CAN" } },
+        { "type": null, "properties": { "Alpha_2": "CV", "Alpha_3": "CPV" } },
+        { "type": null, "properties": { "Alpha_2": "KY", "Alpha_3": "CYM" } },
+        { "type": null, "properties": { "Alpha_2": "CF", "Alpha_3": "CAF" } },
+        { "type": null, "properties": { "Alpha_2": "TD", "Alpha_3": "TCD" } },
+        { "type": null, "properties": { "Alpha_2": "CL", "Alpha_3": "CHL" } },
+        { "type": null, "properties": { "Alpha_2": "CN", "Alpha_3": "CHN" } },
+        { "type": null, "properties": { "Alpha_2": "CX", "Alpha_3": "CXR" } },
+        { "type": null, "properties": { "Alpha_2": "CC", "Alpha_3": "CCK" } },
+        { "type": null, "properties": { "Alpha_2": "CO", "Alpha_3": "COL" } },
+        { "type": null, "properties": { "Alpha_2": "KM", "Alpha_3": "COM" } },
+        { "type": null, "properties": { "Alpha_2": "CG", "Alpha_3": "COG" } },
+        { "type": null, "properties": { "Alpha_2": "CD", "Alpha_3": "COD" } },
+        { "type": null, "properties": { "Alpha_2": "CK", "Alpha_3": "COK" } },
+        { "type": null, "properties": { "Alpha_2": "CR", "Alpha_3": "CRI" } },
+        { "type": null, "properties": { "Alpha_2": "CI", "Alpha_3": "CIV" } },
+        { "type": null, "properties": { "Alpha_2": "CI", "Alpha_3": "CIV" } },
+        { "type": null, "properties": { "Alpha_2": "HR", "Alpha_3": "HRV" } },
+        { "type": null, "properties": { "Alpha_2": "CU", "Alpha_3": "CUB" } },
+        { "type": null, "properties": { "Alpha_2": "CY", "Alpha_3": "CYP" } },
+        { "type": null, "properties": { "Alpha_2": "CZ", "Alpha_3": "CZE" } },
+        { "type": null, "properties": { "Alpha_2": "DK", "Alpha_3": "DNK" } },
+        { "type": null, "properties": { "Alpha_2": "DJ", "Alpha_3": "DJI" } },
+        { "type": null, "properties": { "Alpha_2": "DM", "Alpha_3": "DMA" } },
+        { "type": null, "properties": { "Alpha_2": "DO", "Alpha_3": "DOM" } },
+        { "type": null, "properties": { "Alpha_2": "EC", "Alpha_3": "ECU" } },
+        { "type": null, "properties": { "Alpha_2": "EG", "Alpha_3": "EGY" } },
+        { "type": null, "properties": { "Alpha_2": "SV", "Alpha_3": "SLV" } },
+        { "type": null, "properties": { "Alpha_2": "GQ", "Alpha_3": "GNQ" } },
+        { "type": null, "properties": { "Alpha_2": "ER", "Alpha_3": "ERI" } },
+        { "type": null, "properties": { "Alpha_2": "EE", "Alpha_3": "EST" } },
+        { "type": null, "properties": { "Alpha_2": "ET", "Alpha_3": "ETH" } },
+        { "type": null, "properties": { "Alpha_2": "FK", "Alpha_3": "FLK" } },
+        { "type": null, "properties": { "Alpha_2": "FO", "Alpha_3": "FRO" } },
+        { "type": null, "properties": { "Alpha_2": "FJ", "Alpha_3": "FJI" } },
+        { "type": null, "properties": { "Alpha_2": "FI", "Alpha_3": "FIN" } },
+        { "type": null, "properties": { "Alpha_2": "FR", "Alpha_3": "FRA" } },
+        { "type": null, "properties": { "Alpha_2": "GF", "Alpha_3": "GUF" } },
+        { "type": null, "properties": { "Alpha_2": "PF", "Alpha_3": "PYF" } },
+        { "type": null, "properties": { "Alpha_2": "TF", "Alpha_3": "ATF" } },
+        { "type": null, "properties": { "Alpha_2": "GA", "Alpha_3": "GAB" } },
+        { "type": null, "properties": { "Alpha_2": "GM", "Alpha_3": "GMB" } },
+        { "type": null, "properties": { "Alpha_2": "GE", "Alpha_3": "GEO" } },
+        { "type": null, "properties": { "Alpha_2": "DE", "Alpha_3": "DEU" } },
+        { "type": null, "properties": { "Alpha_2": "GH", "Alpha_3": "GHA" } },
+        { "type": null, "properties": { "Alpha_2": "GI", "Alpha_3": "GIB" } },
+        { "type": null, "properties": { "Alpha_2": "GR", "Alpha_3": "GRC" } },
+        { "type": null, "properties": { "Alpha_2": "GL", "Alpha_3": "GRL" } },
+        { "type": null, "properties": { "Alpha_2": "GD", "Alpha_3": "GRD" } },
+        { "type": null, "properties": { "Alpha_2": "GP", "Alpha_3": "GLP" } },
+        { "type": null, "properties": { "Alpha_2": "GU", "Alpha_3": "GUM" } },
+        { "type": null, "properties": { "Alpha_2": "GT", "Alpha_3": "GTM" } },
+        { "type": null, "properties": { "Alpha_2": "GG", "Alpha_3": "GGY" } },
+        { "type": null, "properties": { "Alpha_2": "GN", "Alpha_3": "GIN" } },
+        { "type": null, "properties": { "Alpha_2": "GW", "Alpha_3": "GNB" } },
+        { "type": null, "properties": { "Alpha_2": "GY", "Alpha_3": "GUY" } },
+        { "type": null, "properties": { "Alpha_2": "HT", "Alpha_3": "HTI" } },
+        { "type": null, "properties": { "Alpha_2": "HM", "Alpha_3": "HMD" } },
+        { "type": null, "properties": { "Alpha_2": "VA", "Alpha_3": "VAT" } },
+        { "type": null, "properties": { "Alpha_2": "HN", "Alpha_3": "HND" } },
+        { "type": null, "properties": { "Alpha_2": "HK", "Alpha_3": "HKG" } },
+        { "type": null, "properties": { "Alpha_2": "HU", "Alpha_3": "HUN" } },
+        { "type": null, "properties": { "Alpha_2": "IS", "Alpha_3": "ISL" } },
+        { "type": null, "properties": { "Alpha_2": "IN", "Alpha_3": "IND" } },
+        { "type": null, "properties": { "Alpha_2": "ID", "Alpha_3": "IDN" } },
+        { "type": null, "properties": { "Alpha_2": "IR", "Alpha_3": "IRN" } },
+        { "type": null, "properties": { "Alpha_2": "IQ", "Alpha_3": "IRQ" } },
+        { "type": null, "properties": { "Alpha_2": "IE", "Alpha_3": "IRL" } },
+        { "type": null, "properties": { "Alpha_2": "IM", "Alpha_3": "IMN" } },
+        { "type": null, "properties": { "Alpha_2": "IL", "Alpha_3": "ISR" } },
+        { "type": null, "properties": { "Alpha_2": "IT", "Alpha_3": "ITA" } },
+        { "type": null, "properties": { "Alpha_2": "JM", "Alpha_3": "JAM" } },
+        { "type": null, "properties": { "Alpha_2": "JP", "Alpha_3": "JPN" } },
+        { "type": null, "properties": { "Alpha_2": "JE", "Alpha_3": "JEY" } },
+        { "type": null, "properties": { "Alpha_2": "JO", "Alpha_3": "JOR" } },
+        { "type": null, "properties": { "Alpha_2": "KZ", "Alpha_3": "KAZ" } },
+        { "type": null, "properties": { "Alpha_2": "KE", "Alpha_3": "KEN" } },
+        { "type": null, "properties": { "Alpha_2": "KI", "Alpha_3": "KIR" } },
+        { "type": null, "properties": { "Alpha_2": "KP", "Alpha_3": "PRK" } },
+        { "type": null, "properties": { "Alpha_2": "KR", "Alpha_3": "KOR" } },
+        { "type": null, "properties": { "Alpha_2": "KR", "Alpha_3": "KOR" } },
+        { "type": null, "properties": { "Alpha_2": "KW", "Alpha_3": "KWT" } },
+        { "type": null, "properties": { "Alpha_2": "KG", "Alpha_3": "KGZ" } },
+        { "type": null, "properties": { "Alpha_2": "LA", "Alpha_3": "LAO" } },
+        { "type": null, "properties": { "Alpha_2": "LV", "Alpha_3": "LVA" } },
+        { "type": null, "properties": { "Alpha_2": "LB", "Alpha_3": "LBN" } },
+        { "type": null, "properties": { "Alpha_2": "LS", "Alpha_3": "LSO" } },
+        { "type": null, "properties": { "Alpha_2": "LR", "Alpha_3": "LBR" } },
+        { "type": null, "properties": { "Alpha_2": "LY", "Alpha_3": "LBY" } },
+        { "type": null, "properties": { "Alpha_2": "LY", "Alpha_3": "LBY" } },
+        { "type": null, "properties": { "Alpha_2": "LI", "Alpha_3": "LIE" } },
+        { "type": null, "properties": { "Alpha_2": "LT", "Alpha_3": "LTU" } },
+        { "type": null, "properties": { "Alpha_2": "LU", "Alpha_3": "LUX" } },
+        { "type": null, "properties": { "Alpha_2": "MO", "Alpha_3": "MAC" } },
+        { "type": null, "properties": { "Alpha_2": "MK", "Alpha_3": "MKD" } },
+        { "type": null, "properties": { "Alpha_2": "MG", "Alpha_3": "MDG" } },
+        { "type": null, "properties": { "Alpha_2": "MW", "Alpha_3": "MWI" } },
+        { "type": null, "properties": { "Alpha_2": "MY", "Alpha_3": "MYS" } },
+        { "type": null, "properties": { "Alpha_2": "MV", "Alpha_3": "MDV" } },
+        { "type": null, "properties": { "Alpha_2": "ML", "Alpha_3": "MLI" } },
+        { "type": null, "properties": { "Alpha_2": "MT", "Alpha_3": "MLT" } },
+        { "type": null, "properties": { "Alpha_2": "MH", "Alpha_3": "MHL" } },
+        { "type": null, "properties": { "Alpha_2": "MQ", "Alpha_3": "MTQ" } },
+        { "type": null, "properties": { "Alpha_2": "MR", "Alpha_3": "MRT" } },
+        { "type": null, "properties": { "Alpha_2": "MU", "Alpha_3": "MUS" } },
+        { "type": null, "properties": { "Alpha_2": "YT", "Alpha_3": "MYT" } },
+        { "type": null, "properties": { "Alpha_2": "MX", "Alpha_3": "MEX" } },
+        { "type": null, "properties": { "Alpha_2": "FM", "Alpha_3": "FSM" } },
+        { "type": null, "properties": { "Alpha_2": "MD", "Alpha_3": "MDA" } },
+        { "type": null, "properties": { "Alpha_2": "MC", "Alpha_3": "MCO" } },
+        { "type": null, "properties": { "Alpha_2": "MN", "Alpha_3": "MNG" } },
+        { "type": null, "properties": { "Alpha_2": "ME", "Alpha_3": "MNE" } },
+        { "type": null, "properties": { "Alpha_2": "MS", "Alpha_3": "MSR" } },
+        { "type": null, "properties": { "Alpha_2": "MA", "Alpha_3": "MAR" } },
+        { "type": null, "properties": { "Alpha_2": "MZ", "Alpha_3": "MOZ" } },
+        { "type": null, "properties": { "Alpha_2": "MM", "Alpha_3": "MMR" } },
+        { "type": null, "properties": { "Alpha_2": "MM", "Alpha_3": "MMR" } },
+        { "type": null, "properties": { "Alpha_2": "NA", "Alpha_3": "NAM" } },
+        { "type": null, "properties": { "Alpha_2": "NR", "Alpha_3": "NRU" } },
+        { "type": null, "properties": { "Alpha_2": "NP", "Alpha_3": "NPL" } },
+        { "type": null, "properties": { "Alpha_2": "NL", "Alpha_3": "NLD" } },
+        { "type": null, "properties": { "Alpha_2": "AN", "Alpha_3": "ANT" } },
+        { "type": null, "properties": { "Alpha_2": "NC", "Alpha_3": "NCL" } },
+        { "type": null, "properties": { "Alpha_2": "NZ", "Alpha_3": "NZL" } },
+        { "type": null, "properties": { "Alpha_2": "NI", "Alpha_3": "NIC" } },
+        { "type": null, "properties": { "Alpha_2": "NE", "Alpha_3": "NER" } },
+        { "type": null, "properties": { "Alpha_2": "NG", "Alpha_3": "NGA" } },
+        { "type": null, "properties": { "Alpha_2": "NU", "Alpha_3": "NIU" } },
+        { "type": null, "properties": { "Alpha_2": "NF", "Alpha_3": "NFK" } },
+        { "type": null, "properties": { "Alpha_2": "MP", "Alpha_3": "MNP" } },
+        { "type": null, "properties": { "Alpha_2": "NO", "Alpha_3": "NOR" } },
+        { "type": null, "properties": { "Alpha_2": "OM", "Alpha_3": "OMN" } },
+        { "type": null, "properties": { "Alpha_2": "PK", "Alpha_3": "PAK" } },
+        { "type": null, "properties": { "Alpha_2": "PW", "Alpha_3": "PLW" } },
+        { "type": null, "properties": { "Alpha_2": "PS", "Alpha_3": "PSE" } },
+        { "type": null, "properties": { "Alpha_2": "PA", "Alpha_3": "PAN" } },
+        { "type": null, "properties": { "Alpha_2": "PG", "Alpha_3": "PNG" } },
+        { "type": null, "properties": { "Alpha_2": "PY", "Alpha_3": "PRY" } },
+        { "type": null, "properties": { "Alpha_2": "PE", "Alpha_3": "PER" } },
+        { "type": null, "properties": { "Alpha_2": "PH", "Alpha_3": "PHL" } },
+        { "type": null, "properties": { "Alpha_2": "PN", "Alpha_3": "PCN" } },
+        { "type": null, "properties": { "Alpha_2": "PL", "Alpha_3": "POL" } },
+        { "type": null, "properties": { "Alpha_2": "PT", "Alpha_3": "PRT" } },
+        { "type": null, "properties": { "Alpha_2": "PR", "Alpha_3": "PRI" } },
+        { "type": null, "properties": { "Alpha_2": "QA", "Alpha_3": "QAT" } },
+        { "type": null, "properties": { "Alpha_2": "RE", "Alpha_3": "REU" } },
+        { "type": null, "properties": { "Alpha_2": "RO", "Alpha_3": "ROU" } },
+        { "type": null, "properties": { "Alpha_2": "RU", "Alpha_3": "RUS" } },
+        { "type": null, "properties": { "Alpha_2": "RU", "Alpha_3": "RUS" } },
+        { "type": null, "properties": { "Alpha_2": "RW", "Alpha_3": "RWA" } },
+        { "type": null, "properties": { "Alpha_2": "SH", "Alpha_3": "SHN" } },
+        { "type": null, "properties": { "Alpha_2": "KN", "Alpha_3": "KNA" } },
+        { "type": null, "properties": { "Alpha_2": "LC", "Alpha_3": "LCA" } },
+        { "type": null, "properties": { "Alpha_2": "PM", "Alpha_3": "SPM" } },
+        { "type": null, "properties": { "Alpha_2": "VC", "Alpha_3": "VCT" } },
+        { "type": null, "properties": { "Alpha_2": "VC", "Alpha_3": "VCT" } },
+        { "type": null, "properties": { "Alpha_2": "VC", "Alpha_3": "VCT" } },
+        { "type": null, "properties": { "Alpha_2": "WS", "Alpha_3": "WSM" } },
+        { "type": null, "properties": { "Alpha_2": "SM", "Alpha_3": "SMR" } },
+        { "type": null, "properties": { "Alpha_2": "ST", "Alpha_3": "STP" } },
+        { "type": null, "properties": { "Alpha_2": "SA", "Alpha_3": "SAU" } },
+        { "type": null, "properties": { "Alpha_2": "SN", "Alpha_3": "SEN" } },
+        { "type": null, "properties": { "Alpha_2": "RS", "Alpha_3": "SRB" } },
+        { "type": null, "properties": { "Alpha_2": "SC", "Alpha_3": "SYC" } },
+        { "type": null, "properties": { "Alpha_2": "SL", "Alpha_3": "SLE" } },
+        { "type": null, "properties": { "Alpha_2": "SG", "Alpha_3": "SGP" } },
+        { "type": null, "properties": { "Alpha_2": "SK", "Alpha_3": "SVK" } },
+        { "type": null, "properties": { "Alpha_2": "SI", "Alpha_3": "SVN" } },
+        { "type": null, "properties": { "Alpha_2": "SB", "Alpha_3": "SLB" } },
+        { "type": null, "properties": { "Alpha_2": "SO", "Alpha_3": "SOM" } },
+        { "type": null, "properties": { "Alpha_2": "ZA", "Alpha_3": "ZAF" } },
+        { "type": null, "properties": { "Alpha_2": "GS", "Alpha_3": "SGS" } },
+        { "type": null, "properties": { "Alpha_2": "ES", "Alpha_3": "ESP" } },
+        { "type": null, "properties": { "Alpha_2": "LK", "Alpha_3": "LKA" } },
+        { "type": null, "properties": { "Alpha_2": "SD", "Alpha_3": "SDN" } },
+        { "type": null, "properties": { "Alpha_2": "SR", "Alpha_3": "SUR" } },
+        { "type": null, "properties": { "Alpha_2": "SJ", "Alpha_3": "SJM" } },
+        { "type": null, "properties": { "Alpha_2": "SZ", "Alpha_3": "SWZ" } },
+        { "type": null, "properties": { "Alpha_2": "SE", "Alpha_3": "SWE" } },
+        { "type": null, "properties": { "Alpha_2": "CH", "Alpha_3": "CHE" } },
+        { "type": null, "properties": { "Alpha_2": "SY", "Alpha_3": "SYR" } },
+        { "type": null, "properties": { "Alpha_2": "TW", "Alpha_3": "TWN" } },
+        { "type": null, "properties": { "Alpha_2": "TW", "Alpha_3": "TWN" } },
+        { "type": null, "properties": { "Alpha_2": "TJ", "Alpha_3": "TJK" } },
+        { "type": null, "properties": { "Alpha_2": "TZ", "Alpha_3": "TZA" } },
+        { "type": null, "properties": { "Alpha_2": "TH", "Alpha_3": "THA" } },
+        { "type": null, "properties": { "Alpha_2": "TL", "Alpha_3": "TLS" } },
+        { "type": null, "properties": { "Alpha_2": "TG", "Alpha_3": "TGO" } },
+        { "type": null, "properties": { "Alpha_2": "TK", "Alpha_3": "TKL" } },
+        { "type": null, "properties": { "Alpha_2": "TO", "Alpha_3": "TON" } },
+        { "type": null, "properties": { "Alpha_2": "TT", "Alpha_3": "TTO" } },
+        { "type": null, "properties": { "Alpha_2": "TT", "Alpha_3": "TTO" } },
+        { "type": null, "properties": { "Alpha_2": "TN", "Alpha_3": "TUN" } },
+        { "type": null, "properties": { "Alpha_2": "TR", "Alpha_3": "TUR" } },
+        { "type": null, "properties": { "Alpha_2": "TM", "Alpha_3": "TKM" } },
+        { "type": null, "properties": { "Alpha_2": "TC", "Alpha_3": "TCA" } },
+        { "type": null, "properties": { "Alpha_2": "TV", "Alpha_3": "TUV" } },
+        { "type": null, "properties": { "Alpha_2": "UG", "Alpha_3": "UGA" } },
+        { "type": null, "properties": { "Alpha_2": "UA", "Alpha_3": "UKR" } },
+        { "type": null, "properties": { "Alpha_2": "AE", "Alpha_3": "ARE" } },
+        { "type": null, "properties": { "Alpha_2": "GB", "Alpha_3": "GBR" } },
+        { "type": null, "properties": { "Alpha_2": "US", "Alpha_3": "USA" } },
+        { "type": null, "properties": { "Alpha_2": "UM", "Alpha_3": "UMI" } },
+        { "type": null, "properties": { "Alpha_2": "UY", "Alpha_3": "URY" } },
+        { "type": null, "properties": { "Alpha_2": "UZ", "Alpha_3": "UZB" } },
+        { "type": null, "properties": { "Alpha_2": "VU", "Alpha_3": "VUT" } },
+        { "type": null, "properties": { "Alpha_2": "VE", "Alpha_3": "VEN" } },
+        { "type": null, "properties": { "Alpha_2": "VE", "Alpha_3": "VEN" } },
+        { "type": null, "properties": { "Alpha_2": "VN", "Alpha_3": "VNM" } },
+        { "type": null, "properties": { "Alpha_2": "VN", "Alpha_3": "VNM" } },
+        { "type": null, "properties": { "Alpha_2": "VG", "Alpha_3": "VGB" } },
+        { "type": null, "properties": { "Alpha_2": "VI", "Alpha_3": "VIR" } },
+        { "type": null, "properties": { "Alpha_2": "WF", "Alpha_3": "WLF" } },
+        { "type": null, "properties": { "Alpha_2": "EH", "Alpha_3": "ESH" } },
+        { "type": null, "properties": { "Alpha_2": "YE", "Alpha_3": "YEM" } },
+        { "type": null, "properties": { "Alpha_2": "ZM", "Alpha_3": "ZMB" } },
+        { "type": null, "properties": { "Alpha_2": "ZW", "Alpha_3": "ZWE" } }
       ]
     }
   }

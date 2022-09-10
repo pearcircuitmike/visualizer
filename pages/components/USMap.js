@@ -90,7 +90,7 @@ const USMapChart = ({ setTooltipContent }) => {
                     onClick={(e) => {
                       e.preventDefault();
                       d
-                        ? router.push(`/states/${geo.properties.name}`)
+                        ? router.push(`/usstates/${geo.properties.name}`)
                         : console.log("none");
                     }}
                     style={{

@@ -1,42 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Head from "next/head.js";
 import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
-
+import { Line } from "react-chartjs-2";
 import {
   Text,
+  Center,
   Heading,
   Container,
+  GridItem,
+  SimpleGrid,
+  Grid,
   Button,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow,
+  StatGroup,
   Breadcrumb,
   BreadcrumbItem,
-  Tooltip,
+  Box,
+  Stack,
 } from "@chakra-ui/react";
-import Link from "next/link";
-import ReactTooltip from "react-tooltip";
-import { useRouter } from "next/router.js";
+
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import USMapChart from "../components/USMap.js";
+import Chart from "chart.js/auto";
+
+import Link from "next/link";
 
 export const getStaticPaths = async () => {
-  const url =
-    "https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/USmap_counts.csv";
+  // csc api
+  var headers = new Headers();
+  headers.append("X-CSCAPI-KEY", process.env.NEXT_PUBLIC_CSC_API_KEY);
 
-  const res = await fetch(url);
+  var requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+
+  const url = "https://api.countrystatecity.in/v1/states";
+
+  const res = await fetch(url, requestOptions);
   const text = await res.text();
-  const data = await csv().fromString(text);
-  const nonUniqueLocationOptions = JSON.parse(
-    JSON.stringify(
-      data.map((y) => {
-        return y["Location"];
-      })
-    )
-  );
-  const uniqueLocationOptions = [...new Set(nonUniqueLocationOptions)];
+  const data = await JSON.parse(text);
 
-  const paths = uniqueLocationOptions.map((stateVal) => {
+  // encode the country and state iso2 codes into the URL
+  const paths = data.map((stateVal) => {
     return {
-      params: { state: stateVal },
+      params: {
+        state: `${stateVal.country_code.toString()}_${stateVal.iso2.toString()}`,
+      },
     };
   });
 
@@ -47,71 +62,217 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const state = context.params.state;
-  const url = `https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/USmap_counts.csv? `;
+  //destructure to URL into the country and state iso2 codes
+  const codesArray = context.params.state.toString().split("_");
+  const countryIso2 = codesArray[0].toString();
+  const stateIso2 = codesArray[1].toString();
 
-  const res = await fetch(url);
+  // csc api
+  var headers = new Headers();
+  headers.append("X-CSCAPI-KEY", process.env.NEXT_PUBLIC_CSC_API_KEY);
+
+  var requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+
+  const countryDetailsUrl = `https://api.countrystatecity.in/v1/countries/${countryIso2}`;
+  const countryDetailsRes = await fetch(countryDetailsUrl, requestOptions);
+  const countryDetailsText = await countryDetailsRes.text();
+  const countryDetails = await JSON.parse(countryDetailsText);
+
+  const countryDataUrl =
+    "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
+  const res = await fetch(countryDataUrl);
   const text = await res.text();
-  const data = await csv().fromString(text);
-  const filteredData = data.filter((state) =>
-    state.Location.includes(context.params.state)
+  const jsonArray = await csv().fromString(text);
+  const filteredJsonArray = jsonArray.filter(
+    (x) => x.location === countryDetails.name
   );
 
+  const stateDataUrl = `https://api.countrystatecity.in/v1/countries/${countryIso2}/states/${stateIso2}`;
+
+  const stateDataRes = await fetch(stateDataUrl, requestOptions);
+  const stateDataText = await stateDataRes.text();
+  const stateDataDetails = await JSON.parse(stateDataText);
+
   return {
-    props: { state: filteredData },
+    props: {
+      countryCaseData: filteredJsonArray,
+      countryDetails: countryDetails,
+      stateDetails: stateDataDetails,
+    },
   };
 };
 
-const StateDetails = ({ state }) => {
-  const router = useRouter();
+const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
+  const filteredDates = JSON.parse(
+    JSON.stringify(
+      countryCaseData.map((y) => {
+        return y["date"];
+      })
+    )
+  );
+  const filteredTotalCases = JSON.parse(
+    JSON.stringify(
+      countryCaseData.map((y) => {
+        return y["total_cases"];
+      })
+    )
+  );
+  const filteredNewCases = JSON.parse(
+    JSON.stringify(
+      countryCaseData.map((y) => {
+        return y["new_cases"];
+      })
+    )
+  );
+  const filteredNewCasesPerMillion = JSON.parse(
+    JSON.stringify(
+      countryCaseData.map((y) => {
+        return y["new_cases_per_million"];
+      })
+    )
+  );
+  const filteredTotalCasesPerMillion = JSON.parse(
+    JSON.stringify(
+      countryCaseData.map((y) => {
+        return y["total_cases_per_million"];
+      })
+    )
+  );
 
-  useEffect(() => {
-    const filteredDates = JSON.parse(
-      JSON.stringify(
-        state.map((y) => {
-          return y["date"];
-        })
-      )
-    );
-    const filteredTotalCases = JSON.parse(
-      JSON.stringify(
-        state.map((y) => {
-          return y["Cases"];
-        })
-      )
-    );
-    const filteredNewCases = JSON.parse(
-      JSON.stringify(
-        state.map((y) => {
-          return y["new_cases"];
-        })
-      )
-    );
-    const filteredNewCasesPerMillion = JSON.parse(
-      JSON.stringify(
-        state.map((y) => {
-          return y["new_cases_per_million"];
-        })
-      )
-    );
-    const filteredTotalCasesPerMillion = JSON.parse(
-      JSON.stringify(
-        state.map((y) => {
-          return y["total_cases_per_million"];
-        })
-      )
-    );
+  const filteredTotalDeaths = JSON.parse(
+    JSON.stringify(
+      countryCaseData.map((y) => {
+        return y["total_deaths"];
+      })
+    )
+  );
 
-    const filteredTotalDeaths = JSON.parse(
-      JSON.stringify(
-        state.map((y) => {
-          return y["total_deaths"];
-        })
-      )
-    );
+  const chartDataTotalCases = {
+    labels: filteredDates,
+    datasets: [
+      {
+        label: "Total Cases",
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: colors.spaceCadet,
+        borderColor: colors.spaceCadet,
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: colors.spaceCadet,
+        pointBackgroundColor: colors.spaceCadet,
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: colors.spaceCadet,
+        pointHoverBorderColor: colors.spaceCadet,
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: filteredTotalCases,
+      },
+      {
+        label: "New Cases",
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: colors.aquamarine,
+        borderColor: colors.aquamarine,
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: colors.aquamarine,
+        pointBackgroundColor: colors.aquamarine,
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: colors.aquamarine,
+        pointHoverBorderColor: colors.aquamarine,
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: filteredNewCases,
+      },
+    ],
+  };
+  const chartDataTotalCasesPerMillion = {
+    labels: filteredDates,
+    datasets: [
+      {
+        label: "Total Cases Per Million",
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: colors.blueMunsell,
+        borderColor: colors.blueMunsell,
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: colors.blueMunsell,
+        pointBackgroundColor: colors.blueMunsell,
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: colors.blueMunsell,
+        pointHoverBorderColor: colors.blueMunsell,
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: filteredTotalCasesPerMillion,
+      },
+      {
+        label: "New Cases Per Million",
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: colors.yellowGreenPale,
+        borderColor: colors.yellowGreenPale,
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: colors.yellowGreenPale,
+        pointBackgroundColor: colors.yellowGreenPale,
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: colors.yellowGreenPale,
+        pointHoverBorderColor: colors.yellowGreenPale,
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: filteredNewCasesPerMillion,
+      },
+    ],
+  };
+  const chartDataTotalDeaths = {
+    labels: filteredDates,
+    datasets: [
+      {
+        label: "Total Deaths",
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: colors.kineticBlack,
+        borderColor: colors.kineticBlack,
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: colors.kineticBlack,
+        pointBackgroundColor: colors.kineticBlack,
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: colors.kineticBlack,
+        pointHoverBorderColor: colors.kineticBlack,
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: filteredTotalDeaths,
+      },
+    ],
+  };
 
-    setStateName(state[0].Location);
-  }, [useRouter().asPath]);
+  const [copied, setCopied] = useState(false);
 
   function copy() {
     const el = document.createElement("input");
@@ -122,61 +283,79 @@ const StateDetails = ({ state }) => {
     document.body.removeChild(el);
     setCopied(true);
   }
-  const [copied, setCopied] = useState(false);
-
-  const [content, setContent] = useState("");
   const [stateName, setStateName] = useState(
-    state.length ? state[0].Location : ""
+    stateDetails.name ? stateDetails.name : ""
   );
-  const [stateNewCases, setStateNewCases] = useState(
-    state.length ? state[state.length - 1].Cases : ""
+  const [countryName, setCountryName] = useState(
+    countryDetails.name ? countryDetails.name : ""
+  );
+  const [countryNewCases, setCountryNewCases] = useState(
+    countryCaseData.length
+      ? ~~countryCaseData[countryCaseData.length - 1].new_cases
+      : ""
+  );
+  const [countryNewDeaths, setCountryNewDeaths] = useState(
+    countryCaseData.length
+      ? ~~countryCaseData[countryCaseData.length - 1].new_deaths
+      : "0"
+  );
+
+  const [countryTotalCases, setCountryTotalCases] = useState(
+    countryCaseData.length
+      ? ~~countryCaseData[countryCaseData.length - 1].total_cases
+      : "0"
+  );
+  const [countryTotalDeaths, setCountryTotalDeaths] = useState(
+    countryCaseData.length
+      ? ~~countryCaseData[countryCaseData.length - 1].total_deaths
+      : "0"
   );
 
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
   const currentYear = new Date().getFullYear();
 
   return (
-    <div key={router.pathname}>
+    <>
       <Head>
         <title>
-          Monkeypox in {stateName} as of {currentMonth} {currentYear} |
+          Monkeypox in {countryName} as of {currentMonth} {currentYear} |
           Monkeypox Cases
         </title>
         <meta
           name="description"
-          content={`Monkeypox cases in ${stateName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
+          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
         />
 
         <meta
           property="og:title"
-          content={`Monkeypox in ${stateName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Statistics`}
+          content={`Monkeypox in ${countryName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Statistics`}
         />
         <meta
           property="og:description"
-          content={`Monkeypox cases in ${stateName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
+          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
         <meta
           property="og:image"
-          content="https://monkeypoxtracker.net/usSocialImg.png"
+          content="https://monkeypoxtracker.net/socialImg.png"
         />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Monkeypox cases in ${stateName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
+          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
         />
         <meta
           property="twitter:image"
-          content="https://monkeypoxtracker.net/usSocialImg.png"
+          content="https://monkeypoxtracker.net/socialImg.png"
         />
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container maxW="5xl" mt={35} key={router.asPath}>
+      <Container maxW="5xl" mt={35}>
         <Breadcrumb
           spacing="8px"
           separator={<ChevronRightIcon color="gray.500" />}
@@ -188,25 +367,38 @@ const StateDetails = ({ state }) => {
           </BreadcrumbItem>
 
           <BreadcrumbItem>
-            <Link href="/states">
+            <Link href={`/countries/`}>
+              <a>Countries</a>
+            </Link>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem>
+            <Link href={`/countries/${countryDetails.iso2}`}>
+              <a>{countryDetails.name}</a>
+            </Link>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem>
+            <Link href="/countries/">
               <a>States</a>
             </Link>
           </BreadcrumbItem>
 
-          <BreadcrumbItem isCurrentPage>
-            <a>{stateName}</a>
+          <BreadcrumbItem>
+            <Link href="/countries">
+              <a>{stateDetails.name}</a>
+            </Link>
           </BreadcrumbItem>
         </Breadcrumb>
-
         <Heading as="h1" size="4xl">
-          {stateName}
+          {stateName} {countryDetails.emoji}
         </Heading>
         <Heading as="h2" size="md">
           Monkeypox Outbreak: State Details
-        </Heading>
-
-        <Heading as="h3" size="sm" mt={10}>
-          {stateName}: Monkeypox Situation Report
+        </Heading>{" "}
+        <Heading as="h2" mt={10} mb={5}>
+          Monkeypox virus disease outbreak in {stateName}, {countryName}: case
+          counts, deaths, and statistics
         </Heading>
         <Text>
           Monkeypox is a rare disease caused by infection with the monkeypox
@@ -217,18 +409,56 @@ const StateDetails = ({ state }) => {
           <br /> <br />
         </Text>
         <Text>
-          This page shows data for the Monkeypox outbreak currently taking place
-          in {stateName}.
+          This page shows data for the monkeypox disease outbreak currently
+          taking place in <b>{stateName}</b>, located in the {countryName}. This
+          outbreak is part of the larger outbreak taking place in{" "}
+          {countryDetails.region}, specifically in {countryDetails.subregion}.
           <br />
           <br />
-          Based on the most recent reports available, health authorities in{" "}
-          {stateName} have reported {parseInt(stateNewCases).toLocaleString()}{" "}
-          case
-          {stateNewCases == 1 ? `` : `s`}.
+        </Text>
+        <Heading as="h2" size="sm">
+          {stateName}-level data
+        </Heading>
+        {countryDetails.iso2 == "US" ? (
+          <Text>
+            Monkeypox case data for {stateDetails.name} is available under the
+            "US state data tab", which you can also click{" "}
+            <Link href={"/usstates"}>
+              <a style={{ color: `${colors.blueMunsell}` }}>here</a>
+            </Link>{" "}
+            to view.
+            <br />
+            <br />
+          </Text>
+        ) : (
+          <Text>
+            At present, we don't have data specific to {stateName} monkeypox
+            cases or deaths. However, we do have {countryName}-level data, which
+            is presented below.
+            <br />
+            <br />
+          </Text>
+        )}
+        <Heading as="h2" size="sm">
+          {countryName}-level data
+        </Heading>
+        <Text>
+          Based on the most recent reports available from the government in{" "}
+          {countryDetails.capital}, health authorities in {countryName} have
+          reported {countryNewCases.toLocaleString()} new case
+          {countryNewCases == 1 ? `` : `s`} and{" "}
+          {countryNewDeaths ? countryNewDeaths.toLocaleString() : 0} new death
+          {countryNewDeaths == 1 ? `` : `s`}. The people of {countryName} have
+          experienced {countryTotalCases.toLocaleString()} total case
+          {countryTotalCases == 1 ? `` : `s`} and{" "}
+          {countryTotalDeaths ? countryTotalDeaths.toLocaleString() : 0} total
+          deaths since the start of the outbreak.
           <br />
           <br />
-          You can see how the {stateName} Monkeypox situation compares with the
-          situation globally on the{" "}
+          You can use the charts on this page to explore the spread of Monkeypox
+          in {countryName}. You can also refer to the {countryName} case history
+          table provided below. Lastly, you can see how the {countryName}{" "}
+          Monkeypox situation compares with the situation globally on the{" "}
           <Link href="/">
             <a style={{ color: `${colors.blueMunsell}` }}>
               MonkeypoxTracker homepage
@@ -236,24 +466,64 @@ const StateDetails = ({ state }) => {
           </Link>
           .
         </Text>
-        <Button onClick={copy} mt={5} mb={5}>
+        <Button onClick={copy} mt={5}>
           {!copied ? "Copy report URL" : "Copied link!"}
         </Button>
-
-        <Heading size="md">
-          Click on another state to view more details.
-        </Heading>
-        <Container maxW={"5xl"}>
-          <USMapChart setTooltipContent={setContent} />
-          {content && (
-            <ReactTooltip>
-              <Tooltip>{content}</Tooltip>
-            </ReactTooltip>
-          )}
-        </Container>
+        <SimpleGrid columns={[1, null, 2]}>
+          <GridItem w="100%" mt={10}>
+            <Heading as="h3" size="sm">
+              <Center mb={1}>{countryName}: Total Monkeypox Cases</Center>
+            </Heading>
+            <div style={{ minHeight: "40vh" }}>
+              {countryCaseData[0] ? (
+                <Line
+                  data={chartDataTotalCases}
+                  options={{ maintainAspectRatio: false }}
+                />
+              ) : (
+                <Center>No cases detected yet.</Center>
+              )}
+            </div>
+          </GridItem>
+          <GridItem w="100%" mt={10}>
+            <Heading as="h3" size="sm">
+              <Center mb={1}>{countryName}: Monkeypox Cases per Million</Center>
+            </Heading>
+            <div style={{ minHeight: "40vh" }}>
+              {countryCaseData[0] ? (
+                <Line
+                  data={chartDataTotalCasesPerMillion}
+                  options={{ maintainAspectRatio: false }}
+                />
+              ) : (
+                <Center>No cases detected yet.</Center>
+              )}
+            </div>
+          </GridItem>
+          <GridItem w="100%" mt={10}>
+            <Heading as="h3" size="sm">
+              <Center mb={1}>{countryName}: Monkeypox Deaths</Center>
+            </Heading>
+            <div style={{ minHeight: "40vh" }}>
+              {countryCaseData[0] ? (
+                <Line
+                  data={chartDataTotalDeaths}
+                  options={{ maintainAspectRatio: false }}
+                />
+              ) : (
+                <Center>No cases detected yet.</Center>
+              )}
+            </div>
+          </GridItem>
+        </SimpleGrid>
+        <Text mb={5} mt={10} color={"gray.500"}>
+          Source:{" "}
+          <a href={"https://ourworldindata.org/monkeypox"}>OurWorldInData</a>.
+          Last update: {Date().toLocaleString().substring(0, 16)}
+        </Text>
       </Container>
-    </div>
+    </>
   );
 };
 
-export default StateDetails;
+export default CountryDetails;

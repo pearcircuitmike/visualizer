@@ -15,6 +15,7 @@ import {
   Show,
   Button,
 } from "@chakra-ui/react";
+import TwitterButton from "./components/social/TwitterButton.js";
 
 import Link from "next/link";
 import { colors } from "../styles/colors.js";
@@ -111,7 +112,6 @@ export default function Home() {
             py={{ base: 10, md: 20 }}
           >
             <Heading as="h1" size="3xl">
-              Monkeypox Tracker:{" "}
               <Text as={"span"}>
                 {latestCaseTotal.toLocaleString(undefined, {
                   maximumFractionDigits: 2,
@@ -119,7 +119,7 @@ export default function Home() {
               </Text>{" "}
               Monkeypox cases detected
             </Heading>
-            <Text color={"gray.500"} maxW={"5xl"}>
+            <Text maxW={"5xl"}>
               This site is dedicated to tracking the spread of the 2022
               monkeypox virus disease outbreak, and is updated every few hours.
               You can{" "}
@@ -134,26 +134,18 @@ export default function Home() {
                   view the states listing page
                 </a>
               </Link>{" "}
-              for a breakdown of U.S. cases by state.
+              for a breakdown of U.S. cases by state. Follow us on twitter for
+              more updates, or follow our partner{" "}
+              <a
+                href="https://twitter.com/mildanalyst"
+                style={{ color: `${colors.blueMunsell}` }}
+              >
+                Pandemic News
+              </a>{" "}
+              for details about other health crises around the world.
             </Text>
-            <Show above="sm">
-              <HStack spacing={4}>
-                <Link href={"/countries"}>
-                  <Button size="lg">Explore global data</Button>
-                </Link>
-                <Link href={"/states"}>
-                  <Button size="lg">Explore US data</Button>
-                </Link>
-              </HStack>
-            </Show>
-            <a
-              style={{ marginTop: "15px !important" }}
-              href="https://twitter.com/monkeypox_stats"
-            >
-              <Button colorScheme="twitter" leftIcon={<FaTwitter />}>
-                Follow updates on Twitter
-              </Button>
-            </a>
+
+            <TwitterButton style={{ margin: "!important;" }} />
           </Stack>
         </Container>
 

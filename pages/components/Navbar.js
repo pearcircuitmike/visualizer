@@ -31,7 +31,7 @@ const Navbar = () => {
               <Link href="/countries" aria-label="Countries" m={5} w="100%">
                 <a>Global data</a>
               </Link>
-              <Link href="/states" aria-label="States" m={5} w="100%">
+              <Link href="/usstates" aria-label="States" m={5} w="100%">
                 <a>US state data</a>
               </Link>
               <Link href="/us/testing" aria-label="Countries" m={5} w="100%">
@@ -95,7 +95,7 @@ const Navbar = () => {
             <Link href="/countries" aria-label="Countries" m={"10px"} w="100%">
               <a onClick={() => changeDisplay("none")}>Global data</a>
             </Link>
-            <Link href="/states" aria-label="States" m={"10px"} w="100%">
+            <Link href="/usstates" aria-label="States" m={"10px"} w="100%">
               <a onClick={() => changeDisplay("none")}>US state data </a>
             </Link>
             <Link

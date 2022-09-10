@@ -10,6 +10,7 @@ import {
   Container,
   GridItem,
   SimpleGrid,
+  Grid,
   Button,
   Stat,
   StatLabel,
@@ -19,7 +20,10 @@ import {
   StatGroup,
   Breadcrumb,
   BreadcrumbItem,
+  Box,
+  Stack,
 } from "@chakra-ui/react";
+import TwitterButton from "../components/social/TwitterButton";
 
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import Chart from "chart.js/auto";
@@ -27,25 +31,25 @@ import Chart from "chart.js/auto";
 import Link from "next/link";
 
 export const getStaticPaths = async () => {
-  // paths come from this source, because it's deduped already
-  const url =
-    "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
+  // csc api
+  var headers = new Headers();
+  headers.append("X-CSCAPI-KEY", process.env.NEXT_PUBLIC_CSC_API_KEY);
 
-  const res = await fetch(url);
+  var requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+
+  const url = "https://api.countrystatecity.in/v1/countries";
+
+  const res = await fetch(url, requestOptions);
   const text = await res.text();
-  const data = await csv().fromString(text);
-  const nonUniqueLocationOptions = JSON.parse(
-    JSON.stringify(
-      data.map((y) => {
-        return y["location"];
-      })
-    )
-  );
-  const uniqueLocationOptions = [...new Set(nonUniqueLocationOptions)];
+  const data = await JSON.parse(text);
 
-  const paths = uniqueLocationOptions.map((countryVal) => {
+  const paths = data.map((countryVal) => {
     return {
-      params: { country: countryVal },
+      params: { country: countryVal.iso2 },
     };
   });
 
@@ -56,52 +60,81 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const country = context.params.country;
+  const countryIso2 = context.params.country;
+
+  // csc api
+  var headers = new Headers();
+  headers.append("X-CSCAPI-KEY", process.env.NEXT_PUBLIC_CSC_API_KEY);
+
+  var requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+
+  const countryDetailsUrl = `https://api.countrystatecity.in/v1/countries/${countryIso2}`;
+  const countryDetailsRes = await fetch(countryDetailsUrl, requestOptions);
+  const countryDetailsText = await countryDetailsRes.text();
+  const countryDetails = await JSON.parse(countryDetailsText);
+
   const countryDataUrl =
     "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
 
   const res = await fetch(countryDataUrl);
   const text = await res.text();
   const jsonArray = await csv().fromString(text);
-  const filteredJsonArray = jsonArray.filter((x) => x.location === country);
+
+  const stateDataUrl = `https://api.countrystatecity.in/v1/countries/${countryIso2}/states`;
+
+  const stateDataRes = await fetch(stateDataUrl, requestOptions);
+  const stateDataText = await stateDataRes.text();
+  const stateDataDetails = await JSON.parse(stateDataText);
+
+  const filteredJsonArray = jsonArray.filter(
+    (x) => x.location === countryDetails.name
+  );
 
   return {
-    props: { country: filteredJsonArray },
+    props: {
+      countryCaseData: filteredJsonArray,
+      countryDetails: countryDetails,
+      states: stateDataDetails,
+    },
   };
 };
 
-const CountryDetails = ({ country }) => {
+const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
   const filteredDates = JSON.parse(
     JSON.stringify(
-      country.map((y) => {
+      countryCaseData.map((y) => {
         return y["date"];
       })
     )
   );
   const filteredTotalCases = JSON.parse(
     JSON.stringify(
-      country.map((y) => {
+      countryCaseData.map((y) => {
         return y["total_cases"];
       })
     )
   );
   const filteredNewCases = JSON.parse(
     JSON.stringify(
-      country.map((y) => {
+      countryCaseData.map((y) => {
         return y["new_cases"];
       })
     )
   );
   const filteredNewCasesPerMillion = JSON.parse(
     JSON.stringify(
-      country.map((y) => {
+      countryCaseData.map((y) => {
         return y["new_cases_per_million"];
       })
     )
   );
   const filteredTotalCasesPerMillion = JSON.parse(
     JSON.stringify(
-      country.map((y) => {
+      countryCaseData.map((y) => {
         return y["total_cases_per_million"];
       })
     )
@@ -109,7 +142,7 @@ const CountryDetails = ({ country }) => {
 
   const filteredTotalDeaths = JSON.parse(
     JSON.stringify(
-      country.map((y) => {
+      countryCaseData.map((y) => {
         return y["total_deaths"];
       })
     )
@@ -248,20 +281,28 @@ const CountryDetails = ({ country }) => {
     setCopied(true);
   }
   const [countryName, setCountryName] = useState(
-    country.length ? country[0].location : ""
+    countryDetails.name ? countryDetails.name : ""
   );
   const [countryNewCases, setCountryNewCases] = useState(
-    country.length ? ~~country[country.length - 1].new_cases : ""
+    countryCaseData.length
+      ? ~~countryCaseData[countryCaseData.length - 1].new_cases
+      : ""
   );
   const [countryNewDeaths, setCountryNewDeaths] = useState(
-    country.length ? ~~country[country.length - 1].new_deaths : ""
+    countryCaseData.length
+      ? ~~countryCaseData[countryCaseData.length - 1].new_deaths
+      : "0"
   );
 
   const [countryTotalCases, setCountryTotalCases] = useState(
-    country.length ? ~~country[country.length - 1].total_cases : ""
+    countryCaseData.length
+      ? ~~countryCaseData[countryCaseData.length - 1].total_cases
+      : "0"
   );
   const [countryTotalDeaths, setCountryTotalDeaths] = useState(
-    country.length ? ~~country[country.length - 1].total_deaths : ""
+    countryCaseData.length
+      ? ~~countryCaseData[countryCaseData.length - 1].total_deaths
+      : "0"
   );
 
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
@@ -329,39 +370,35 @@ const CountryDetails = ({ country }) => {
             <a>{countryName}</a>
           </BreadcrumbItem>
         </Breadcrumb>
-
         <Heading as="h1" size="4xl">
-          {countryName}
+          {countryName} {countryDetails.emoji}
         </Heading>
         <Heading as="h2" size="md">
           Monkeypox Outbreak: Country Details
-        </Heading>
-
+        </Heading>{" "}
         <StatGroup mt={5} mb={5}>
           <Stat>
             <StatLabel>Total Cases</StatLabel>
             <StatNumber>
-              {countryTotalCases.toLocaleString(undefined)}
+              {countryTotalCases ? countryTotalCases.toLocaleString() : 0}
             </StatNumber>
             <StatHelpText>
               <StatArrow type="increase" />
-              {countryNewCases.toLocaleString(undefined)}
+              {countryNewCases ? countryNewCases.toLocaleString() : 0}
             </StatHelpText>
           </Stat>
 
           <Stat>
             <StatLabel>Total Deaths</StatLabel>
             <StatNumber>
-              {" "}
-              {countryTotalDeaths.toLocaleString(undefined)}
+              {countryTotalDeaths ? countryTotalDeaths.toLocaleString() : 0}
             </StatNumber>
             <StatHelpText>
               <StatArrow type="increase" />
-              {countryNewDeaths.toLocaleString(undefined)}
+              {countryNewDeaths ? countryNewDeaths.toLocaleString() : 0}
             </StatHelpText>
           </Stat>
         </StatGroup>
-
         <Heading as="h2" mt={10} mb={5}>
           Monkeypox virus disease outbreak in {countryName}: case counts,
           deaths, and statistics
@@ -375,23 +412,24 @@ const CountryDetails = ({ country }) => {
           <br /> <br />
         </Text>
         <Text>
-          This page shows data for the monkeypox outbreak currently taking place
-          in {countryName}.
+          This page shows data for the monkeypox disease outbreak currently
+          taking place in {countryName}. This outbreak is part of the larger
+          outbreak taking place in {countryDetails.region}, specifically in{" "}
+          {countryDetails.subregion}.
           <br />
           <br />
-          Based on the most recent reports available, health authorities in{" "}
-          {countryName} have reported{" "}
-          {countryNewCases.toLocaleString(undefined)} new case
+        </Text>
+        <Text>
+          Based on the most recent reports available from the government in{" "}
+          {countryDetails.capital}, health authorities in {countryName} have
+          reported {countryNewCases.toLocaleString()} new case
           {countryNewCases == 1 ? `` : `s`} and{" "}
-          {countryNewDeaths ? countryNewDeaths.toLocaleString(undefined) : 0}{" "}
-          new death
+          {countryNewDeaths ? countryNewDeaths.toLocaleString() : 0} new death
           {countryNewDeaths == 1 ? `` : `s`}. The people of {countryName} have
-          experienced {countryTotalCases.toLocaleString(undefined)} total case
+          experienced {countryTotalCases.toLocaleString()} total case
           {countryTotalCases == 1 ? `` : `s`} and{" "}
-          {countryTotalDeaths
-            ? countryTotalDeaths.toLocaleString(undefined)
-            : 0}{" "}
-          total deaths since the start of the outbreak.
+          {countryTotalDeaths ? countryTotalDeaths.toLocaleString() : 0} total
+          deaths since the start of the outbreak.
           <br />
           <br />
           You can use the charts on this page to explore the spread of Monkeypox
@@ -408,17 +446,21 @@ const CountryDetails = ({ country }) => {
         <Button onClick={copy} mt={5}>
           {!copied ? "Copy report URL" : "Copied link!"}
         </Button>
-
+        <TwitterButton />
         <SimpleGrid columns={[1, null, 2]}>
           <GridItem w="100%" mt={10}>
             <Heading as="h3" size="sm">
               <Center mb={1}>{countryName}: Total Monkeypox Cases</Center>
             </Heading>
             <div style={{ minHeight: "40vh" }}>
-              <Line
-                data={chartDataTotalCases}
-                options={{ maintainAspectRatio: false }}
-              />
+              {countryCaseData[0] ? (
+                <Line
+                  data={chartDataTotalCases}
+                  options={{ maintainAspectRatio: false }}
+                />
+              ) : (
+                <Center>No cases detected yet.</Center>
+              )}
             </div>
           </GridItem>
           <GridItem w="100%" mt={10}>
@@ -426,10 +468,14 @@ const CountryDetails = ({ country }) => {
               <Center mb={1}>{countryName}: Monkeypox Cases per Million</Center>
             </Heading>
             <div style={{ minHeight: "40vh" }}>
-              <Line
-                data={chartDataTotalCasesPerMillion}
-                options={{ maintainAspectRatio: false }}
-              />
+              {countryCaseData[0] ? (
+                <Line
+                  data={chartDataTotalCasesPerMillion}
+                  options={{ maintainAspectRatio: false }}
+                />
+              ) : (
+                <Center>No cases detected yet.</Center>
+              )}
             </div>
           </GridItem>
           <GridItem w="100%" mt={10}>
@@ -437,19 +483,41 @@ const CountryDetails = ({ country }) => {
               <Center mb={1}>{countryName}: Monkeypox Deaths</Center>
             </Heading>
             <div style={{ minHeight: "40vh" }}>
-              <Line
-                data={chartDataTotalDeaths}
-                options={{ maintainAspectRatio: false }}
-              />
+              {countryCaseData[0] ? (
+                <Line
+                  data={chartDataTotalDeaths}
+                  options={{ maintainAspectRatio: false }}
+                />
+              ) : (
+                <Center>No cases detected yet.</Center>
+              )}
             </div>
           </GridItem>
         </SimpleGrid>
-
         <Text mb={5} mt={10} color={"gray.500"}>
           Source:{" "}
           <a href={"https://ourworldindata.org/monkeypox"}>OurWorldInData</a>.
           Last update: {Date().toLocaleString().substring(0, 16)}
         </Text>
+        <Heading mt={5} mb={5} as="h2" size="sm">
+          View {countryName} outbreak by subregion
+        </Heading>
+        <SimpleGrid
+          minChildWidth="100px"
+          spacingX="40px"
+          spacingY="15px"
+          mb={5}
+        >
+          {states.map((state) => (
+            <Box key={state.id}>
+              <Link href={`/states/${countryDetails.iso2}_${state.iso2}`}>
+                <a>
+                  <Text noOfLines={1}>{state.name}</Text>
+                </a>
+              </Link>
+            </Box>
+          ))}
+        </SimpleGrid>
       </Container>
     </>
   );

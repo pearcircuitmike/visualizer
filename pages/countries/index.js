@@ -24,19 +24,35 @@ import React, { useState } from "react";
 import WorldMap from "../components/WorldMap.js";
 
 export const getStaticProps = async () => {
-  const date = Math.floor(new Date().getTime() / 1000);
-  const url = `https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/MPX-Cases-Deaths-by-Country.csv?v=${date} `;
+  // request countries
+  var headers = new Headers();
+  headers.append("X-CSCAPI-KEY", process.env.NEXT_PUBLIC_CSC_API_KEY);
 
-  const res = await fetch(url);
-  const text = await res.text();
-  const data = await csv().fromString(text);
+  var requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+
+  const countrySummaryUrl = "https://api.countrystatecity.in/v1/countries";
+
+  const countrySummaryRes = await fetch(countrySummaryUrl, requestOptions);
+  const countrySummaryText = await countrySummaryRes.text();
+  const countries = await JSON.parse(countrySummaryText);
+
+  const countryCasesUrl =
+    "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
+
+  const countryCasesRes = await fetch(countryCasesUrl);
+  const countryCasesText = await countryCasesRes.text();
+  const countriesCases = await csv().fromString(countryCasesText);
 
   return {
-    props: { countryVals: data },
+    props: { countryList: countries, countryCaseData: countriesCases },
   };
 };
 
-const Countries = ({ countryVals }) => {
+const Countries = ({ countryList, countryCaseData }) => {
   const [countryFilter, setCountryFilter] = useState("");
   const handleSearch = (event) => setCountryFilter(event.target.value);
   const [content, setContent] = useState("");
@@ -121,13 +137,13 @@ const Countries = ({ countryVals }) => {
           </InputRightElement>
         </InputGroup>
 
-        {countryVals
-          .filter((country) =>
-            country.Country.toLowerCase().includes(countryFilter.toLowerCase())
+        {countryList
+          .filter((countryList) =>
+            countryList.name.toLowerCase().includes(countryFilter.toLowerCase())
           )
-          .map((countryVal) => (
+          .map((countryList) => (
             <Box
-              key={countryVal.Country}
+              key={countryList.name}
               borderWidth="1px"
               borderRadius="lg"
               overflow="hidden"
@@ -141,18 +157,27 @@ const Countries = ({ countryVals }) => {
                 <Center>
                   <div>
                     <Heading size="md" mt={1}>
-                      {countryVal.Country}
+                      {countryList.name}
                     </Heading>
+                    <Text></Text>
                     <Text>
                       Currently active cases:{" "}
-                      {parseInt(countryVal.Cases).toLocaleString(undefined)}
+                      {countryCaseData
+                        .filter((x) => x.location.includes(countryList.name))
+                        .toString()
+                        ? ~~countryCaseData
+                            .filter((x) =>
+                              x.location.includes(countryList.name)
+                            )[0]
+                            .total_cases.toString()
+                        : 0}
                     </Text>
                   </div>
                 </Center>
 
                 <Spacer />
                 <Center>
-                  <Link href={"/countries/" + countryVal.Country}>
+                  <Link href={"/countries/" + countryList.iso2}>
                     <Button>
                       <a>View data</a>
                     </Button>

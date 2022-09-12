@@ -140,10 +140,10 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
     )
   );
 
-  const filteredTotalDeaths = JSON.parse(
+  const filteredNewDeaths = JSON.parse(
     JSON.stringify(
       countryCaseData.map((y) => {
-        return y["total_deaths"];
+        return y["new_deaths"];
       })
     )
   );
@@ -242,11 +242,11 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
       },
     ],
   };
-  const chartDataTotalDeaths = {
+  const chartDataNewDeaths = {
     labels: filteredDates,
     datasets: [
       {
-        label: "Total Deaths",
+        label: "New Deaths",
         fill: false,
         lineTension: 0.1,
         backgroundColor: colors.kineticBlack,
@@ -264,7 +264,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: filteredTotalDeaths,
+        data: filteredNewDeaths,
       },
     ],
   };
@@ -389,9 +389,9 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
           </Stat>
 
           <Stat>
-            <StatLabel>Total Deaths</StatLabel>
+            <StatLabel>New Deaths</StatLabel>
             <StatNumber>
-              {countryTotalDeaths ? countryTotalDeaths.toLocaleString() : 0}
+              {countryNewDeaths ? countryNewDeaths.toLocaleString() : 0}
             </StatNumber>
             <StatHelpText>
               <StatArrow type="increase" />
@@ -427,15 +427,12 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
           {countryNewDeaths ? countryNewDeaths.toLocaleString() : 0} new death
           {countryNewDeaths == 1 ? `` : `s`}. The people of {countryName} have
           experienced {countryTotalCases.toLocaleString()} total case
-          {countryTotalCases == 1 ? `` : `s`} and{" "}
-          {countryTotalDeaths ? countryTotalDeaths.toLocaleString() : 0} total
-          deaths since the start of the outbreak.
+          {countryTotalCases == 1 ? `` : `s`} since the start of the outbreak.
           <br />
           <br />
           You can use the charts on this page to explore the spread of Monkeypox
-          in {countryName}. You can also refer to the {countryName} case history
-          table provided below. Lastly, you can see how the {countryName}{" "}
-          Monkeypox situation compares with the situation globally on the{" "}
+          in {countryName}. Lastly, you can see how the {countryName} Monkeypox
+          situation compares with the situation globally on the{" "}
           <Link href="/">
             <a style={{ color: `${colors.blueMunsell}` }}>
               MonkeypoxTracker homepage
@@ -485,7 +482,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
             <div style={{ minHeight: "40vh" }}>
               {countryCaseData[0] ? (
                 <Line
-                  data={chartDataTotalDeaths}
+                  data={chartDataNewDeaths}
                   options={{ maintainAspectRatio: false }}
                 />
               ) : (

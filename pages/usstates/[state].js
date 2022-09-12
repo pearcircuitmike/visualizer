@@ -102,10 +102,10 @@ const StateDetails = ({ state }) => {
       )
     );
 
-    const filteredTotalDeaths = JSON.parse(
+    const filteredNewTotalDeaths = JSON.parse(
       JSON.stringify(
         state.map((y) => {
-          return y["total_deaths"];
+          return y["new_deaths"];
         })
       )
     );
@@ -188,7 +188,7 @@ const StateDetails = ({ state }) => {
           </BreadcrumbItem>
 
           <BreadcrumbItem>
-            <Link href="/states">
+            <Link href="/usstates">
               <a>States</a>
             </Link>
           </BreadcrumbItem>

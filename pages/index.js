@@ -40,6 +40,8 @@ export default function Home() {
 
   const [data, setData] = useState([]);
   const [latestCaseTotal, setLatestCaseTotal] = useState("");
+  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     const url =
@@ -68,7 +70,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Monkeypox Tracker | Monkeypox Statistics</title>
+        <title>
+          Monkeypox Tracker | {currentMonth} {currentYear} Monkeypox cases
+        </title>
         <meta
           name="description"
           content="Statistics and information on the 2022 Monkeypox virus disease outbreak, including maps, charts, and tables from sources around the world. Inspired by the BNO Monkeypox tracker."

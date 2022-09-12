@@ -12,13 +12,16 @@ import USTestPositivityTable from "../components/us/USTestPositivityTable";
 import USTestPositivityChart from "../components/us/USTestPositivityChart";
 
 const About = () => {
+  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <Head>
         <title>U.S. Testing Information | Monkeypox Tracker</title>
         <meta
           name="description"
-          content={`Statistics and information on Monkeypox testing in the United States, including maps, charts, and tables. Inspired by the BNO Monkeypox tracker.`}
+          content={`Statistics and information on ${currentMonth} ${currentYear} Monkeypox testing data in the United States, including maps, charts, and tables. Inspired by the BNO Monkeypox tracker.`}
         />
 
         <meta
@@ -27,7 +30,7 @@ const About = () => {
         />
         <meta
           property="og:description"
-          content={`Statistics and information on Monkeypox testing in the United States, including maps, charts, and tables. Inspired by the BNO Monkeypox tracker.`}
+          content={`Statistics and information on ${currentMonth} ${currentYear} Monkeypox testing data in the United States, including maps, charts, and tables. Inspired by the BNO Monkeypox tracker.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -40,7 +43,7 @@ const About = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Statistics and information on Monkeypox testing in the United States, including maps, charts, and tables. Inspired by the BNO Monkeypox tracker.`}
+          content={`Statistics and information on ${currentMonth} ${currentYear} Monkeypox testing data in the United States, including maps, charts, and tables. Inspired by the BNO Monkeypox tracker.`}
         />
         <meta
           property="twitter:image"

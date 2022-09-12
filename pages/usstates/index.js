@@ -43,19 +43,24 @@ const States = ({ stateVals }) => {
 
   const [content, setContent] = useState("");
 
+  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <Head>
-        <title>Monkeypox Tracker | States</title>
+        <title>
+          {currentMonth} {currentYear} Monkeypox cases by US state
+        </title>
         <meta
           name="description"
-          content="Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker."
+          content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker.`}
         />
 
         <meta property="og:title" content="Monkeypox Tracker | States" />
         <meta
           property="og:description"
-          content="Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker."
+          content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -68,7 +73,7 @@ const States = ({ stateVals }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states."
+          content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker.`}
         />
         <meta
           property="twitter:image"

@@ -57,21 +57,26 @@ const Countries = ({ countryList, countryCaseData }) => {
   const handleSearch = (event) => setCountryFilter(event.target.value);
   const [content, setContent] = useState("");
 
+  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <Head>
         {/* Global Site Tag (gtag.js) - Google Analytics */}
 
-        <title>Monkeypox Tracker | Countries</title>
+        <title>
+          Worldwide monkeypox cases {currentMonth} {currentYear}
+        </title>
         <meta
           name="description"
-          content="Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world."
+          content={`${currentMonth} ${currentYear} Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world.`}
         />
 
         <meta property="og:title" content="Monkeypox Tracker | Countries" />
         <meta
           property="og:description"
-          content="Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world."
+          content={`${currentMonth} ${currentYear} Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -84,7 +89,7 @@ const Countries = ({ countryList, countryCaseData }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world."
+          content={`${currentMonth} ${currentYear} Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world.`}
         />
         <meta
           property="twitter:image"
@@ -98,13 +103,13 @@ const Countries = ({ countryList, countryCaseData }) => {
           Monkeypox cases and deaths by country
         </Heading>
 
-        <Link href={"/states"}>
+        <Link href={"/usstates/"}>
           <Button
             size="sm"
             m={5}
             style={{ backgroundColor: `${colors.yellowGreen}` }}
           >
-            View states
+            View US states
           </Button>
         </Link>
 

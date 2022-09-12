@@ -46,7 +46,7 @@ export default function WorldTrends() {
   const filteredTotalCases = JSON.parse(
     JSON.stringify(
       filter.map((y) => {
-        return y["total_cases"];
+        return Math.max(y["total_cases"]);
       })
     )
   );
@@ -72,10 +72,10 @@ export default function WorldTrends() {
     )
   );
 
-  const filteredTotalDeaths = JSON.parse(
+  const filteredNewDeaths = JSON.parse(
     JSON.stringify(
       filter.map((y) => {
-        return y["total_deaths"];
+        return y["new_deaths"];
       })
     )
   );
@@ -169,7 +169,7 @@ export default function WorldTrends() {
       },
 
       {
-        label: "Total Deaths",
+        label: "New Deaths",
         fill: false,
         lineTension: 0.1,
         backgroundColor: colors.kineticBlack,
@@ -187,7 +187,7 @@ export default function WorldTrends() {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: filteredTotalDeaths,
+        data: filteredNewDeaths,
       },
     ],
   };

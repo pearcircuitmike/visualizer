@@ -101,7 +101,7 @@ const USVaccinationMapChart = ({ setTooltipContent }) => {
                                         parseInt(d.Total.replace(/,/g, ""))) /
                                         cur.pop
                                     )
-                                  : 0
+                                  : -3999
                               }`
                             )
                           : colors.yellowGreenPale,
@@ -167,6 +167,17 @@ const USVaccinationMapChart = ({ setTooltipContent }) => {
           fontSize="xl"
         >
           3000 vaccines/mil
+        </Badge>
+        <Badge
+          m={1}
+          style={{
+            padding: "2px 15px",
+            color: "black",
+            backgroundColor: `${colorScale(-4000)}`,
+          }}
+          fontSize="xl"
+        >
+          No data
         </Badge>
         <Text mb={5} color={"gray.500"}>
           Source:{" "}

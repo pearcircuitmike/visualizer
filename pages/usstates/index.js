@@ -23,6 +23,7 @@ import { colors } from "../../styles/colors.js";
 import ReactTooltip from "react-tooltip";
 
 import USMapChart from "../components/USMap.js";
+import USVaccinationMap from "../components/USVaccinationMap.js";
 
 export const getStaticProps = async () => {
   const date = Math.floor(new Date().getTime() / 1000);
@@ -103,6 +104,14 @@ const States = ({ stateVals }) => {
         </Text>
         <Container maxW={"5xl"}>
           <USMapChart setTooltipContent={setContent} />
+          {content && (
+            <ReactTooltip>
+              <Tooltip>{content}</Tooltip>
+            </ReactTooltip>
+          )}
+        </Container>
+        <Container maxW={"5xl"}>
+          <USVaccinationMap setTooltipContent={setContent} />
           {content && (
             <ReactTooltip>
               <Tooltip>{content}</Tooltip>

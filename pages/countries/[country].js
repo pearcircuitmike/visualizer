@@ -307,7 +307,6 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
 
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
   const currentYear = new Date().getFullYear();
-
   return (
     <>
       <Head>

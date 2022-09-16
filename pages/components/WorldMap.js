@@ -59,7 +59,7 @@ const WorldMapChart = ({ setTooltipContent }) => {
                   );
 
                   const colorScale = scaleLinear()
-                    .domain([0, 10000])
+                    .domain([0, 100])
                     .range([colors.aquamarine, colors.spaceCadet]);
 
                   return (
@@ -73,7 +73,7 @@ const WorldMapChart = ({ setTooltipContent }) => {
                           ? setTooltipContent(
                               `${geo.properties.name}: ${parseInt(
                                 d[d.length - 1].total_cases
-                              ).toLocaleString()}`
+                              ).toLocaleString()} cases`
                             )
                           : setTooltipContent(`${geo.properties.name}: 0`);
                       }}
@@ -88,7 +88,9 @@ const WorldMapChart = ({ setTooltipContent }) => {
                         default: {
                           fill:
                             d.length > 0
-                              ? colorScale(`${d[d.length - 1].total_cases}`)
+                              ? colorScale(
+                                  `${d[d.length - 1].total_cases_per_million}`
+                                )
                               : colors.yellowGreenPale,
                           outline: "none",
                         },
@@ -97,7 +99,7 @@ const WorldMapChart = ({ setTooltipContent }) => {
                         },
                         pressed: {
                           fill: d
-                            ? colorScale(`${d.total_cases}`)
+                            ? colorScale(`${d.total_cases_per_million}`)
                             : colors.yellowGreen,
                           outline: "none",
                         },

@@ -11,10 +11,9 @@ import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
 import allStates from "../../public/allstates.json";
 
-const USMapChart = ({ setTooltipContent }) => {
+const USVaccinationMapChart = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
   const router = useRouter();
-
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -23,7 +22,7 @@ const USMapChart = ({ setTooltipContent }) => {
 
   useEffect(() => {
     if (isLoaded) {
-      const url = `https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/USmap_counts.csv`;
+      const url = `https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/Vaccines/mpx_vaccine_Jurisdiction%20map.csv`;
 
       const fetchData = async () => {
         try {
@@ -45,7 +44,7 @@ const USMapChart = ({ setTooltipContent }) => {
     <Box mt={10}>
       <Box textAlign={"center"}>
         <Heading as="h2" size="lg">
-          US confirmed Monkeypox cases/mil
+          US total vaccine doses administered/mil
         </Heading>
         <Text size="md">Click on a state to view more details</Text>
       </Box>
@@ -57,9 +56,11 @@ const USMapChart = ({ setTooltipContent }) => {
                 const centroid = geoCentroid(geo);
                 const cur = allStates.find((s) => s.val === geo.id);
 
-                const d = data.find((s) => s.Location === geo.properties.name);
+                const d = data.find(
+                  (s) => s[`Reporting Jurisdictions`] === geo.properties.name
+                );
                 const colorScale = scaleLinear()
-                  .domain([0, 200])
+                  .domain([0, 3000])
                   .range([colors.aquamarine, colors.spaceCadet]);
 
                 return (
@@ -69,12 +70,13 @@ const USMapChart = ({ setTooltipContent }) => {
                     stroke="#ffffff"
                     strokeWidth={1}
                     onMouseEnter={() => {
-                      d
+                      d.Total
                         ? setTooltipContent(
                             `${geo.properties.name}: ${parseInt(
-                              d.Cases
-                            ).toLocaleString()} cases (${parseInt(
-                              (1000000 * d.Cases) / cur.pop
+                              d.Total.replace(/,/g, "")
+                            ).toLocaleString()} vaccinations (${parseInt(
+                              (1000000 * parseInt(d.Total.replace(/,/g, ""))) /
+                                cur.pop
                             ).toLocaleString()}/mil)`
                           )
                         : setTooltipContent(`${geo.properties.name}: 0`);
@@ -91,7 +93,17 @@ const USMapChart = ({ setTooltipContent }) => {
                     style={{
                       default: {
                         fill: d
-                          ? colorScale(`${(1000000 * d.Cases) / cur.pop}`)
+                          ? colorScale(
+                              `${
+                                d.Total
+                                  ? parseInt(
+                                      (1000000 *
+                                        parseInt(d.Total.replace(/,/g, ""))) /
+                                        cur.pop
+                                    )
+                                  : 0
+                              }`
+                            )
                           : colors.yellowGreenPale,
                         outline: "none",
                       },
@@ -100,7 +112,17 @@ const USMapChart = ({ setTooltipContent }) => {
                       },
                       pressed: {
                         fill: d
-                          ? colorScale(`${(1000000 * d.Cases) / cur.pop}`)
+                          ? colorScale(
+                              `${
+                                d.Total
+                                  ? parseInt(
+                                      (1000000 *
+                                        parseInt(d.Total.replace(/,/g, ""))) /
+                                        cur.pop
+                                    )
+                                  : 0
+                              }`
+                            )
                           : colors.yellowGreen,
                         outline: "none",
                       },
@@ -129,4 +151,4 @@ const USMapChart = ({ setTooltipContent }) => {
   );
 };
 
-export default memo(USMapChart);
+export default memo(USVaccinationMapChart);

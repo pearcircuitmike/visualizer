@@ -154,12 +154,6 @@ export default function Home() {
         </Container>
 
         <Container maxW={"5xl"}>
-          <Box textAlign={"center"}>
-            <Heading as="h2" size="lg">
-              US confirmed Monkeypox cases
-            </Heading>
-            <Text size="md">Click on a state to view more details</Text>
-          </Box>
           <USMapChart setTooltipContent={setContent} />
           {content && (
             <ReactTooltip>

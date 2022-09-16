@@ -3,7 +3,7 @@ import { geoCentroid } from "d3-geo";
 
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { scaleLinear } from "d3-scale";
-import { Box, Text, Heading } from "@chakra-ui/react";
+import { Box, Text, Heading, Badge } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 import { csv } from "csvtojson";
@@ -40,6 +40,9 @@ const USMapChart = ({ setTooltipContent }) => {
   }, [isLoaded, useRouter().asPath]);
 
   const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+  const colorScale = scaleLinear()
+    .domain([0, 200])
+    .range([colors.aquamarine, colors.spaceCadet]);
 
   return (
     <Box mt={10}>
@@ -58,9 +61,6 @@ const USMapChart = ({ setTooltipContent }) => {
                 const cur = allStates.find((s) => s.val === geo.id);
 
                 const d = data.find((s) => s.Location === geo.properties.name);
-                const colorScale = scaleLinear()
-                  .domain([0, 200])
-                  .range([colors.aquamarine, colors.spaceCadet]);
 
                 return (
                   <Geography
@@ -113,6 +113,40 @@ const USMapChart = ({ setTooltipContent }) => {
         </ComposableMap>
       </div>
       <Box>
+        <Badge
+          mr={1}
+          style={{
+            padding: "2px 15px",
+            color: "white",
+            backgroundColor: `${colorScale(0)}`,
+          }}
+          fontSize="xl"
+        >
+          0 cases/mil
+        </Badge>
+        <Badge
+          m={1}
+          style={{
+            padding: "2px 15px",
+            color: "white",
+            backgroundColor: `${colorScale(100)}`,
+          }}
+          fontSize="xl"
+        >
+          100 cases/mil
+        </Badge>
+        <Badge
+          m={1}
+          style={{
+            padding: "2px 15px",
+            color: "white",
+            backgroundColor: `${colorScale(200)}`,
+          }}
+          fontSize="xl"
+        >
+          200 cases/mil
+        </Badge>
+
         <Text mb={5} color={"gray.500"}>
           Source:{" "}
           <a

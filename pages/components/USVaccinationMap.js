@@ -3,7 +3,7 @@ import { geoCentroid } from "d3-geo";
 
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { scaleLinear } from "d3-scale";
-import { Box, Text, Heading } from "@chakra-ui/react";
+import { Box, Text, Heading, Badge } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 import { csv } from "csvtojson";
@@ -39,6 +39,9 @@ const USVaccinationMapChart = ({ setTooltipContent }) => {
   }, [isLoaded, useRouter().asPath]);
 
   const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+  const colorScale = scaleLinear()
+    .domain([0, 3000])
+    .range([colors.aquamarine, colors.spaceCadet]);
 
   return (
     <Box mt={10}>
@@ -59,9 +62,6 @@ const USVaccinationMapChart = ({ setTooltipContent }) => {
                 const d = data.find(
                   (s) => s[`Reporting Jurisdictions`] === geo.properties.name
                 );
-                const colorScale = scaleLinear()
-                  .domain([0, 3000])
-                  .range([colors.aquamarine, colors.spaceCadet]);
 
                 return (
                   <Geography
@@ -135,6 +135,39 @@ const USVaccinationMapChart = ({ setTooltipContent }) => {
         </ComposableMap>
       </div>
       <Box>
+        <Badge
+          mr={1}
+          style={{
+            padding: "2px 15px",
+            color: "white",
+            backgroundColor: `${colorScale(0)}`,
+          }}
+          fontSize="xl"
+        >
+          0 vaccines/mil
+        </Badge>
+        <Badge
+          m={1}
+          style={{
+            padding: "2px 15px",
+            color: "white",
+            backgroundColor: `${colorScale(1500)}`,
+          }}
+          fontSize="xl"
+        >
+          1500 vaccines/mil
+        </Badge>
+        <Badge
+          m={1}
+          style={{
+            padding: "2px 15px",
+            color: "white",
+            backgroundColor: `${colorScale(3000)}`,
+          }}
+          fontSize="xl"
+        >
+          3000 vaccines/mil
+        </Badge>
         <Text mb={5} color={"gray.500"}>
           Source:{" "}
           <a

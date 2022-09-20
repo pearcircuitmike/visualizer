@@ -22,6 +22,11 @@ function MyApp({ Component, pageProps }) {
           gtag('config', ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS});
         `}
           </Script>
+          <Script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4489327921275613"
+            crossorigin="anonymous"
+          ></Script>
 
           <Component {...pageProps} />
         </Layout>

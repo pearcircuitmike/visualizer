@@ -57,7 +57,11 @@ const About = () => {
           <Heading as="h1">Testing Positivity</Heading>
           <Text>
             This page contains US-specific information provided by the CDC on
-            Monkeypox testing.
+            Monkeypox testing. Positivity rate is based on specimens tested, not
+            patients. Most patients have multiple specimens tested. Positivity
+            rate is calculated as the number of positive specimens divided by
+            the number of positive plus negative specimens per week. Results
+            that are equivocal or inconclusive are not included.
           </Text>
           <USTestPositivityChart />
           <USTestPositivityTable />

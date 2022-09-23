@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Head from "next/head.js";
 import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 import {
   Text,
   Center,
@@ -121,7 +121,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
   const filteredNewCases = JSON.parse(
     JSON.stringify(
       countryCaseData.map((y) => {
-        return y["new_cases"];
+        return y["new_cases_smoothed"];
       })
     )
   );
@@ -140,10 +140,10 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
     )
   );
 
-  const filteredNewDeaths = JSON.parse(
+  const filteredTotalDeaths = JSON.parse(
     JSON.stringify(
       countryCaseData.map((y) => {
-        return y["new_deaths"];
+        return y["total_deaths"];
       })
     )
   );
@@ -173,7 +173,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         data: filteredTotalCases,
       },
       {
-        label: "New Cases",
+        label: "Total Cases Per Million",
         fill: true,
         lineTension: 0.1,
         backgroundColor: colors.aquamarine,
@@ -191,15 +191,15 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: filteredNewCases,
+        data: filteredTotalCasesPerMillion,
       },
     ],
   };
-  const chartDataTotalCasesPerMillion = {
+  const chartDataNewCases = {
     labels: filteredDates,
     datasets: [
       {
-        label: "Total Cases Per Million",
+        label: "New Cases",
         fill: false,
         lineTension: 0.1,
         backgroundColor: colors.blueMunsell,
@@ -217,27 +217,28 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: filteredTotalCasesPerMillion,
+
+        data: filteredNewCases,
       },
       {
         label: "New Cases Per Million",
         fill: true,
         lineTension: 0.1,
-        backgroundColor: colors.yellowGreenPale,
-        borderColor: colors.yellowGreenPale,
+        backgroundColor: colors.aquamarine,
+        borderColor: colors.aquamarine,
         borderCapStyle: "butt",
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: "miter",
-        pointBorderColor: colors.yellowGreenPale,
-        pointBackgroundColor: colors.yellowGreenPale,
+        pointBorderColor: colors.aquamarine,
+        pointBackgroundColor: colors.aquamarine,
         pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: colors.yellowGreenPale,
-        pointHoverBorderColor: colors.yellowGreenPale,
+        pointHoverBackgroundColor: colors.aquamarine,
+        pointHoverBorderColor: colors.aquamarine,
         pointHoverBorderWidth: 2,
         pointRadius: 1,
-        pointHitRadius: 10,
+        pointHitRadius: 1,
         data: filteredNewCasesPerMillion,
       },
     ],
@@ -246,7 +247,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
     labels: filteredDates,
     datasets: [
       {
-        label: "New Deaths",
+        label: "Total Deaths",
         fill: false,
         lineTension: 0.1,
         backgroundColor: colors.kineticBlack,
@@ -264,7 +265,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: filteredNewDeaths,
+        data: filteredTotalDeaths,
       },
     ],
   };
@@ -461,13 +462,13 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
           </GridItem>
           <GridItem w="100%" mt={10}>
             <Heading as="h3" size="sm">
-              <Center mb={1}>{countryName}: Monkeypox Cases per Million</Center>
+              <Center mb={1}>{countryName}: New Monkeypox Cases </Center>
             </Heading>
             <div style={{ minHeight: "40vh" }}>
               {countryCaseData[0] ? (
                 <Line
-                  data={chartDataTotalCasesPerMillion}
-                  options={{ maintainAspectRatio: false }}
+                  data={chartDataNewCases}
+                  options={{ maintainAspectRatio: false, barThickness: 5 }}
                 />
               ) : (
                 <Center>No cases detected yet.</Center>

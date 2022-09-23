@@ -152,14 +152,15 @@ export default function Home() {
             <TwitterButton style={{ margin: "!important;" }} />
           </Stack>
         </Container>
-
         <Container maxW={"5xl"}>
-          <USMapChart setTooltipContent={setContent} />
-          {content && (
-            <ReactTooltip>
-              <Tooltip>{content}</Tooltip>
-            </ReactTooltip>
-          )}
+          <DataTable />
+
+          <Box textAlign={"center"}>
+            <Heading as="h2" size="lg" mb={5} mt={"50px"}>
+              Global Monkeypox virus spread over time
+            </Heading>
+          </Box>
+          <WorldTrends />
 
           <Box textAlign={"center"}>
             <Heading as="h2" size="lg" mt={"50px"}>
@@ -176,14 +177,12 @@ export default function Home() {
             </ReactTooltip>
           )}
 
-          <Box textAlign={"center"}>
-            <Heading as="h2" size="lg" mb={5} mt={"50px"}>
-              Global Monkeypox virus spread over time
-            </Heading>
-          </Box>
-          <WorldTrends />
-
-          <DataTable />
+          <USMapChart setTooltipContent={setContent} />
+          {content && (
+            <ReactTooltip>
+              <Tooltip>{content}</Tooltip>
+            </ReactTooltip>
+          )}
         </Container>
 
         <Container>

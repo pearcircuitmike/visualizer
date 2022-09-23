@@ -53,7 +53,7 @@ export default function WorldTrends() {
   const filteredNewCases = JSON.parse(
     JSON.stringify(
       filter.map((y) => {
-        return y["new_cases"];
+        return y["new_cases_smoothed"];
       })
     )
   );
@@ -72,10 +72,10 @@ export default function WorldTrends() {
     )
   );
 
-  const filteredNewDeaths = JSON.parse(
+  const filteredTotalDeaths = JSON.parse(
     JSON.stringify(
       filter.map((y) => {
-        return y["new_deaths"];
+        return y["total_deaths"];
       })
     )
   );
@@ -127,7 +127,7 @@ export default function WorldTrends() {
       },
       {
         label: "New Cases",
-        fill: true,
+        fill: false,
         lineTension: 0.1,
         backgroundColor: colors.aquamarine,
         borderColor: colors.aquamarine,
@@ -169,7 +169,7 @@ export default function WorldTrends() {
       },
 
       {
-        label: "New Deaths",
+        label: "Total Deaths",
         fill: false,
         lineTension: 0.1,
         backgroundColor: colors.kineticBlack,
@@ -187,7 +187,7 @@ export default function WorldTrends() {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: filteredNewDeaths,
+        data: filteredTotalDeaths,
       },
     ],
   };

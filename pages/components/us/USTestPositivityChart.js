@@ -161,10 +161,13 @@ export default function USTestPositivityChart() {
                 },
               },
               "total-positive": {
+                stacked: true,
                 type: "linear",
                 position: "right", // `axis` is determined by the position as `'y'`
+                stacked: true,
               },
               "total-negative": {
+                stacked: true,
                 type: "linear",
                 position: "left", // `axis` is determined by the position as `'y'`
                 display: false,

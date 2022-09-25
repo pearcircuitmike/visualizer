@@ -43,6 +43,14 @@ const Navbar = () => {
               <Link href="/faq" aria-label="FAQ" m={5} w="100%">
                 <a>FAQ</a>
               </Link>
+              <Link
+                href="https://blog.monkeypoxtracker.net"
+                aria-label="Blog"
+                m={5}
+                w="100%"
+              >
+                <a>Blog</a>
+              </Link>
             </HStack>
           </Flex>
 
@@ -111,6 +119,14 @@ const Navbar = () => {
             </Link>
             <Link href="/faq" aria-label="FAQ" m={"10px"} w="100%">
               <a onClick={() => changeDisplay("none")}>FAQ</a>
+            </Link>
+            <Link
+              href="https://blog.monkeypoxtracker.net"
+              aria-label="Blog"
+              m={"10px"}
+              w="100%"
+            >
+              <a onClick={() => changeDisplay("none")}>Blog</a>
             </Link>
           </Flex>
         </Flex>

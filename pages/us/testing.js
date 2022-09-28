@@ -18,7 +18,7 @@ const About = () => {
   return (
     <>
       <Head>
-        <meta http-equiv="content-language" content="en-gb" />
+        <meta httpEquiv="content-language" content="en-gb" />
 
         <title>U.S. Testing Information | Monkeypox Tracker</title>
         <meta

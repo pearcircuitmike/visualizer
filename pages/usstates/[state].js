@@ -138,7 +138,7 @@ const StateDetails = ({ state }) => {
   return (
     <div key={router.pathname}>
       <Head>
-        <meta http-equiv="content-language" content="en-gb" />
+        <meta httpEquiv="content-language" content="en-gb" />
 
         <title>
           Monkeypox in {stateName} as of {currentMonth} {currentYear} |

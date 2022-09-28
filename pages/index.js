@@ -70,7 +70,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta http-equiv="content-language" content="en-gb" />
+        <meta httpEquiv="content-language" content="en-gb" />
 
         <title>
           Monkeypox Tracker | {currentMonth} {currentYear} Monkeypox cases

@@ -63,7 +63,7 @@ const Countries = ({ countryList, countryCaseData }) => {
   return (
     <>
       <Head>
-        <meta http-equiv="content-language" content="en-gb" />
+        <meta httpEquiv="content-language" content="en-gb" />
 
         <title>
           Worldwide monkeypox cases {currentMonth} {currentYear}

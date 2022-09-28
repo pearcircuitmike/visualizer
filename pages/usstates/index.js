@@ -50,7 +50,7 @@ const States = ({ stateVals }) => {
   return (
     <>
       <Head>
-        <meta http-equiv="content-language" content="en-gb" />
+        <meta httpEquiv="content-language" content="en-gb" />
 
         <title>
           {currentMonth} {currentYear} Monkeypox cases by US state

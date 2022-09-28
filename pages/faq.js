@@ -24,7 +24,7 @@ export default function FAQ() {
     <>
       <Head>
         <title>Monkeypox Tracker | FAQ</title>
-        <meta http-equiv="content-language" content="en-gb" />
+        <meta httpEquiv="content-language" content="en-gb" />
 
         <meta
           name="description"

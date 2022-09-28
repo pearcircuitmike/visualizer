@@ -13,7 +13,6 @@ import {
   InputGroup,
   InputRightElement,
   Tooltip,
-  
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Script from "next/script.js";
@@ -51,18 +50,20 @@ const States = ({ stateVals }) => {
   return (
     <>
       <Head>
+        <meta http-equiv="content-language" content="en-gb" />
+
         <title>
           {currentMonth} {currentYear} Monkeypox cases by US state
         </title>
         <meta
           name="description"
-          content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker.`}
+          content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case and death totals for U.S. states.`}
         />
 
         <meta property="og:title" content="Monkeypox Tracker | States" />
         <meta
           property="og:description"
-          content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker.`}
+          content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case and death totals for U.S. states.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -75,7 +76,7 @@ const States = ({ stateVals }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case counts, deaths, confirmed cases, and new cases for U.S. states. Inspired by the BNO Monkeypox tracker.`}
+          content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case and death totals for U.S. states.`}
         />
         <meta
           property="twitter:image"

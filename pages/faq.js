@@ -24,6 +24,8 @@ export default function FAQ() {
     <>
       <Head>
         <title>Monkeypox Tracker | FAQ</title>
+        <meta http-equiv="content-language" content="en-gb" />
+
         <meta
           name="description"
           content="Frquently asked questions about Monkeypox as a disease, including symptom information, treatment information, vaccination information, and statistics. Inspired by the BNO Monkeypox tracker."

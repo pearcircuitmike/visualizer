@@ -63,20 +63,20 @@ const Countries = ({ countryList, countryCaseData }) => {
   return (
     <>
       <Head>
-        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <meta http-equiv="content-language" content="en-gb" />
 
         <title>
           Worldwide monkeypox cases {currentMonth} {currentYear}
         </title>
         <meta
           name="description"
-          content={`${currentMonth} ${currentYear} Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world.`}
+          content={`${currentMonth} ${currentYear} monkeypox virus outbreak case totals and deaths. Charts, maps, and data.`}
         />
 
         <meta property="og:title" content="Monkeypox Tracker | Countries" />
         <meta
           property="og:description"
-          content={`${currentMonth} ${currentYear} Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world.`}
+          content={`${currentMonth} ${currentYear} monkeypox virus outbreak case totals and deaths. Charts, maps, and data.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -89,7 +89,7 @@ const Countries = ({ countryList, countryCaseData }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`${currentMonth} ${currentYear} Monkeypox case counts, deaths, confirmed cases, and new cases for countries around the world.`}
+          content={`${currentMonth} ${currentYear} monkeypox virus outbreak case totals and deaths. Charts, maps, and data.`}
         />
         <meta
           property="twitter:image"

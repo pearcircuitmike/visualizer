@@ -7,6 +7,8 @@ const About = () => {
     <>
       <Head>
         <title>Monkeypox Tracker | About</title>
+        <meta http-equiv="content-language" content="en-gb" />
+
         <meta
           name="description"
           content="More info about the MonkeypoxTacker.net website. Inspired by the BNO Monkeypox tracker."

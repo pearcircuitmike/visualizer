@@ -311,13 +311,15 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
   return (
     <>
       <Head>
+        <meta http-equiv="content-language" content="en-gb" />
+
         <title>
           Monkeypox in {countryName} as of {currentMonth} {currentYear} |
           Monkeypox Cases
         </title>
         <meta
           name="description"
-          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
+          content={`Charting the ${countryName} monkeypox outbreak, with updated ${currentMonth} ${currentYear} case and death counts.`}
         />
 
         <meta
@@ -326,7 +328,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         />
         <meta
           property="og:description"
-          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
+          content={`Charting the ${countryName} monkeypox outbreak, with updated ${currentMonth} ${currentYear} case and death counts.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -339,7 +341,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Monkeypox cases in ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${countryName}.`}
+          content={`Charting the ${countryName} monkeypox outbreak, with updated ${currentMonth} ${currentYear} case and death counts.`}
         />
         <meta
           property="twitter:image"

@@ -317,13 +317,15 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
   return (
     <>
       <Head>
+        <meta http-equiv="content-language" content="en-gb" />
+
         <title>
           Monkeypox in {stateName}, {countryName} as of {currentMonth}{" "}
           {currentYear} | Monkeypox Cases
         </title>
         <meta
           name="description"
-          content={`Monkeypox cases in ${stateName}, ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
+          content={`Charting the ${stateName}, ${countryName} monkeypox outbreak. Updated ${currentMonth} ${currentYear} cases and deaths.`}
         />
 
         <meta
@@ -332,7 +334,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
         />
         <meta
           property="og:description"
-          content={`Monkeypox cases in ${stateName}, ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
+          content={`Charting the ${stateName}, ${countryName} monkeypox outbreak. Updated ${currentMonth} ${currentYear} cases and deaths.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -345,7 +347,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Monkeypox cases in ${stateName}, ${countryName} in ${currentMonth} ${currentYear}, including Monkeypox case counts, Monkeypox deaths, other Monkeypox data from the monkeypox virus disease outbreak in ${stateName}.`}
+          content={`Charting the ${stateName}, ${countryName} monkeypox outbreak. Updated ${currentMonth} ${currentYear} cases and deaths.`}
         />
         <meta
           property="twitter:image"

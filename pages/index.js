@@ -61,7 +61,7 @@ export default function Home() {
         );
         console.log("ok");
       } catch (error) {
-        console.log("error", error);
+        console.log("err", error);
       }
     };
     fetchData();

@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { Heading, HStack, Flex, IconButton, Spacer } from "@chakra-ui/react";
+import {
+  Heading,
+  HStack,
+  Flex,
+  IconButton,
+  Spacer,
+  Image,
+} from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
@@ -18,7 +25,18 @@ const Navbar = () => {
           {/*LOGO*/}
           <Heading fontSize="2xl">
             <Link href="/" aria-label="Home" my={5} w="100%">
-              <a>MonkeypoxTracker</a>
+              <div>
+                <a>MonkeypoxTracker + </a>
+
+                <Image
+                  boxSize="50px"
+                  objectFit="cover"
+                  src="https://pbs.twimg.com/profile_images/1547415204975329280/6FTHmlEC_400x400.png"
+                  display="inline"
+                  verticalAlign="middle"
+                  alt="BNO image"
+                />
+              </div>
             </Link>
           </Heading>
         </Flex>

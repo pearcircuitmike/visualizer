@@ -126,6 +126,13 @@ export default function Home() {
               Monkeypox cases detected
             </Heading>
             <Text maxW={"5xl"}>
+              This project is a collaboration with{" "}
+              <Link href="https://bnonews.com/">
+                <a style={{ color: `${colors.blueMunsell}` }}>BNO News</a>
+              </Link>
+              .
+            </Text>
+            <Text maxW={"5xl"}>
               This site is dedicated to tracking the spread of the 2022
               monkeypox virus disease outbreak, and is updated every few hours.
               You can{" "}
@@ -141,7 +148,7 @@ export default function Home() {
                 </a>
               </Link>{" "}
               for a breakdown of U.S. cases by state. Follow us on twitter for
-              more updates, or follow our partner{" "}
+              more updates, or check out{" "}
               <a
                 href="https://twitter.com/mildanalyst"
                 style={{ color: `${colors.blueMunsell}` }}

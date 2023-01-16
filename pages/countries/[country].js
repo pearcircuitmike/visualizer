@@ -47,6 +47,8 @@ export const getStaticPaths = async () => {
   const text = await res.text();
   const data = await JSON.parse(text);
 
+  //test build
+
   const paths = data.map((countryVal) => {
     return {
       params: { country: countryVal.iso2 },

@@ -320,21 +320,21 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
         <meta httpEquiv="content-language" content="en-gb" />
 
         <title>
-          Monkeypox in {stateName}, {countryName} as of {currentMonth}{" "}
+          Monkeypox cases in {stateName}, {countryName} as of {currentMonth}{" "}
           {currentYear} | Monkeypox Cases
         </title>
         <meta
           name="description"
-          content={`Charting the ${stateName}, ${countryName} monkeypox outbreak. Updated ${currentMonth} ${currentYear} cases and deaths.`}
+          content={`Monkeypox cases in ${stateName}, ${countryName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Cases`}
         />
 
         <meta
           property="og:title"
-          content={`Monkeypox in ${stateName}, ${countryName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Statistics`}
+          content={`Monkeypox cases in ${stateName}, ${countryName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Cases`}
         />
         <meta
           property="og:description"
-          content={`Charting the ${stateName}, ${countryName} monkeypox outbreak. Updated ${currentMonth} ${currentYear} cases and deaths.`}
+          content={`${stateName}, ${countryName} monkeypox cases and monkeypox deaths. Updated ${currentMonth} ${currentYear} monkeypox cases.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -347,7 +347,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Charting the ${stateName}, ${countryName} monkeypox outbreak. Updated ${currentMonth} ${currentYear} cases and deaths.`}
+          content={`${stateName}, ${countryName} monkeypox cases and monkeypox deaths. Updated ${currentMonth} ${currentYear} monkeypox cases.`}
         />
         <meta
           property="twitter:image"
@@ -410,11 +410,41 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
           fatal.
           <br /> <br />
         </Text>
+        <Heading as="h3" size="md">
+          How do people in {stateName} get monkeypox?
+        </Heading>
+        <Text>
+          Monkeypox is primarily spread through contact with the blood, bodily
+          fluids, or skin of infected animals, such as rodents or primates. It
+          can also be spread through close contact with an infected person. This
+          can include contact with an infected person's skin, especially if the
+          person is experiencing a rash, or contact with an infected person's
+          respiratory secretions, such as saliva, mucus, or semen. In addition,
+          monkeypox can be spread through contact with objects that have been
+          contaminated with the virus, such as bedding or clothing.
+          <br /> <br />
+          Monkeypox is not as contagious as smallpox and is not as easily spread
+          from person to person. However, the risk of infection is increased
+          among people who live in or have recently traveled to areas where
+          monkeypox is known to occur and among people who have had close
+          contact with an infected person or animal.
+          <br /> <br />
+          It's also important to note that people who have been vaccinated
+          against smallpox are at a lower risk of getting monkey pox.
+        </Text>
         <Text>
           This page shows data for the monkeypox disease outbreak currently
-          taking place in <b>{stateName}</b>, located in the {countryName}. This
-          outbreak is part of the larger outbreak taking place in{" "}
-          {countryDetails.region}, specifically in {countryDetails.subregion}.
+          taking place in {countryName}. This outbreak is part of the larger
+          outbreak taking place in {countryDetails.region}, specifically in{" "}
+          {countryDetails.subregion}.
+          <br />
+          <br />
+        </Text>
+        <Text>
+          This page shows data for the monkeypox cases currently detected in{" "}
+          <b>{stateName}</b>, located in {countryName}. This outbreak is part of
+          the larger outbreak taking place in {countryDetails.region},
+          specifically in {countryDetails.subregion}.
           <br />
           <br />
         </Text>
@@ -447,11 +477,12 @@ const CountryDetails = ({ countryCaseData, countryDetails, stateDetails }) => {
         <Text>
           Based on the most recent reports available from the government in{" "}
           {countryDetails.capital}, health authorities in {countryName} have
-          reported {countryNewCases.toLocaleString()} new case
+          reported {countryNewCases.toLocaleString()} new monkeypox case
           {countryNewCases == 1 ? `` : `s`} and{" "}
-          {countryNewDeaths ? countryNewDeaths.toLocaleString() : 0} new death
+          {countryNewDeaths ? countryNewDeaths.toLocaleString() : 0} new
+          monkeypox death
           {countryNewDeaths == 1 ? `` : `s`}. The people of {countryName} have
-          experienced {countryTotalCases.toLocaleString()} total case
+          experienced {countryTotalCases.toLocaleString()} total monkeypox case
           {countryTotalCases == 1 ? `` : `s`} since the start of the outbreak.
           <br />
           <br />

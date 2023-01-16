@@ -321,16 +321,16 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         </title>
         <meta
           name="description"
-          content={`Charting the ${countryName} monkeypox outbreak, with updated ${currentMonth} ${currentYear} case and death counts.`}
+          content={`${countryName} monkeypox cases. ${countryName} monkeypox ${currentMonth} ${currentYear} monkeypox case counts.`}
         />
 
         <meta
           property="og:title"
-          content={`Monkeypox in ${countryName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Statistics`}
+          content={`Monkeypox cases in ${countryName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Cases`}
         />
         <meta
           property="og:description"
-          content={`Charting the ${countryName} monkeypox outbreak, with updated ${currentMonth} ${currentYear} case and death counts.`}
+          content={`${countryName} monkeypox cases outbreak. Updated ${currentMonth} ${currentYear} monkeypox cases and monkeypox deaths.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -343,7 +343,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Charting the ${countryName} monkeypox outbreak, with updated ${currentMonth} ${currentYear} case and death counts.`}
+          content={`${countryName} monkeypox cases outbreak. Updated ${currentMonth} ${currentYear} monkeypox cases and monkeypox deaths.`}
         />
         <meta
           property="twitter:image"
@@ -415,6 +415,28 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
           fatal.
           <br /> <br />
         </Text>
+        <Heading as="h3" size="md">
+          How do people in {countryName} get monkeypox?
+        </Heading>
+        <Text>
+          Monkeypox is primarily spread through contact with the blood, bodily
+          fluids, or skin of infected animals, such as rodents or primates. It
+          can also be spread through close contact with an infected person. This
+          can include contact with an infected person's skin, especially if the
+          person is experiencing a rash, or contact with an infected person's
+          respiratory secretions, such as saliva, mucus, or semen. In addition,
+          monkeypox can be spread through contact with objects that have been
+          contaminated with the virus, such as bedding or clothing.
+          <br /> <br />
+          Monkeypox is not as contagious as smallpox and is not as easily spread
+          from person to person. However, the risk of infection is increased
+          among people who live in or have recently traveled to areas where
+          monkeypox is known to occur and among people who have had close
+          contact with an infected person or animal.
+          <br /> <br />
+          It's also important to note that people who have been vaccinated
+          against smallpox are at a lower risk of getting monkey pox.
+        </Text>
         <Text>
           This page shows data for the monkeypox disease outbreak currently
           taking place in {countryName}. This outbreak is part of the larger
@@ -423,6 +445,9 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
           <br />
           <br />
         </Text>
+        <Heading as="h3" size="md">
+          How many monkeypox cases are there in {countryName}?
+        </Heading>
         <Text>
           Based on the most recent reports available from the government in{" "}
           {countryDetails.capital}, health authorities in {countryName} have
@@ -442,7 +467,8 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
               MonkeypoxTracker homepage
             </a>
           </Link>
-          .
+          . <br />
+          <br />
         </Text>
         <Button onClick={copy} mt={5}>
           {!copied ? "Copy report URL" : "Copied link!"}
@@ -499,6 +525,53 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
           Source:{" "}
           <a href={"https://ourworldindata.org/monkeypox"}>OurWorldInData</a>.
           Last update: {Date().toLocaleString().substring(0, 16)}
+        </Text>
+        <Heading as="h3" size="md">
+          Are there limitations to the monkeypox case datae?
+        </Heading>
+        <Text>
+          There are several limitations and shortcomings in official monkeypox
+          case data that can make it difficult to fully understand the extent of
+          the disease and its spread. Some of these include:
+          <br />
+          <br />
+          <ul>
+            <li>
+              Underreporting: Monkeypox is a rare disease, and it can be
+              difficult to diagnose. This means that many cases may go
+              unreported, which can lead to an underestimation of the number of
+              people affected by the disease.
+            </li>
+            <li>
+              Limited surveillance: In some areas where monkeypox is known to
+              occur, there may be limited surveillance systems in place to
+              detect and report cases. This can make it difficult to accurately
+              track the spread of the disease.
+            </li>
+            <li>
+              Misclassification: Monkeypox can present with similar symptoms to
+              other viral diseases, such as chickenpox, making it difficult to
+              diagnose. This can lead to misclassification of cases and
+              inaccurate data.
+            </li>
+
+            <li>
+              Lack of laboratory confirmation: In some cases, monkeypox may be
+              diagnosed clinically, without laboratory confirmation. This can
+              lead to uncertainty in case classification, especially in regions
+              where other similar diseases exist.
+            </li>
+            <li>
+              Non-specific symptoms: Monkeypox symptoms are non-specific and can
+              be easily confused with other diseases, this can make it hard to
+              confirm the diagnosis.
+            </li>
+          </ul>
+          <br />
+          <br />
+          Overall, the limitations and shortcomings in official monkeypox case
+          data highlight the importance of ongoing surveillance and improved
+          diagnostic tools to accurately detect and track the disease.
         </Text>
         <Heading mt={5} mb={5} as="h2" size="sm">
           View {countryName} outbreak by subregion

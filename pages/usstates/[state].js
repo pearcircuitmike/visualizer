@@ -141,21 +141,21 @@ const StateDetails = ({ state }) => {
         <meta httpEquiv="content-language" content="en-gb" />
 
         <title>
-          Monkeypox in {stateName} as of {currentMonth} {currentYear} |
-          Monkeypox Cases
+          {stateName} Monkeypox in {currentMonth} {currentYear} | Monkeypox
+          Cases, Monkeypox Vaccines
         </title>
         <meta
           name="description"
-          content={`Charting the ${stateName} monkeypox outbreak. Updated ${currentMonth} ${currentYear} cases and deaths.`}
+          content={`${stateName} monkeypox cases. Updated ${currentMonth} ${currentYear} monkeypox cases and monkeypox vaccines.`}
         />
 
         <meta
           property="og:title"
-          content={`Monkeypox in ${stateName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Statistics`}
+          content={`Monkeypox in ${stateName} as of ${currentMonth} ${currentYear} | Monkeypox Tracker - Monkeypox Cases`}
         />
         <meta
           property="og:description"
-          content={`Charting the ${stateName} monkeypox outbreak. Updated ${currentMonth} ${currentYear} cases and deaths.`}
+          content={`${stateName} monkeypox cases. Updated ${currentMonth} ${currentYear} monkeypox cases and monkeypox vaccines.`}
         />
 
         <meta property="og:url" content="https://monkeypoxtracker.net/" />
@@ -168,7 +168,7 @@ const StateDetails = ({ state }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content={`Charting the ${stateName} monkeypox outbreak. Updated ${currentMonth} ${currentYear} cases and deaths.`}
+          content={`${stateName} monkeypox cases. Updated ${currentMonth} ${currentYear} monkeypox cases and monkeypox vaccines.`}
         />
         <meta
           property="twitter:image"
@@ -204,11 +204,11 @@ const StateDetails = ({ state }) => {
           {stateName}
         </Heading>
         <Heading as="h2" size="md">
-          Monkeypox Outbreak: State Details
+          Monkeypox Cases in {stateName}
         </Heading>
 
-        <Heading as="h3" size="sm" mt={10}>
-          {stateName}: Monkeypox Situation Report
+        <Heading as="h3" size="md" mt={10}>
+          {stateName}: Monkeypox cases and monkeypox vaccination data
         </Heading>
         <Text>
           Monkeypox is a rare disease caused by infection with the monkeypox
@@ -219,24 +219,72 @@ const StateDetails = ({ state }) => {
           <br /> <br />
         </Text>
         <Text>
-          This page shows data for the Monkeypox outbreak currently taking place
-          in {stateName}.
+          This page shows data for the Monkeypox cases and deaths currently
+          detected in {stateName}.
           <br />
           <br />
           Based on the most recent reports available, health authorities in{" "}
           {stateName} have reported {parseInt(stateNewCases).toLocaleString()}{" "}
-          case
+          monkeypox case
           {stateNewCases == 1 ? `` : `s`}.
           <br />
           <br />
-          You can see how the {stateName} Monkeypox situation compares with the
-          situation globally on the{" "}
+          You can see how the {stateName} Monkeypox cases count compares with
+          the monkeypox cases count globally on the{" "}
           <Link href="/">
             <a style={{ color: `${colors.blueMunsell}` }}>
               MonkeypoxTracker homepage
             </a>
           </Link>
-          .
+          .<br />
+          <br />
+        </Text>
+
+        <Heading as="h3" size="md">
+          How do people in {stateName} get monkeypox?
+        </Heading>
+        <Text>
+          Monkeypox is primarily spread through contact with the blood, bodily
+          fluids, or skin of infected animals, such as rodents or primates. It
+          can also be spread through close contact with an infected person. This
+          can include contact with an infected person's skin, especially if the
+          person is experiencing a rash, or contact with an infected person's
+          respiratory secretions, such as saliva, mucus, or semen. In addition,
+          monkeypox can be spread through contact with objects that have been
+          contaminated with the virus, such as bedding or clothing.
+          <br /> <br />
+          Monkeypox is not as contagious as smallpox and is not as easily spread
+          from person to person. However, the risk of infection is increased
+          among people who live in or have recently traveled to areas where
+          monkeypox is known to occur and among people who have had close
+          contact with an infected person or animal.
+          <br /> <br />
+          It's also important to note that people who have been vaccinated
+          against smallpox are at a lower risk of getting monkeypox.
+          <br />
+          <br />
+        </Text>
+
+        <Heading as="h3" size="md">
+          What should I do if I get monkeypox in {stateName}?
+        </Heading>
+
+        <Text>
+          If you suspect you have contracted monkeypox, it is important to seek
+          medical attention as soon as possible. Here are some steps you can
+          take: First, contact your healthcare provider and inform them of your
+          symptoms and possible exposure to monkeypox. Then, follow their
+          instructions on how to safely seek medical attention. Also, follow
+          their guidelines on how to prevent the spread of the disease to
+          others. Your healthcare provider will then report the case to the
+          state health department, who will then notify the Centers for Disease
+          Control and Prevention (CDC) and work to implement control measures to
+          prevent further spread. It's important to note that monkeypox is rare
+          and most people who are infected will recover without any serious
+          problems. However, if you have a weakened immune system, you may be at
+          a higher risk of complications. Your healthcare provider can provide
+          you with more information on how to manage your symptoms and prevent
+          the spread of the disease to others.
         </Text>
         <Button onClick={copy} mt={5} mb={5}>
           {!copied ? "Copy report URL" : "Copied link!"}

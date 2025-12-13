@@ -316,7 +316,7 @@ const CountryDetails = ({ countryCaseData, countryDetails, states }) => {
         <meta httpEquiv="content-language" content="en-gb" />
 
         <title>
-          Monkeypox in {countryName} as of {currentMonth} {currentYear} |
+          Monkeypox cases in {countryName} for {currentMonth} {currentYear} |
           Monkeypox Cases
         </title>
         <meta

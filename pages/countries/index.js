@@ -1,5 +1,5 @@
+// pages/countries/index.js
 import Head from "next/head";
-import { csv } from "csvtojson";
 import {
   Container,
   Heading,
@@ -16,46 +16,63 @@ import {
 } from "@chakra-ui/react";
 import { colors } from "../../styles/colors.js";
 import ReactTooltip from "react-tooltip";
-
 import { SearchIcon } from "@chakra-ui/icons";
-
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import WorldMap from "../components/WorldMap.js";
 
 export const getStaticProps = async () => {
-  // request countries
-  var headers = new Headers();
+  // request countries (small)
+  const headers = new Headers();
   headers.append("X-CSCAPI-KEY", process.env.NEXT_PUBLIC_CSC_API_KEY);
 
-  var requestOptions = {
+  const requestOptions = {
     method: "GET",
-    headers: headers,
+    headers,
     redirect: "follow",
   };
 
   const countrySummaryUrl = "https://api.countrystatecity.in/v1/countries";
-
   const countrySummaryRes = await fetch(countrySummaryUrl, requestOptions);
-  const countrySummaryText = await countrySummaryRes.text();
-  const countries = await JSON.parse(countrySummaryText);
-
-  const countryCasesUrl =
-    "https://raw.githubusercontent.com/owid/monkeypox/main/owid-monkeypox-data.csv";
-
-  const countryCasesRes = await fetch(countryCasesUrl);
-  const countryCasesText = await countryCasesRes.text();
-  const countriesCases = await csv().fromString(countryCasesText);
+  const countries = await countrySummaryRes.json();
 
   return {
-    props: { countryList: countries, countryCaseData: countriesCases },
+    props: { countryList: countries },
+    revalidate: 60 * 60 * 24, // 1 day
   };
 };
 
-const Countries = ({ countryList, countryCaseData }) => {
+const Countries = ({ countryList }) => {
   const [countryFilter, setCountryFilter] = useState("");
   const handleSearch = (event) => setCountryFilter(event.target.value);
   const [content, setContent] = useState("");
+
+  // runtime-loaded case totals (tiny)
+  const [summary, setSummary] = useState(null);
+
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/monkeypox/countries-summary")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((json) => {
+        if (!alive) return;
+        setSummary(json?.byLocation || {});
+      })
+      .catch(() => {
+        if (!alive) return;
+        setSummary({});
+      });
+
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const filteredCountries = useMemo(() => {
+    const q = countryFilter.trim().toLowerCase();
+    if (!q) return countryList;
+    return countryList.filter((c) => c.name.toLowerCase().includes(q));
+  }, [countryList, countryFilter]);
 
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
   const currentYear = new Date().getFullYear();
@@ -64,7 +81,6 @@ const Countries = ({ countryList, countryCaseData }) => {
     <>
       <Head>
         <meta httpEquiv="content-language" content="en-gb" />
-
         <title>
           Worldwide monkeypox cases {currentMonth} {currentYear}
         </title>
@@ -98,13 +114,15 @@ const Countries = ({ countryList, countryCaseData }) => {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Container maxW="5xl">
         <Heading as="h1" mt={5}>
           Monkeypox cases and deaths by country
         </Heading>
 
-        <Link href={"/usstates/"}>
+        <Link href={"/usstates/"} passHref>
           <Button
+            as="a"
             size="sm"
             m={5}
             style={{ backgroundColor: `${colors.yellowGreen}` }}
@@ -124,10 +142,6 @@ const Countries = ({ countryList, countryCaseData }) => {
 
         <Text mt={5}>
           Select a country to view more details about their Monkeypox situation.
-          Each country has a situation report, automatically generated from the
-          most recent data. You can also view graphs of the disease activity in
-          each country, and review data in tabular form. Data is sourced from
-          Our World In Data and the US CDC.
         </Text>
 
         <InputGroup mt={5}>
@@ -142,13 +156,13 @@ const Countries = ({ countryList, countryCaseData }) => {
           </InputRightElement>
         </InputGroup>
 
-        {countryList
-          .filter((countryList) =>
-            countryList.name.toLowerCase().includes(countryFilter.toLowerCase())
-          )
-          .map((countryList) => (
+        {filteredCountries.map((c) => {
+          const totalCases =
+            summary && summary[c.name] ? summary[c.name].total_cases : null;
+
+          return (
             <Box
-              key={countryList.name}
+              key={c.name}
               borderWidth="1px"
               borderRadius="lg"
               overflow="hidden"
@@ -162,35 +176,27 @@ const Countries = ({ countryList, countryCaseData }) => {
                 <Center>
                   <div>
                     <Heading size="md" mt={1}>
-                      {countryList.name}
+                      {c.name}
                     </Heading>
-                    <Text></Text>
                     <Text>
                       Currently active cases:{" "}
-                      {countryCaseData
-                        .filter((x) => x.location.includes(countryList.name))
-                        .toString()
-                        ? ~~countryCaseData
-                            .filter((x) =>
-                              x.location.includes(countryList.name)
-                            )[0]
-                            .total_cases.toString()
-                        : 0}
+                      {totalCases === null
+                        ? "Loading…"
+                        : totalCases.toLocaleString()}
                     </Text>
                   </div>
                 </Center>
 
                 <Spacer />
                 <Center>
-                  <Link href={"/countries/" + countryList.iso2}>
-                    <Button>
-                      <a>View data</a>
-                    </Button>
+                  <Link href={"/countries/" + c.iso2} passHref>
+                    <Button as="a">View data</Button>
                   </Link>
                 </Center>
               </Flex>
             </Box>
-          ))}
+          );
+        })}
       </Container>
     </>
   );

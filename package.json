@@ -30,11 +30,11 @@
     "d3-geo": "^3.0.1",
     "d3-scale": "^4.0.2",
     "framer-motion": "^6.3.3",
-    "next": "^12.3.5",
+    "next": "^14.2.35",
     "next-sitemap": "^3.1.21",
-    "react": "18.1.0",
+    "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
-    "react-dom": "18.1.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-responsive-embed": "^2.1.0",
     "react-simple-maps": "^3.0.0",
@@ -43,6 +43,6 @@
   },
   "devDependencies": {
     "eslint": "8.16.0",
-    "eslint-config-next": "^12.3.5"
+    "eslint-config-next": "^14.2.35"
   }
 }

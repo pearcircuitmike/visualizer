@@ -15,7 +15,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { colors } from "../../styles/colors.js";
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import { SearchIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import React, { useEffect, useMemo, useState } from "react";
@@ -132,12 +132,13 @@ const Countries = ({ countryList }) => {
         </Link>
 
         <Container maxW={"5xl"} mt={5}>
-          <WorldMap setTooltipContent={setContent} />
-          {content && (
-            <ReactTooltip>
-              <Tooltip>{content}</Tooltip>
-            </ReactTooltip>
-          )}
+          <WorldMap setTooltipContent={setContent} tooltipId="pages-countries-index-js-map-1" />
+          <ReactTooltip
+            id="pages-countries-index-js-map-1"
+            content={content}
+            hidden={!content}
+            float
+          />
         </Container>
 
         <Text mt={5}>

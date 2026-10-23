@@ -15,7 +15,7 @@ import { csv } from "csvtojson";
 
 import { colors } from "../../styles/colors.js";
 
-const WorldMapChart = ({ setTooltipContent }) => {
+const WorldMapChart = ({ setTooltipContent, tooltipId }) => {
   const router = useRouter();
   const [data, setData] = useState([]);
   const [didLoad, setDidLoad] = useState(false);
@@ -41,7 +41,7 @@ const WorldMapChart = ({ setTooltipContent }) => {
 
   return (
     <>
-      <div data-tip="">
+      <div>
         <ComposableMap projection="geoMercator">
           <Graticule stroke="#f2f0f0" />
           <ZoomableGroup
@@ -63,7 +63,7 @@ const WorldMapChart = ({ setTooltipContent }) => {
                     .range([colors.aquamarine, colors.spaceCadet]);
 
                   return (
-                    <Geography
+                    <Geography data-tooltip-id={tooltipId}
                       key={geo.properties.name}
                       geography={geo}
                       stroke="#ffffff"

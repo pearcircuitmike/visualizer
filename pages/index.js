@@ -33,7 +33,7 @@ const USMapChart = dynamic(() => import("./components/USMap.js"), {
 
 import { useState, useEffect } from "react";
 import { csv } from "csvtojson";
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 export default function Home() {
   const [content, setContent] = useState("");
@@ -179,19 +179,21 @@ export default function Home() {
               Click on a country to view more details
             </Text>
           </Box>
-          <WorldMapChart setTooltipContent={setContent} />
-          {content && (
-            <ReactTooltip>
-              <Tooltip>{content}</Tooltip>
-            </ReactTooltip>
-          )}
+          <WorldMapChart setTooltipContent={setContent} tooltipId="pages-index-js-map-1" />
+          <ReactTooltip
+            id="pages-index-js-map-1"
+            content={content}
+            hidden={!content}
+            float
+          />
 
-          <USMapChart setTooltipContent={setContent} />
-          {content && (
-            <ReactTooltip>
-              <Tooltip>{content}</Tooltip>
-            </ReactTooltip>
-          )}
+          <USMapChart setTooltipContent={setContent} tooltipId="pages-index-js-map-2" />
+          <ReactTooltip
+            id="pages-index-js-map-2"
+            content={content}
+            hidden={!content}
+            float
+          />
         </Container>
 
         <Container>

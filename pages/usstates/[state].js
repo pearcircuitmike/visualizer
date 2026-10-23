@@ -13,7 +13,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useRouter } from "next/router.js";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import USMapChart from "../components/USMap.js";
@@ -294,12 +294,13 @@ const StateDetails = ({ state }) => {
           Click on another state to view more details.
         </Heading>
         <Container maxW={"5xl"}>
-          <USMapChart setTooltipContent={setContent} />
-          {content && (
-            <ReactTooltip>
-              <Tooltip>{content}</Tooltip>
-            </ReactTooltip>
-          )}
+          <USMapChart setTooltipContent={setContent} tooltipId="pages-usstates--state--js-map-1" />
+          <ReactTooltip
+            id="pages-usstates--state--js-map-1"
+            content={content}
+            hidden={!content}
+            float
+          />
         </Container>
       </Container>
     </div>

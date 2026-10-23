@@ -20,7 +20,7 @@ import Script from "next/script.js";
 import { SearchIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 import { colors } from "../../styles/colors.js";
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import USMapChart from "../components/USMap.js";
 import USVaccinationMap from "../components/USVaccinationMap.js";
@@ -105,20 +105,22 @@ const States = ({ stateVals }) => {
           Click a state to view detail, or scroll down to search by name.
         </Text>
         <Container maxW={"5xl"}>
-          <USMapChart setTooltipContent={setContent} />
-          {content && (
-            <ReactTooltip>
-              <Tooltip>{content}</Tooltip>
-            </ReactTooltip>
-          )}
+          <USMapChart setTooltipContent={setContent} tooltipId="pages-usstates-index-js-map-1" />
+          <ReactTooltip
+            id="pages-usstates-index-js-map-1"
+            content={content}
+            hidden={!content}
+            float
+          />
         </Container>
         <Container maxW={"5xl"}>
-          <USVaccinationMap setTooltipContent={setContent} />
-          {content && (
-            <ReactTooltip>
-              <Tooltip>{content}</Tooltip>
-            </ReactTooltip>
-          )}
+          <USVaccinationMap setTooltipContent={setContent} tooltipId="pages-usstates-index-js-map-2" />
+          <ReactTooltip
+            id="pages-usstates-index-js-map-2"
+            content={content}
+            hidden={!content}
+            float
+          />
         </Container>
 
         <Text mt={5}>

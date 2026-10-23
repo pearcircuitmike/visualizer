@@ -11,7 +11,7 @@ import { csv } from "csvtojson";
 import { colors } from "../../styles/colors.js";
 import allStates from "../../public/allstates.json";
 
-const USMapChart = ({ setTooltipContent }) => {
+const USMapChart = ({ setTooltipContent, tooltipId }) => {
   const [data, setData] = useState([]);
   const router = useRouter();
 
@@ -52,7 +52,7 @@ const USMapChart = ({ setTooltipContent }) => {
         </Heading>
         <Text size="md">Click on a state to view more details</Text>
       </Box>
-      <div data-tip="">
+      <div>
         <ComposableMap projection="geoAlbersUsa">
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
@@ -63,7 +63,7 @@ const USMapChart = ({ setTooltipContent }) => {
                 const d = data.find((s) => s.Location === geo.properties.name);
 
                 return (
-                  <Geography
+                  <Geography data-tooltip-id={tooltipId}
                     key={geo.properties.name}
                     geography={geo}
                     stroke="#ffffff"

@@ -1,5 +1,6 @@
-// pages/countries/index.js
 import Head from "next/head";
+import Link from "next/link";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Container,
   Heading,
@@ -12,78 +13,174 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Tooltip,
 } from "@chakra-ui/react";
-import { colors } from "../../styles/colors.js";
-import { Tooltip as ReactTooltip } from "react-tooltip";
 import { SearchIcon } from "@chakra-ui/icons";
-import Link from "next/link";
-import React, { useEffect, useMemo, useState } from "react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+
+import { colors } from "../../styles/colors.js";
 import WorldMap from "../components/WorldMap.js";
 
 export const getStaticProps = async () => {
-  // request countries (small)
-  const headers = new Headers();
-  headers.append("X-CSCAPI-KEY", process.env.NEXT_PUBLIC_CSC_API_KEY);
+  try {
+    const apiKey =
+      process.env.CSC_API_KEY || process.env.NEXT_PUBLIC_CSC_API_KEY;
 
-  const requestOptions = {
-    method: "GET",
-    headers,
-    redirect: "follow",
-  };
+    if (!apiKey) {
+      throw new Error("Missing CSC API key.");
+    }
 
-  const countrySummaryUrl = "https://api.countrystatecity.in/v1/countries";
-  const countrySummaryRes = await fetch(countrySummaryUrl, requestOptions);
-  const countries = await countrySummaryRes.json();
+    const res = await fetch("https://api.countrystatecity.in/v1/countries", {
+      headers: {
+        "X-CSCAPI-KEY": apiKey,
+      },
+    });
 
-  return {
-    props: { countryList: countries },
-    revalidate: 60 * 60 * 24, // 1 day
-  };
+    if (!res.ok) {
+      throw new Error(`Country API request failed: HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    if (!Array.isArray(data)) {
+      throw new Error("Country API returned an object instead of an array.");
+    }
+
+    const countryList = data
+      .filter(
+        (country) =>
+          typeof country?.name === "string" &&
+          country.name.trim() !== "" &&
+          typeof country?.iso2 === "string" &&
+          /^[a-z]{2}$/i.test(country.iso2),
+      )
+      .map((country) => ({
+        name: country.name.trim(),
+        iso2: country.iso2.toUpperCase(),
+      }));
+
+    if (countryList.length === 0) {
+      throw new Error("Country API returned no valid countries.");
+    }
+
+    return {
+      props: {
+        countryList,
+        dataError: false,
+      },
+      revalidate: 86400,
+    };
+  } catch (error) {
+    console.error(
+      "Unable to load country list:",
+      error instanceof Error ? error.message : String(error),
+    );
+
+    return {
+      props: {
+        countryList: [],
+        dataError: true,
+      },
+      revalidate: 60,
+    };
+  }
 };
 
-const Countries = ({ countryList }) => {
+const Countries = ({ countryList = [], dataError = false }) => {
   const [countryFilter, setCountryFilter] = useState("");
-  const handleSearch = (event) => setCountryFilter(event.target.value);
   const [content, setContent] = useState("");
-
-  // runtime-loaded case totals (tiny)
   const [summary, setSummary] = useState(null);
+  const [summaryError, setSummaryError] = useState(false);
 
   useEffect(() => {
-    let alive = true;
-    fetch("/api/monkeypox/countries-summary")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((json) => {
-        if (!alive) return;
-        setSummary(json?.byLocation || {});
-      })
-      .catch(() => {
-        if (!alive) return;
-        setSummary({});
-      });
+    const controller = new AbortController();
 
-    return () => {
-      alive = false;
-    };
+    async function loadSummary() {
+      try {
+        const res = await fetch("/api/monkeypox/countries-summary", {
+          signal: controller.signal,
+        });
+
+        if (!res.ok) {
+          throw new Error(`Case summary request failed: HTTP ${res.status}`);
+        }
+
+        const json = await res.json();
+        const byLocation = json?.byLocation;
+
+        if (
+          !byLocation ||
+          typeof byLocation !== "object" ||
+          Array.isArray(byLocation)
+        ) {
+          throw new Error("Case summary returned an invalid response.");
+        }
+
+        if (!controller.signal.aborted) {
+          setSummary(byLocation);
+          setSummaryError(false);
+        }
+      } catch (error) {
+        if (controller.signal.aborted) return;
+
+        console.error("Unable to load country case totals:", error);
+        setSummary({});
+        setSummaryError(true);
+      }
+    }
+
+    loadSummary();
+
+    return () => controller.abort();
   }, []);
 
   const filteredCountries = useMemo(() => {
-    const q = countryFilter.trim().toLowerCase();
-    if (!q) return countryList;
-    return countryList.filter((c) => c.name.toLowerCase().includes(q));
+    const countries = Array.isArray(countryList) ? countryList : [];
+    const query = countryFilter.trim().toLowerCase();
+
+    return countries.filter(
+      (country) =>
+        typeof country?.name === "string" &&
+        typeof country?.iso2 === "string" &&
+        country.name.toLowerCase().includes(query),
+    );
   }, [countryList, countryFilter]);
 
-  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+  function formatCases(countryName) {
+    if (summaryError) return "Unavailable";
+    if (summary === null) return "Loading…";
+
+    const rawCases = summary[countryName]?.total_cases;
+
+    if (
+      rawCases === null ||
+      rawCases === undefined ||
+      (typeof rawCases !== "number" && typeof rawCases !== "string")
+    ) {
+      return "Unavailable";
+    }
+
+    const cleaned = String(rawCases).replace(/,/g, "").trim();
+    const totalCases = cleaned === "" ? NaN : Number(cleaned);
+
+    return Number.isFinite(totalCases) && totalCases >= 0
+      ? totalCases.toLocaleString()
+      : "Unavailable";
+  }
+
+  const currentMonth = new Date().toLocaleString("en-US", {
+    month: "long",
+  });
   const currentYear = new Date().getFullYear();
 
   return (
     <>
       <Head>
         <meta httpEquiv="content-language" content="en-gb" />
+
         <title>
           Worldwide monkeypox cases {currentMonth} {currentYear}
         </title>
+
         <meta
           name="description"
           content={`${currentMonth} ${currentYear} monkeypox virus outbreak case totals and deaths. Charts, maps, and data.`}
@@ -94,8 +191,10 @@ const Countries = ({ countryList }) => {
           property="og:description"
           content={`${currentMonth} ${currentYear} monkeypox virus outbreak case totals and deaths. Charts, maps, and data.`}
         />
-
-        <meta property="og:url" content="https://monkeypoxtracker.net/" />
+        <meta
+          property="og:url"
+          content="https://monkeypoxtracker.net/countries"
+        />
         <meta
           property="og:image"
           content="https://monkeypoxtracker.net/socialImg.png"
@@ -120,21 +219,24 @@ const Countries = ({ countryList }) => {
           Monkeypox cases and deaths by country
         </Heading>
 
-        <Link href={"/usstates/"} passHref>
+        <Link href="/usstates" legacyBehavior passHref>
           <Button
             as="a"
             size="sm"
             m={5}
-            style={{ backgroundColor: `${colors.yellowGreen}` }}
+            style={{ backgroundColor: colors.yellowGreen }}
           >
             View US states
           </Button>
         </Link>
 
-        <Container maxW={"5xl"} mt={5}>
-          <WorldMap setTooltipContent={setContent} tooltipId="pages-countries-index-js-map-1" />
+        <Container maxW="5xl" mt={5}>
+          <WorldMap
+            setTooltipContent={setContent}
+            tooltipId="countries-world-map-tooltip"
+          />
           <ReactTooltip
-            id="pages-countries-index-js-map-1"
+            id="countries-world-map-tooltip"
             content={content}
             hidden={!content}
             float
@@ -145,59 +247,73 @@ const Countries = ({ countryList }) => {
           Select a country to view more details about their Monkeypox situation.
         </Text>
 
-        <InputGroup mt={5}>
-          <Input
-            variant="outline"
-            value={countryFilter}
-            onChange={handleSearch}
-            placeholder="Search by country name"
-          />
-          <InputRightElement mr={3}>
-            <SearchIcon />
-          </InputRightElement>
-        </InputGroup>
+        {dataError ? (
+          <Text mt={5} role="status">
+            The country list is temporarily unavailable because its data source
+            could not be loaded.
+          </Text>
+        ) : (
+          <>
+            <InputGroup mt={5}>
+              <Input
+                variant="outline"
+                value={countryFilter}
+                onChange={(event) => setCountryFilter(event.target.value)}
+                placeholder="Search by country name"
+              />
+              <InputRightElement mr={3} pointerEvents="none">
+                <SearchIcon />
+              </InputRightElement>
+            </InputGroup>
 
-        {filteredCountries.map((c) => {
-          const totalCases =
-            summary && summary[c.name] ? summary[c.name].total_cases : null;
+            {summaryError && (
+              <Text mt={5} role="status">
+                Country case totals are temporarily unavailable.
+              </Text>
+            )}
 
-          return (
-            <Box
-              key={c.name}
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-              pt={2}
-              pb={3}
-              pr={10}
-              pl={10}
-              mt={5}
-            >
-              <Flex spacing={8} direction="row">
-                <Center>
-                  <div>
-                    <Heading size="md" mt={1}>
-                      {c.name}
-                    </Heading>
-                    <Text>
-                      Currently active cases:{" "}
-                      {totalCases === null
-                        ? "Loading…"
-                        : totalCases.toLocaleString()}
-                    </Text>
-                  </div>
-                </Center>
+            {filteredCountries.length === 0 && (
+              <Text mt={5}>No countries match your search.</Text>
+            )}
 
-                <Spacer />
-                <Center>
-                  <Link href={"/countries/" + c.iso2} passHref>
-                    <Button as="a">View data</Button>
-                  </Link>
-                </Center>
-              </Flex>
-            </Box>
-          );
-        })}
+            {filteredCountries.map((country) => (
+              <Box
+                key={country.iso2}
+                borderWidth="1px"
+                borderRadius="lg"
+                overflow="hidden"
+                pt={2}
+                pb={3}
+                pr={10}
+                pl={10}
+                mt={5}
+              >
+                <Flex direction="row">
+                  <Center>
+                    <div>
+                      <Heading size="md" mt={1}>
+                        {country.name}
+                      </Heading>
+                      <Text>Reported cases: {formatCases(country.name)}</Text>
+                    </div>
+                  </Center>
+
+                  <Spacer />
+
+                  <Center>
+                    <Link
+                      href={`/countries/${country.iso2}`}
+                      legacyBehavior
+                      passHref
+                    >
+                      <Button as="a">View data</Button>
+                    </Link>
+                  </Center>
+                </Flex>
+              </Box>
+            ))}
+          </>
+        )}
       </Container>
     </>
   );

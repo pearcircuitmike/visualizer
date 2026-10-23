@@ -12,40 +12,100 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Tooltip,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import Script from "next/script.js";
-
 import { SearchIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
-import { colors } from "../../styles/colors.js";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
+import { colors } from "../../styles/colors.js";
 import USMapChart from "../components/USMap.js";
 import USVaccinationMap from "../components/USVaccinationMap.js";
 
+const CDC_STATE_DATA_URL =
+  "https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/USmap_counts.csv";
+
 export const getStaticProps = async () => {
-  const date = Math.floor(new Date().getTime() / 1000);
-  const url = `https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/USmap_counts.csv?${date} `;
+  try {
+    const res = await fetch(CDC_STATE_DATA_URL);
 
-  const res = await fetch(url);
-  const text = await res.text();
-  const data = await csv().fromString(text);
+    if (!res.ok) {
+      throw new Error(`CDC request failed: HTTP ${res.status}`);
+    }
 
-  return {
-    props: { stateVals: data },
-  };
+    const text = await res.text();
+
+    if (/^\s*(?:<!doctype html|<html)/i.test(text)) {
+      throw new Error("CDC returned HTML instead of CSV.");
+    }
+
+    const data = await csv().fromString(text);
+
+    const validRows = data.filter(
+      (row) => typeof row?.Location === "string" && row.Location.trim() !== "",
+    );
+
+    if (validRows.length === 0) {
+      throw new Error("CDC response contained no valid Location values.");
+    }
+
+    const statesByName = new Map();
+
+    for (const row of validRows) {
+      const location = row.Location.trim();
+      const rawCases = String(row.Cases ?? "")
+        .replace(/,/g, "")
+        .trim();
+
+      const parsedCases = rawCases === "" ? NaN : Number(rawCases);
+
+      statesByName.set(location, {
+        Location: location,
+        Cases:
+          Number.isFinite(parsedCases) && parsedCases >= 0 ? parsedCases : null,
+      });
+    }
+
+    return {
+      props: {
+        stateVals: [...statesByName.values()],
+        dataError: false,
+      },
+      revalidate: 3600,
+    };
+  } catch (error) {
+    console.error(
+      "Unable to load CDC state data:",
+      error instanceof Error ? error.message : String(error),
+    );
+
+    return {
+      props: {
+        stateVals: [],
+        dataError: true,
+      },
+      revalidate: 60,
+    };
+  }
 };
 
-const States = ({ stateVals }) => {
+const States = ({ stateVals = [], dataError = false }) => {
   const [stateFilter, setStateFilter] = useState("");
-  const handleSearch = (event) => setStateFilter(event.target.value);
+  const [casesTooltip, setCasesTooltip] = useState("");
+  const [vaccinationTooltip, setVaccinationTooltip] = useState("");
 
-  const [content, setContent] = useState("");
-
-  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+  const currentMonth = new Date().toLocaleString("en-US", {
+    month: "long",
+  });
   const currentYear = new Date().getFullYear();
+
+  const search = stateFilter.trim().toLowerCase();
+
+  const filteredStates = (Array.isArray(stateVals) ? stateVals : []).filter(
+    (state) =>
+      typeof state?.Location === "string" &&
+      state.Location.toLowerCase().includes(search),
+  );
 
   return (
     <>
@@ -55,6 +115,7 @@ const States = ({ stateVals }) => {
         <title>
           {currentMonth} {currentYear} Monkeypox cases by US state
         </title>
+
         <meta
           name="description"
           content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case and death totals for U.S. states.`}
@@ -66,7 +127,10 @@ const States = ({ stateVals }) => {
           content={`${currentMonth} ${currentYear} Monkeypox virus disease outbreak case and death totals for U.S. states.`}
         />
 
-        <meta property="og:url" content="https://monkeypoxtracker.net/" />
+        <meta
+          property="og:url"
+          content="https://monkeypoxtracker.net/usstates"
+        />
         <meta
           property="og:image"
           content="https://monkeypoxtracker.net/usSocialImg.png"
@@ -85,17 +149,19 @@ const States = ({ stateVals }) => {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Container maxW="5xl">
         <Heading as="h1" mt={5}>
           Monkeypox cases and deaths by state
         </Heading>
 
-        <Link href={"/countries"}>
+        <Link href="/countries" legacyBehavior passHref>
           <Button
+            as="a"
             size="sm"
             mt={5}
             mb={5}
-            style={{ backgroundColor: `${colors.yellowGreen}` }}
+            style={{ backgroundColor: colors.yellowGreen }}
           >
             View countries
           </Button>
@@ -104,21 +170,29 @@ const States = ({ stateVals }) => {
         <Text size="md">
           Click a state to view detail, or scroll down to search by name.
         </Text>
-        <Container maxW={"5xl"}>
-          <USMapChart setTooltipContent={setContent} tooltipId="pages-usstates-index-js-map-1" />
+
+        <Container maxW="5xl">
+          <USMapChart
+            setTooltipContent={setCasesTooltip}
+            tooltipId="us-states-cases-tooltip"
+          />
           <ReactTooltip
-            id="pages-usstates-index-js-map-1"
-            content={content}
-            hidden={!content}
+            id="us-states-cases-tooltip"
+            content={casesTooltip}
+            hidden={!casesTooltip}
             float
           />
         </Container>
-        <Container maxW={"5xl"}>
-          <USVaccinationMap setTooltipContent={setContent} tooltipId="pages-usstates-index-js-map-2" />
+
+        <Container maxW="5xl">
+          <USVaccinationMap
+            setTooltipContent={setVaccinationTooltip}
+            tooltipId="us-states-vaccination-tooltip"
+          />
           <ReactTooltip
-            id="pages-usstates-index-js-map-2"
-            content={content}
-            hidden={!content}
+            id="us-states-vaccination-tooltip"
+            content={vaccinationTooltip}
+            hidden={!vaccinationTooltip}
             float
           />
         </Container>
@@ -131,58 +205,74 @@ const States = ({ stateVals }) => {
           World In Data and the US CDC.
         </Text>
 
-        <InputGroup mt={5}>
-          <Input
-            variant="outline"
-            value={stateFilter}
-            onChange={handleSearch}
-            placeholder="Search by state name"
-          />
-          <InputRightElement mr={3}>
-            <SearchIcon />
-          </InputRightElement>
-        </InputGroup>
+        {dataError ? (
+          <Text mt={5} role="status">
+            State case totals are temporarily unavailable because the CDC data
+            feed could not be loaded.
+          </Text>
+        ) : (
+          <>
+            <InputGroup mt={5}>
+              <Input
+                variant="outline"
+                value={stateFilter}
+                onChange={(event) => setStateFilter(event.target.value)}
+                placeholder="Search by state name"
+              />
+              <InputRightElement mr={3} pointerEvents="none">
+                <SearchIcon />
+              </InputRightElement>
+            </InputGroup>
 
-        {stateVals
-          .filter((state) =>
-            state.Location.toLowerCase().includes(stateFilter.toLowerCase())
-          )
-          .map((stateVal) => (
-            <Box
-              key={stateVal.Location}
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-              pt={2}
-              pb={3}
-              pr={10}
-              pl={10}
-              mt={5}
-            >
-              <Flex spacing={8} direction="row">
-                <Center>
-                  <div>
-                    <Heading size="md" mt={1}>
-                      {stateVal.Location}
-                    </Heading>
-                    <Text>
-                      Currently active cases:{" "}
-                      {parseInt(stateVal.Cases).toLocaleString()}
-                    </Text>
-                  </div>
-                </Center>
+            {filteredStates.length === 0 && (
+              <Text mt={5}>No states match your search.</Text>
+            )}
 
-                <Spacer />
-                <Center>
-                  <Link href={"/usstates/" + stateVal.Location}>
-                    <Button>
-                      <a href={"/usstates/" + stateVal.Location}>View data</a>
-                    </Button>
-                  </Link>
-                </Center>
-              </Flex>
-            </Box>
-          ))}
+            {filteredStates.map((stateVal) => (
+              <Box
+                key={stateVal.Location}
+                borderWidth="1px"
+                borderRadius="lg"
+                overflow="hidden"
+                pt={2}
+                pb={3}
+                pr={10}
+                pl={10}
+                mt={5}
+              >
+                <Flex direction="row">
+                  <Center>
+                    <div>
+                      <Heading size="md" mt={1}>
+                        {stateVal.Location}
+                      </Heading>
+                      <Text>
+                        Reported cases:{" "}
+                        {Number.isFinite(stateVal.Cases)
+                          ? stateVal.Cases.toLocaleString()
+                          : "Unavailable"}
+                      </Text>
+                    </div>
+                  </Center>
+
+                  <Spacer />
+
+                  <Center>
+                    <Link
+                      href={`/usstates/${encodeURIComponent(
+                        stateVal.Location,
+                      )}`}
+                      legacyBehavior
+                      passHref
+                    >
+                      <Button as="a">View data</Button>
+                    </Link>
+                  </Center>
+                </Flex>
+              </Box>
+            ))}
+          </>
+        )}
       </Container>
     </>
   );
